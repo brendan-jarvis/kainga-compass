@@ -12,12 +12,16 @@ const globalForDb = globalThis as unknown as {
   conn: postgres.Sql | undefined;
 };
 
+// Placeholder allowed only when env validation is skipped (e.g. CI build without secrets).
+const databaseUrl =
+  env.DATABASE_URL ?? "postgresql://localhost:5432/kainga_compass_build";
+
 const conn =
   globalForDb.conn ??
-  postgres(env.DATABASE_URL, {
+  postgres(databaseUrl, {
     // Required for Supabase transaction pooler (PgBouncer) on Vercel/serverless
     prepare: false,
-    ssl: env.DATABASE_URL.includes("localhost") ? false : "require",
+    ssl: databaseUrl.includes("localhost") ? false : "require",
   });
 
 if (env.NODE_ENV !== "production") globalForDb.conn = conn;

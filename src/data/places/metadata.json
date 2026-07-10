@@ -1,0 +1,11 @@
+{
+  "lastUpdated": "2026-07-10",
+  "sources": [
+    "MBIE Tenancy Services — Rental bond data (median weekly rent by TA)",
+    "HUD Local Housing Statistics — median sale price, median multiple",
+    "Stats NZ / regional income estimates (career metric; flagged as regional proxy where noted)",
+    "Stats NZ Census-derived population density estimates"
+  ],
+  "cityCount": 18,
+  "notes": "MVP fixture figures are indicative and rounded for demo ranking. Career income is a regional proxy for most TAs. Replace with live HUD/MBIE parsers when available."
+}

@@ -17,7 +17,8 @@
     "lint:fix": "next lint --fix",
     "preview": "next build && next start",
     "start": "next start",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "ingest:places": "bun run scripts/ingest-places.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.7.2",
@@ -30,12 +31,15 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.41.0",
+    "leaflet": "^1.9.4",
     "lucide-react": "^1.24.0",
     "next": "^15.2.3",
     "next-auth": "5.0.0-beta.25",
+    "nuqs": "^2.9.0",
     "postgres": "^3.4.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-leaflet": "^5.0.0",
     "server-only": "^0.0.1",
     "shadcn": "^4.13.0",
     "superjson": "^2.2.1",
@@ -46,6 +50,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.0.15",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^20.14.10",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
