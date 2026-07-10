@@ -32,29 +32,6 @@ const UR_CACHE = path.join(CACHE_DIR, "ur2023.geojson");
 const SA3_QUERY =
   "https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/services/Statistical_Area_3_2023/FeatureServer/0/query";
 
-const CITY_TO_UR_NAME: Record<string, string> = {
-  whangarei: "Whangarei",
-  auckland: "Auckland",
-  hamilton: "Hamilton",
-  tauranga: "Tauranga",
-  rotorua: "Rotorua",
-  napier: "Napier",
-  hastings: "Hastings",
-  "new-plymouth": "New Plymouth",
-  "palmerston-north": "Palmerston North",
-  wellington: "Wellington",
-  "lower-hutt": "Lower Hutt",
-  porirua: "Porirua",
-  nelson: "Nelson",
-  christchurch: "Christchurch",
-  timaru: "Timaru",
-  dunedin: "Dunedin",
-  palmerston: "Palmerston",
-  queenstown: "Queenstown",
-  wanaka: "Wanaka",
-  invercargill: "Invercargill",
-};
-
 /** Cap per city so large metros stay usable. */
 const MAX_SUBURBS_PER_CITY = 48;
 
@@ -228,10 +205,14 @@ async function main() {
 
   const ur = (await Bun.file(UR_CACHE).json()) as FeatureCollection;
   const urByName = new Map<string, GeoFeature>();
+  const urBySlug = new Map<string, GeoFeature>();
   for (const f of ur.features) {
     const ascii = String(f.properties.UR2023_V1_00_NAME_ASCII ?? "");
     const name = String(f.properties.UR2023_V1_00_NAME ?? "");
-    if (ascii) urByName.set(ascii.toLowerCase(), f);
+    if (ascii) {
+      urByName.set(ascii.toLowerCase(), f);
+      urBySlug.set(slugify(ascii), f);
+    }
     if (name) urByName.set(name.toLowerCase(), f);
   }
 
@@ -244,12 +225,14 @@ async function main() {
   const usedSlugs = new Set(parents.map((p) => p.slug));
 
   for (const city of cities) {
-    const urName = CITY_TO_UR_NAME[city.slug];
-    if (!urName) {
-      console.warn(`  skip ${city.slug}: no UR mapping`);
-      continue;
-    }
-    const urFeat = urByName.get(urName.toLowerCase());
+    const nameKey = city.name
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase();
+    const urFeat =
+      urBySlug.get(city.slug) ??
+      urByName.get(nameKey) ??
+      urByName.get(city.name.toLowerCase());
     if (!urFeat?.geometry) {
       console.warn(`  skip ${city.slug}: UR polygon not in cache`);
       continue;

@@ -2,17 +2,17 @@
   "lastUpdated": "2026-07-10",
   "sources": [
     "Stats NZ Territorial Authority 2023 (FeatureServer) — all 67 district/city council boundaries",
-    "Stats NZ Urban Rural Areas 2023 (FeatureServer) — selected city/town outlines",
+    "Stats NZ Urban Rural Areas 2023 — all Major, Large, and Medium urban areas (city/town explorer set)",
     "MBIE Tenancy Services — Rental bond data by territorial authority",
     "HUD Local Housing Statistics — median sale price & multiple by TA",
     "Stats NZ LEED / BED — mean & median filled-job earnings (fixtures until live ingest)",
     "Stats NZ LEED age-group earnings — career-stage proxy (not years of experience)",
     "Stats NZ Statistical Area 3 2023 (FeatureServer) — suburb-scale units under cities (SA3 approximates suburbs; SA2 is too fine in CBDs)"
   ],
-  "cityCount": 20,
+  "cityCount": 43,
   "regionCount": 67,
   "boundaryOfficial": 697,
   "boundaryFallback": 0,
   "notes": "Districts: all 67 Stats NZ TA 2023. Cities: selected Urban Rural 2023 settlements. Suburbs: SA3 2023 units whose centroid falls inside each city urban area (not SA2 street-block units). Metrics for many places remain fixtures until HUD/MBIE live ingest.",
-  "suburbCount": 381
+  "suburbCount": 497
 }

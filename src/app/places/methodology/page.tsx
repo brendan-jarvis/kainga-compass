@@ -101,12 +101,13 @@ weights are normalised so Σ weight = 1`}
               Cities & towns view
             </p>
             <p>
-              Selected main settlements from{" "}
+              Settlements from{" "}
               <strong className="text-foreground">
                 Stats NZ Urban Rural Areas 2023
               </strong>{" "}
-              ({meta.cityCount} places in the current MVP set — not every urban
-              area in the country). Layer:{" "}
+              classified as <em>Major</em>, <em>Large</em>, or{" "}
+              <em>Medium</em> urban areas ({meta.cityCount} places — excludes
+              small urban areas and rural settlements for now). Layer:{" "}
               <a
                 className="text-primary underline-offset-2 hover:underline"
                 href="https://datafinder.stats.govt.nz/layer/111196-urban-rural-2023-clipped-generalised/"
@@ -115,7 +116,8 @@ weights are normalised so Σ weight = 1`}
               >
                 Urban Rural 2023 clipped generalised
               </a>
-              .
+              . Refresh with{" "}
+              <code className="text-foreground">bun run ingest:cities</code>.
             </p>
           </div>
           <div>
@@ -221,9 +223,11 @@ weights are normalised so Σ weight = 1`}
         <CardContent>
           <ul className="text-muted-foreground list-disc space-y-2 pl-5 text-sm leading-relaxed">
             <li>
-              District map/table covers all {meta.regionCount} TAs; cities (
-              {meta.cityCount}) and suburbs ({meta.suburbCount ?? "—"}) are
-              still an MVP subset of urban NZ.
+              District map/table covers all {meta.regionCount} TAs. Cities &amp;
+              towns include all major/large/medium urban areas (
+              {meta.cityCount}); small urban areas and rural settlements are
+              not yet in the explorer. Suburbs: {meta.suburbCount ?? "—"} SA3
+              units under those cities.
             </li>
             <li>
               Many TA and suburb metrics remain seeded fixtures until HUD/MBIE

@@ -38,7 +38,7 @@ Built with [Next.js 15](https://nextjs.org/) (App Router), React 19, Tailwind CS
 | Level | Classification | Coverage in app |
 |-------|----------------|-----------------|
 | **Districts** | Territorial Authority 2023 | **All 67** TAs — full map + table |
-| **Cities & towns** | Urban Rural 2023 | Curated main settlements (~20) |
+| **Cities & towns** | Urban Rural 2023 | All Major + Large + Medium urban areas (~43) |
 | **Suburbs** | Statistical Area 3 2023 | Under those cities (SA3 ≈ suburbs; not SA2 street-blocks) |
 
 Boundaries are generalised for the web. Ingest scripts pull public FeatureServers and write `src/data/places/`.
