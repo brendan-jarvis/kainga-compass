@@ -19,17 +19,21 @@ const OPTIONS: { id: PlaceKind; label: string; description: string }[] = [
 export function PlaceScopeToggle({
   value,
   onChange,
+  compact = false,
 }: {
   value: PlaceKind;
   onChange: (kind: PlaceKind) => void;
+  compact?: boolean;
 }) {
   return (
-    <div className="space-y-2">
-      <p className="text-foreground text-sm font-medium">Geography</p>
+    <div className={cn(compact ? "space-y-1" : "space-y-2")}>
+      {!compact && (
+        <p className="text-foreground text-sm font-medium">Geography</p>
+      )}
       <div
         role="group"
         aria-label="Place geography scope"
-        className="bg-muted grid grid-cols-2 gap-1 rounded-lg p-1"
+        className="bg-muted inline-grid grid-cols-2 gap-1 rounded-lg p-1"
       >
         {OPTIONS.map((opt) => {
           const active = value === opt.id;
@@ -39,7 +43,7 @@ export function PlaceScopeToggle({
               type="button"
               onClick={() => onChange(opt.id)}
               className={cn(
-                "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+                "rounded-md px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
                 active
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",
@@ -51,9 +55,11 @@ export function PlaceScopeToggle({
           );
         })}
       </div>
-      <p className="text-muted-foreground text-sm">
-        {OPTIONS.find((o) => o.id === value)?.description}
-      </p>
+      {!compact && (
+        <p className="text-muted-foreground text-sm">
+          {OPTIONS.find((o) => o.id === value)?.description}
+        </p>
+      )}
     </div>
   );
 }

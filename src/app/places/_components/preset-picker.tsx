@@ -8,19 +8,23 @@ import type { PresetId } from "~/lib/places/types";
 export function PresetPicker({
   value,
   onChange,
+  compact = false,
 }: {
   value: PresetId;
   onChange: (id: PresetId) => void;
+  compact?: boolean;
 }) {
   return (
-    <div className="space-y-2">
-      <div>
-        <p className="text-foreground text-sm font-medium">Presets</p>
-        <p className="text-muted-foreground text-sm">
-          Life-stage shortcuts — tweak priorities after if you like.
-        </p>
-      </div>
-      <div className="flex flex-wrap gap-2">
+    <div className={cn(compact ? "space-y-1.5" : "space-y-2")}>
+      {!compact && (
+        <div>
+          <p className="text-foreground text-sm font-medium">Presets</p>
+          <p className="text-muted-foreground text-sm">
+            Life-stage shortcuts — tweak priorities after if you like.
+          </p>
+        </div>
+      )}
+      <div className="flex flex-wrap items-center gap-2">
         {PRESETS.map((preset) => {
           const active = value === preset.id;
           return (
@@ -30,7 +34,7 @@ export function PresetPicker({
               onClick={() => onChange(preset.id)}
               title={preset.description}
               className={cn(
-                "rounded-full border px-3 py-1.5 text-base transition-colors",
+                "rounded-full border px-3 py-1 text-sm transition-colors",
                 active
                   ? "border-primary/50 bg-primary/15 text-primary"
                   : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
@@ -42,7 +46,7 @@ export function PresetPicker({
         })}
         {value === "custom" && (
           <Badge variant="secondary" className="self-center">
-            Custom weights
+            Custom
           </Badge>
         )}
       </div>

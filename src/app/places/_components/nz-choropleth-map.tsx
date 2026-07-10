@@ -40,16 +40,16 @@ const STROKE_HOVER = "rgba(60, 60, 60, 0.7)";
 const STROKE_TOP = "#ea580c";
 const STROKE_FOCUS = "#c2410c";
 
-/** Linear RGB mix: emerald (weak) → orange (strong). */
+/** Linear RGB mix: orange (weaker) → emerald (stronger). */
 function rankHeatFill(rank: number, total: number, isDark: boolean): string {
   if (total <= 0) {
-    return isDark ? "rgba(16,185,129,0.2)" : "rgba(16,185,129,0.18)";
+    return isDark ? "rgba(234,88,12,0.2)" : "rgba(234,88,12,0.18)";
   }
   const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1); // 0 weak → 1 strong
-  // emerald-500 #10b981 → orange-600 #ea580c
-  const r = Math.round(16 + t * (234 - 16));
-  const g = Math.round(185 + t * (88 - 185));
-  const b = Math.round(129 + t * (12 - 129));
+  // orange-600 #ea580c → emerald-500 #10b981
+  const r = Math.round(234 + t * (16 - 234));
+  const g = Math.round(88 + t * (185 - 88));
+  const b = Math.round(12 + t * (129 - 12));
   const a = isDark ? 0.28 + t * 0.5 : 0.32 + t * 0.48;
   return `rgba(${r},${g},${b},${a.toFixed(3)})`;
 }
@@ -285,7 +285,7 @@ export function NzChoroplethMap({
           className="mb-1 h-2.5 w-full rounded-full"
           style={{
             background:
-              "linear-gradient(90deg, rgba(16,185,129,0.85), rgba(234,88,12,0.9))",
+              "linear-gradient(90deg, rgba(234,88,12,0.9), rgba(16,185,129,0.9))",
           }}
         />
         <div className="text-muted-foreground flex justify-between">
@@ -293,7 +293,7 @@ export function NzChoroplethMap({
           <span>Stronger</span>
         </div>
         <p className="text-muted-foreground mt-1.5 leading-snug">
-          Emerald → orange by rank. Orange outline = top match
+          Orange → emerald by rank. Outline = top match
           {focusedSlug ? " or focused place" : ""}.
         </p>
       </div>

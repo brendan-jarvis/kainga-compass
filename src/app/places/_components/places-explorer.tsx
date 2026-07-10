@@ -5,16 +5,14 @@ import Link from "next/link";
 import { useCallback, useMemo, useState, useTransition } from "react";
 import { useQueryStates, parseAsString, parseAsStringLiteral } from "nuqs";
 import type { Feature, FeatureCollection } from "geojson";
-import { Link2, Check } from "lucide-react";
+import { Check, Share2 } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
 import {
   DEFAULT_WEIGHTS,
   getPresetWeights,
@@ -41,7 +39,7 @@ const NzChoroplethMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="border-border bg-muted/30 flex h-[360px] items-center justify-center rounded-xl border sm:h-[420px] lg:min-h-[480px]">
+      <div className="border-border bg-muted/30 flex h-[min(72vh,640px)] w-full max-w-[400px] items-center justify-center rounded-xl border">
         <p className="text-muted-foreground text-sm">Loading map…</p>
       </div>
     ),
@@ -164,87 +162,78 @@ export function PlacesExplorer({
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const countLabel =
-    scope === "city"
-      ? `${metadata.cityCount} cities & towns`
-      : `${metadata.regionCount} districts`;
-
   return (
-    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-5 px-4 py-5 sm:px-6 lg:py-6">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
-            Explore places
-          </h1>
-          <p className="text-muted-foreground max-w-2xl text-base">
-            Set what matters to you — match scores update live across{" "}
-            {countLabel}. Compare settlements (Queenstown vs Wānaka) or whole
-            council districts.
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-4 px-4 py-4 sm:px-6 lg:py-5">
+      {/* Horizontal priorities bar above map + table */}
+      <section className="border-border bg-card/60 relative rounded-xl border px-4 py-3 shadow-sm sm:px-5">
+        <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3">
+          <Tooltip>
+            <TooltipTrigger
+              render={
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  aria-label={copied ? "Link copied" : "Copy share link"}
+                  onClick={() => void copyShareLink()}
+                />
+              }
+            >
+              {copied ? (
+                <Check className="size-4 text-emerald-600" />
+              ) : (
+                <Share2 className="size-4" />
+              )}
+            </TooltipTrigger>
+            <TooltipContent>
+              {copied ? "Copied!" : "Copy shareable link with your weights"}
+            </TooltipContent>
+          </Tooltip>
+        </div>
+
+        <div className="flex flex-col gap-3 pr-10">
+          <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2">
+            <PlaceScopeToggle
+              value={scope}
+              onChange={handleScope}
+              compact
+            />
+            <PresetPicker
+              value={params.preset}
+              onChange={handlePreset}
+              compact
+            />
+          </div>
+          <PrioritySliders
+            weights={weights}
+            onChange={handleWeights}
+            compact
+          />
+          <p className="text-muted-foreground text-xs">
+            Sliders total 100% · data as of {metadata.lastUpdated} ·{" "}
+            <Link
+              href="/places/methodology"
+              className="text-primary underline-offset-2 hover:underline"
+            >
+              Methodology
+            </Link>
           </p>
         </div>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => void copyShareLink()}
-          className="self-start sm:self-auto"
-        >
-          {copied ? (
-            <>
-              <Check data-icon="inline-start" />
-              Copied
-            </>
-          ) : (
-            <>
-              <Link2 data-icon="inline-start" />
-              Copy share link
-            </>
-          )}
-        </Button>
-      </div>
+      </section>
 
-      {/*
-        NZ is tall (N–S). Use a portrait map column instead of a wide landscape
-        panel so fitBounds can zoom into the country instead of ocean.
-        xl+: [priorities | tall map | ranked list]
-        lg:  [priorities | map+list]
-        <lg: stack
-      */}
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(260px,300px)_minmax(0,1fr)] xl:grid-cols-[minmax(260px,300px)_minmax(280px,400px)_minmax(0,1fr)]">
-        <Card className="border-primary/10 lg:sticky lg:top-16 lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
-          <CardHeader className="pb-3">
-            <CardTitle className="text-lg">Your priorities</CardTitle>
-            <CardDescription>
-              Pick geography, a life-stage preset, or drag the sliders.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-6">
-            <PlaceScopeToggle value={scope} onChange={handleScope} />
-            <PresetPicker value={params.preset} onChange={handlePreset} />
-            <PrioritySliders weights={weights} onChange={handleWeights} />
-            <p className="text-muted-foreground text-sm">
-              Data as of {metadata.lastUpdated}.{" "}
-              <Link
-                href="/places/methodology"
-                className="text-primary underline-offset-2 hover:underline"
-              >
-                How scores work
-              </Link>
-            </p>
-          </CardContent>
-        </Card>
-
-        <div id="places-map" className="xl:sticky xl:top-16">
+      {/* Map (portrait) + ranked list */}
+      <div className="grid items-start gap-5 lg:grid-cols-[minmax(280px,400px)_minmax(0,1fr)]">
+        <div id="places-map" className="lg:sticky lg:top-16">
           <NzChoroplethMap
             territories={scored}
             boundaries={scopedBoundaries}
             highlightedSlug={highlightedSlug}
             focusedSlug={focusedSlug}
             queryString={queryString}
-            className="mx-auto max-w-[400px] xl:mx-0 xl:max-w-none"
+            className="mx-auto max-w-[400px] lg:mx-0 lg:max-w-none"
           />
         </div>
 
-        <div className="min-w-0 lg:col-span-2 xl:col-span-1">
+        <div className="min-w-0">
           <h2 className="mb-3 text-xl font-semibold tracking-normal">
             Ranked matches
             <span className="text-muted-foreground ml-2 text-base font-normal">
