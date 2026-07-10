@@ -62,7 +62,7 @@ function resolveInitialWeights(
 export function PlacesExplorer({
   territories,
   boundaries,
-  metadata,
+  metadata: _metadata,
 }: {
   territories: Territory[];
   boundaries: FeatureCollection;
