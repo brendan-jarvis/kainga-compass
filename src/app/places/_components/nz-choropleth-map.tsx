@@ -35,6 +35,34 @@ const NZ_BOUNDS: L.LatLngBoundsExpression = [
   [-34.2, 178.8],
 ];
 
+/**
+ * Chatham Islands sit near lng −176 (west of the antimeridian). Including them
+ * with mainland +166…+179 makes Leaflet fitBounds span the whole globe.
+ * Keep them drawn; just omit from default multi-feature framing.
+ */
+function isMainlandNzFeature(feature: Feature): boolean {
+  let saw = false;
+  let xmin = Infinity;
+  let xmax = -Infinity;
+  const visit = (c: unknown): void => {
+    if (!Array.isArray(c)) return;
+    if (typeof c[0] === "number") {
+      const lng = c[0];
+      saw = true;
+      xmin = Math.min(xmin, lng);
+      xmax = Math.max(xmax, lng);
+      return;
+    }
+    for (const child of c) visit(child);
+  };
+  visit(feature.geometry && "coordinates" in feature.geometry
+    ? feature.geometry.coordinates
+    : null);
+  if (!saw) return false;
+  // Mainland / Stewart Island / nearby: positive longitudes around NZ
+  return xmin > 160 && xmax < 180;
+}
+
 const STROKE_DEFAULT = "rgba(100, 100, 100, 0.4)";
 const STROKE_HOVER = "rgba(60, 60, 60, 0.7)";
 const STROKE_TOP = "#ea580c";
@@ -80,8 +108,19 @@ function FitScopeBounds({
         return;
       }
       try {
-        const layer = L.geoJSON(boundaries);
-        map.fitBounds(layer.getBounds().pad(0.04), {
+        // Prefer mainland-only features so Chatham Islands don't explode the bbox
+        const mainland = boundaries.features.filter(isMainlandNzFeature);
+        const toFit: FeatureCollection = {
+          type: "FeatureCollection",
+          features: mainland.length > 0 ? mainland : boundaries.features,
+        };
+        const layer = L.geoJSON(toFit);
+        const bounds = layer.getBounds();
+        if (!bounds.isValid() || bounds.getEast() - bounds.getWest() > 40) {
+          map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
+          return;
+        }
+        map.fitBounds(bounds.pad(0.04), {
           padding: [16, 16],
           maxZoom: 7,
           animate: true,
