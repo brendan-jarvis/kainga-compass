@@ -118,6 +118,16 @@ export const PRESETS: PresetDefinition[] = [
 
 export const DEFAULT_WEIGHTS: Weights = PRESETS[0]!.weights;
 
+/** Balanced starting point for the Custom chip — nudge the sliders from here. */
+export const CUSTOM_START_WEIGHTS: Weights = {
+  affordability: 1 / 6,
+  housingGrowth: 1 / 6,
+  jobGrowth: 1 / 6,
+  populationGrowth: 1 / 6,
+  career: 1 / 6,
+  lifestyle: 1 / 6,
+};
+
 export const DIMENSION_LABELS: Record<Dimension, string> = {
   affordability: "Affordability",
   housingGrowth: "Housing growth",
@@ -137,7 +147,7 @@ export const DIMENSION_HINTS: Record<Dimension, string> = {
 };
 
 export function getPresetWeights(id: PresetId): Weights {
-  if (id === "custom") return { ...DEFAULT_WEIGHTS };
+  if (id === "custom") return { ...CUSTOM_START_WEIGHTS };
   return { ...PRESETS.find((p) => p.id === id)?.weights ?? DEFAULT_WEIGHTS };
 }
 

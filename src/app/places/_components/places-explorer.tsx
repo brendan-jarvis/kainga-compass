@@ -146,10 +146,6 @@ export function PlacesExplorer({
   };
 
   const handlePreset = (id: PresetId) => {
-    if (id === "custom") {
-      void setParams({ preset: "custom" });
-      return;
-    }
     const next = getPresetWeights(id);
     setWeights(next);
     syncUrl(id, next);
@@ -223,9 +219,6 @@ export function PlacesExplorer({
             onChange={handleWeights}
             compact
           />
-          <p className="text-muted-foreground text-xs">
-            Sliders total 100% · data as of {metadata.lastUpdated}
-          </p>
         </div>
       </section>
 
