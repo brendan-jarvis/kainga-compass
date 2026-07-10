@@ -9,7 +9,7 @@ import { PlacesExplorer } from "./_components/places-explorer";
 export const metadata: Metadata = {
   title: "Explore places | Kāinga Compass",
   description:
-    "Weight affordability, growth, career, and lifestyle — see ranked territorial authorities across Aotearoa.",
+    "Weight affordability, growth, career, and lifestyle — compare cities & towns or council districts across Aotearoa.",
 };
 
 export default function PlacesPage() {

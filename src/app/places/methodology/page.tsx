@@ -38,8 +38,8 @@ export default function MethodologyPage() {
         <CardHeader>
           <CardTitle>Match Score formula</CardTitle>
           <CardDescription>
-            Each dimension is a 0–100 percentile across the MVP territorial
-            authority set.
+            Each dimension is a 0–100 percentile within the active geography
+            peer set (cities & towns, or districts) — never mixed together.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-sm leading-relaxed">
@@ -86,7 +86,8 @@ weights are normalised so Σ weight = 1`}
         <CardHeader>
           <CardTitle>Data sources</CardTitle>
           <CardDescription>
-            Last fixture update: {meta.lastUpdated} · {meta.cityCount} cities
+            Last fixture update: {meta.lastUpdated} · {meta.cityCount} cities &
+            towns · {meta.regionCount} districts
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -96,31 +97,75 @@ weights are normalised so Σ weight = 1`}
             ))}
           </ul>
           <p className="text-muted-foreground mt-4 text-sm">
-            Live ingestion from HUD XLSX / MBIE CSV is scaffolded via{" "}
+            Live ingestion is scaffolded via{" "}
             <code className="text-foreground">bun run ingest:places</code>.
-            Current committed numbers are curated MVP fixtures for ranking
-            demos — validate against primary sources before financial decisions.
+            District metrics align with public TA series; settlement splits
+            (Queenstown vs Wānaka) are curated approximations until SA2 / Market
+            Rent pipelines are wired. Validate against primary sources before
+            financial decisions.
           </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Geography</CardTitle>
+          <CardTitle>Geography: cities & towns vs districts</CardTitle>
         </CardHeader>
         <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
           <p>
-            The unit of analysis is the{" "}
-            <strong className="text-foreground">Territorial Authority</strong>{" "}
-            (city or district council area). Towns that sit inside a larger
-            district (e.g. Queenstown within Queenstown-Lakes) inherit district
-            metrics.
+            <strong className="text-foreground">Cities & towns</strong> are
+            settlement-scale places people actually choose between (aligned with
+            Stats NZ urban areas / main towns). Example: Queenstown and Wānaka
+            are separate, even though both sit in Queenstown-Lakes District.
           </p>
           <p>
-            Map polygons in the MVP are simplified illustrative shapes centred
-            on each TA, not official Stats NZ cadastral boundaries. They are
-            enough to show relative score colouring; a future release can swap
-            in generalised official GeoJSON.
+            <strong className="text-foreground">Districts</strong> are
+            territorial authorities (city or district councils) — the level where
+            HUD and MBIE bond CSVs are published most reliably.
+          </p>
+          <p>
+            Toggle in the explorer re-scores only within that peer set. Map
+            polygons are simplified illustrative shapes, not official Stats NZ
+            boundaries.
+          </p>
+          <p>
+            Planned finer sources:{" "}
+            <a
+              className="text-primary underline-offset-2 hover:underline"
+              href="https://portal.api.business.govt.nz/api/market-rent"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MBIE Market Rent API
+            </a>{" "}
+            (down to SA2),{" "}
+            <a
+              className="text-primary underline-offset-2 hover:underline"
+              href="https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              MBIE bond CSVs
+            </a>
+            ,{" "}
+            <a
+              className="text-primary underline-offset-2 hover:underline"
+              href="https://www.hud.govt.nz/stats-and-insights/local-housing-statistics/key-data"
+              target="_blank"
+              rel="noreferrer"
+            >
+              HUD Local Housing Statistics
+            </a>
+            , and{" "}
+            <a
+              className="text-primary underline-offset-2 hover:underline"
+              href="https://datafinder.stats.govt.nz/layer/120965-urban-rural-2025/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Stats NZ Urban Rural 2025
+            </a>
+            .
           </p>
         </CardContent>
       </Card>
@@ -132,7 +177,12 @@ weights are normalised so Σ weight = 1`}
         <CardContent>
           <ul className="text-muted-foreground list-disc space-y-2 pl-5 text-sm leading-relaxed">
             <li>
-              MVP covers {meta.cityCount} main urban centres, not all 67 TAs.
+              MVP covers {meta.cityCount} settlements and {meta.regionCount}{" "}
+              districts — not every NZ place.
+            </li>
+            <li>
+              Settlement-level prices for multi-town districts are indicative
+              splits, not official bond medians.
             </li>
             <li>
               Education and social/wellbeing dimensions are out of scope for
@@ -143,8 +193,8 @@ weights are normalised so Σ weight = 1`}
               available.
             </li>
             <li>
-              Percentile ranks are relative to the MVP set only — adding more
-              TAs will change scores.
+              Percentile ranks are relative to the active peer set only —
+              switching cities ↔ districts changes scores.
             </li>
             <li>
               This is not financial, housing, or immigration advice. Cross-check

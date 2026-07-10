@@ -66,7 +66,12 @@ export function RankedList({
                 >
                   {t.name}
                 </Link>
-                <div className="text-muted-foreground text-xs">{t.region}</div>
+                <div className="text-muted-foreground text-sm">
+                  {t.region}
+                  {t.kind === "city" && t.district
+                    ? ` · ${t.district}`
+                    : ""}
+                </div>
               </TableCell>
               <TableCell className="text-right">
                 <MatchScoreBadge score={t.matchScore} />

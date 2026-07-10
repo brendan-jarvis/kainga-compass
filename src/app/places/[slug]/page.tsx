@@ -20,7 +20,9 @@ import {
 } from "~/lib/places/format";
 import {
   getPlacesMetadata,
+  getRelatedPlaces,
   getTerritories,
+  getTerritoriesByKind,
   getTerritoryBySlug,
 } from "~/lib/places/get-territories";
 import { DIMENSION_LABELS, DEFAULT_WEIGHTS } from "~/lib/places/presets";
@@ -31,7 +33,7 @@ import { MatchScoreBadge } from "../_components/match-score-badge";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ weights?: string; preset?: string }>;
+  searchParams: Promise<{ weights?: string; preset?: string; view?: string }>;
 };
 
 export function generateStaticParams() {
@@ -96,17 +98,22 @@ export default async function TerritoryDetailPage({
   if (!territory) notFound();
 
   const weights = parseWeights(sp.weights) ?? DEFAULT_WEIGHTS;
-  const scored = scoreTerritories(getTerritories(), weights);
+  const peers = getTerritoriesByKind(territory.kind);
+  const scored = scoreTerritories(peers, weights);
   const ranked = scored.find((t) => t.slug === slug)!;
   const rank = scored.findIndex((t) => t.slug === slug) + 1;
   const metadata = getPlacesMetadata();
+  const related = getRelatedPlaces(territory);
 
   const qs = new URLSearchParams();
+  qs.set("view", territory.kind);
   if (sp.preset) qs.set("preset", sp.preset);
   if (sp.weights) qs.set("weights", sp.weights);
-  const backQs = qs.toString() ? `?${qs.toString()}` : "";
+  const backQs = `?${qs.toString()}`;
 
   const proxySet = new Set<Dimension>(territory.proxies ?? []);
+  const kindLabel =
+    territory.kind === "city" ? "City / town" : "District (territorial authority)";
 
   return (
     <div className="mx-auto w-full max-w-3xl space-y-6 px-4 py-8 sm:px-6">
@@ -123,12 +130,16 @@ export default async function TerritoryDetailPage({
 
       <div className="space-y-3">
         <div className="flex flex-wrap items-center gap-3">
-          <h1 className="text-3xl font-bold tracking-tight">{territory.name}</h1>
+          <h1 className="text-3xl font-bold tracking-normal">{territory.name}</h1>
           <MatchScoreBadge score={ranked.matchScore} className="text-sm" />
+          <Badge variant="secondary">{kindLabel}</Badge>
         </div>
         <p className="text-muted-foreground">
-          {territory.region} · Rank #{rank} of {scored.length} for your current
-          weights
+          {territory.region}
+          {territory.district ? ` · ${territory.district}` : ""} · Rank #{rank}{" "}
+          of {scored.length}{" "}
+          {territory.kind === "city" ? "cities & towns" : "districts"} for your
+          current weights
         </p>
       </div>
 
@@ -185,7 +196,9 @@ export default async function TerritoryDetailPage({
         <CardHeader>
           <CardTitle className="text-base">Dimension breakdown</CardTitle>
           <CardDescription>
-            Percentile scores (0–100) across the MVP city set for your weights.
+            Percentile scores (0–100) within the{" "}
+            {territory.kind === "city" ? "cities & towns" : "districts"} peer
+            set.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -200,7 +213,41 @@ export default async function TerritoryDetailPage({
         </CardContent>
       </Card>
 
-      <p className="text-muted-foreground text-xs">
+      {related.length > 0 && (
+        <Card>
+          <CardHeader>
+            <CardTitle className="text-base">
+              {territory.kind === "city"
+                ? "Parent district"
+                : "Towns in this district"}
+            </CardTitle>
+            <CardDescription>
+              {territory.kind === "city"
+                ? "District view aggregates the wider council area."
+                : "Settlements can differ a lot inside one district (e.g. Queenstown vs Wānaka)."}
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="flex flex-wrap gap-2">
+            {related.map((r) => {
+              const relatedQs = new URLSearchParams(qs);
+              relatedQs.set("view", r.kind);
+              return (
+                <Link
+                  key={r.slug}
+                  href={`/places/${r.slug}?${relatedQs.toString()}`}
+                  className={cn(
+                    buttonVariants({ variant: "outline", size: "sm" }),
+                  )}
+                >
+                  {r.name}
+                </Link>
+              );
+            })}
+          </CardContent>
+        </Card>
+      )}
+
+      <p className="text-muted-foreground text-sm">
         Figures are indicative MVP fixtures (updated {metadata.lastUpdated}).{" "}
         <Link
           href="/places/methodology"

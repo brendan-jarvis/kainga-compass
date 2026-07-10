@@ -1,0 +1,613 @@
+[
+  {
+    "slug": "whangarei",
+    "name": "Whangārei",
+    "kind": "city",
+    "region": "Northland",
+    "district": "Whangārei District",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6.2,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 72000,
+      "populationDensity": 650
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "auckland",
+    "name": "Auckland",
+    "kind": "city",
+    "region": "Auckland",
+    "district": "Auckland",
+    "metrics": {
+      "medianRentWeek": 650,
+      "medianHousePrice": 1050000,
+      "medianMultiple": 8.9,
+      "rentYoY": 0.03,
+      "priceYoY": -0.02,
+      "medianIncome": 104000,
+      "populationDensity": 1400
+    }
+  },
+  {
+    "slug": "hamilton",
+    "name": "Hamilton",
+    "kind": "city",
+    "region": "Waikato",
+    "district": "Hamilton City",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.4,
+      "rentYoY": 0.04,
+      "priceYoY": 0.01,
+      "medianIncome": 88000,
+      "populationDensity": 1500
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "tauranga",
+    "name": "Tauranga",
+    "kind": "city",
+    "region": "Bay of Plenty",
+    "district": "Tauranga City",
+    "metrics": {
+      "medianRentWeek": 580,
+      "medianHousePrice": 850000,
+      "medianMultiple": 7.5,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 86000,
+      "populationDensity": 1100
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "rotorua",
+    "name": "Rotorua",
+    "kind": "city",
+    "region": "Bay of Plenty",
+    "district": "Rotorua District",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 560000,
+      "medianMultiple": 5.7,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 74000,
+      "populationDensity": 800
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "napier",
+    "name": "Napier",
+    "kind": "city",
+    "region": "Hawke's Bay",
+    "district": "Napier City",
+    "metrics": {
+      "medianRentWeek": 480,
+      "medianHousePrice": 650000,
+      "medianMultiple": 6.1,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 80000,
+      "populationDensity": 700
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "hastings",
+    "name": "Hastings",
+    "kind": "city",
+    "region": "Hawke's Bay",
+    "district": "Hastings District",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6.0,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 78000,
+      "populationDensity": 600
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "new-plymouth",
+    "name": "New Plymouth",
+    "kind": "city",
+    "region": "Taranaki",
+    "district": "New Plymouth District",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 620000,
+      "medianMultiple": 5.7,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 85000,
+      "populationDensity": 550
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "palmerston-north",
+    "name": "Palmerston North",
+    "kind": "city",
+    "region": "Manawatū-Whanganui",
+    "district": "Palmerston North City",
+    "metrics": {
+      "medianRentWeek": 460,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.6,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 82000,
+      "populationDensity": 900
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "wellington",
+    "name": "Wellington",
+    "kind": "city",
+    "region": "Wellington",
+    "district": "Wellington City",
+    "metrics": {
+      "medianRentWeek": 620,
+      "medianHousePrice": 880000,
+      "medianMultiple": 7.2,
+      "rentYoY": 0.02,
+      "priceYoY": -0.04,
+      "medianIncome": 112000,
+      "populationDensity": 1900
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "lower-hutt",
+    "name": "Lower Hutt",
+    "kind": "city",
+    "region": "Wellington",
+    "district": "Lower Hutt City",
+    "metrics": {
+      "medianRentWeek": 560,
+      "medianHousePrice": 750000,
+      "medianMultiple": 6.5,
+      "rentYoY": 0.02,
+      "priceYoY": -0.03,
+      "medianIncome": 100000,
+      "populationDensity": 1200
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "porirua",
+    "name": "Porirua",
+    "kind": "city",
+    "region": "Wellington",
+    "district": "Porirua City",
+    "metrics": {
+      "medianRentWeek": 540,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.6,
+      "rentYoY": 0.03,
+      "priceYoY": -0.01,
+      "medianIncome": 95000,
+      "populationDensity": 800
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "nelson",
+    "name": "Nelson",
+    "kind": "city",
+    "region": "Nelson",
+    "district": "Nelson City",
+    "metrics": {
+      "medianRentWeek": 490,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.8,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 79000,
+      "populationDensity": 600
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "christchurch",
+    "name": "Christchurch",
+    "kind": "city",
+    "region": "Canterbury",
+    "district": "Christchurch City",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 680000,
+      "medianMultiple": 5.8,
+      "rentYoY": 0.05,
+      "priceYoY": 0.02,
+      "medianIncome": 92000,
+      "populationDensity": 650
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "timaru",
+    "name": "Timaru",
+    "kind": "city",
+    "region": "Canterbury",
+    "district": "Timaru District",
+    "metrics": {
+      "medianRentWeek": 400,
+      "medianHousePrice": 480000,
+      "medianMultiple": 4.8,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 76000,
+      "populationDensity": 400
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "dunedin",
+    "name": "Dunedin",
+    "kind": "city",
+    "region": "Otago",
+    "district": "Dunedin City",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.5,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 78000,
+      "populationDensity": 400
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "palmerston",
+    "name": "Palmerston",
+    "kind": "city",
+    "region": "Otago",
+    "district": "Waitaki District",
+    "metrics": {
+      "medianRentWeek": 320,
+      "medianHousePrice": 380000,
+      "medianMultiple": 4.0,
+      "rentYoY": 0.02,
+      "priceYoY": 0.03,
+      "medianIncome": 68000,
+      "populationDensity": 80
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "queenstown",
+    "name": "Queenstown",
+    "kind": "city",
+    "region": "Otago",
+    "district": "Queenstown-Lakes District",
+    "metrics": {
+      "medianRentWeek": 750,
+      "medianHousePrice": 1600000,
+      "medianMultiple": 13.2,
+      "rentYoY": 0.07,
+      "priceYoY": 0.06,
+      "medianIncome": 92000,
+      "populationDensity": 120
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "wanaka",
+    "name": "Wānaka",
+    "kind": "city",
+    "region": "Otago",
+    "district": "Queenstown-Lakes District",
+    "metrics": {
+      "medianRentWeek": 620,
+      "medianHousePrice": 1250000,
+      "medianMultiple": 10.8,
+      "rentYoY": 0.05,
+      "priceYoY": 0.04,
+      "medianIncome": 88000,
+      "populationDensity": 90
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "invercargill",
+    "name": "Invercargill",
+    "kind": "city",
+    "region": "Southland",
+    "district": "Invercargill City",
+    "metrics": {
+      "medianRentWeek": 380,
+      "medianHousePrice": 420000,
+      "medianMultiple": 4.2,
+      "rentYoY": 0.05,
+      "priceYoY": 0.04,
+      "medianIncome": 76000,
+      "populationDensity": 450
+    },
+    "proxies": ["career"]
+  },
+
+  {
+    "slug": "auckland-region",
+    "name": "Auckland",
+    "kind": "region",
+    "region": "Auckland",
+    "metrics": {
+      "medianRentWeek": 650,
+      "medianHousePrice": 1050000,
+      "medianMultiple": 8.9,
+      "rentYoY": 0.03,
+      "priceYoY": -0.02,
+      "medianIncome": 104000,
+      "populationDensity": 380
+    }
+  },
+  {
+    "slug": "whangarei-district",
+    "name": "Whangārei District",
+    "kind": "region",
+    "region": "Northland",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6.2,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 72000,
+      "populationDensity": 70
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "hamilton-city",
+    "name": "Hamilton City",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.4,
+      "rentYoY": 0.04,
+      "priceYoY": 0.01,
+      "medianIncome": 88000,
+      "populationDensity": 1500
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "tauranga-city",
+    "name": "Tauranga City",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 580,
+      "medianHousePrice": 850000,
+      "medianMultiple": 7.5,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 86000,
+      "populationDensity": 1100
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "rotorua-district",
+    "name": "Rotorua District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.9,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 74000,
+      "populationDensity": 90
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "napier-city",
+    "name": "Napier City",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 480,
+      "medianHousePrice": 650000,
+      "medianMultiple": 6.1,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 80000,
+      "populationDensity": 700
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "hastings-district",
+    "name": "Hastings District",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6.0,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 78000,
+      "populationDensity": 60
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "new-plymouth-district",
+    "name": "New Plymouth District",
+    "kind": "region",
+    "region": "Taranaki",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 620000,
+      "medianMultiple": 5.7,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 85000,
+      "populationDensity": 80
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "palmerston-north-city",
+    "name": "Palmerston North City",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 460,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.6,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 82000,
+      "populationDensity": 900
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "wellington-city",
+    "name": "Wellington City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 620,
+      "medianHousePrice": 880000,
+      "medianMultiple": 7.2,
+      "rentYoY": 0.02,
+      "priceYoY": -0.04,
+      "medianIncome": 112000,
+      "populationDensity": 1900
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "lower-hutt-city",
+    "name": "Lower Hutt City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 560,
+      "medianHousePrice": 750000,
+      "medianMultiple": 6.5,
+      "rentYoY": 0.02,
+      "priceYoY": -0.03,
+      "medianIncome": 100000,
+      "populationDensity": 1200
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "christchurch-city",
+    "name": "Christchurch City",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 680000,
+      "medianMultiple": 5.8,
+      "rentYoY": 0.05,
+      "priceYoY": 0.02,
+      "medianIncome": 92000,
+      "populationDensity": 650
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "dunedin-city",
+    "name": "Dunedin City",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.5,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 78000,
+      "populationDensity": 400
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "waitaki-district",
+    "name": "Waitaki District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 340,
+      "medianHousePrice": 420000,
+      "medianMultiple": 4.4,
+      "rentYoY": 0.02,
+      "priceYoY": 0.03,
+      "medianIncome": 70000,
+      "populationDensity": 8
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "queenstown-lakes-district",
+    "name": "Queenstown-Lakes District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 680,
+      "medianHousePrice": 1400000,
+      "medianMultiple": 11.5,
+      "rentYoY": 0.06,
+      "priceYoY": 0.05,
+      "medianIncome": 90000,
+      "populationDensity": 15
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "invercargill-city",
+    "name": "Invercargill City",
+    "kind": "region",
+    "region": "Southland",
+    "metrics": {
+      "medianRentWeek": 380,
+      "medianHousePrice": 420000,
+      "medianMultiple": 4.2,
+      "rentYoY": 0.05,
+      "priceYoY": 0.04,
+      "medianIncome": 76000,
+      "populationDensity": 450
+    },
+    "proxies": ["career"]
+  },
+  {
+    "slug": "nelson-city",
+    "name": "Nelson City",
+    "kind": "region",
+    "region": "Nelson",
+    "metrics": {
+      "medianRentWeek": 490,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.8,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 79000,
+      "populationDensity": 600
+    },
+    "proxies": ["career"]
+  }
+]

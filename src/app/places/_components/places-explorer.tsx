@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useCallback, useMemo, useState, useTransition } from "react";
 import { useQueryStates, parseAsString, parseAsStringLiteral } from "nuqs";
-import type { FeatureCollection } from "geojson";
+import type { Feature, FeatureCollection } from "geojson";
 import { Link2, Check } from "lucide-react";
 
 import { Button } from "~/components/ui/button";
@@ -21,7 +21,15 @@ import {
   normalizeWeights,
 } from "~/lib/places/presets";
 import { parseWeights, scoreTerritories, serializeWeights } from "~/lib/places/scoring";
-import type { PlacesMetadata, PresetId, Territory, Weights } from "~/lib/places/types";
+import type {
+  PlaceKind,
+  PlacesMetadata,
+  PresetId,
+  Territory,
+  Weights,
+} from "~/lib/places/types";
+import { PLACE_KINDS } from "~/lib/places/types";
+import { PlaceScopeToggle } from "./place-scope-toggle";
 import { PresetPicker } from "./preset-picker";
 import { PrioritySliders } from "./priority-sliders";
 import { RankedList } from "./ranked-list";
@@ -73,9 +81,12 @@ export function PlacesExplorer({
     {
       preset: parseAsStringLiteral(PRESET_IDS).withDefault("laid-back"),
       weights: parseAsString,
+      view: parseAsStringLiteral(PLACE_KINDS).withDefault("city"),
     },
     { history: "replace", shallow: true },
   );
+
+  const scope: PlaceKind = params.view;
 
   const [weights, setWeights] = useState<Weights>(() =>
     resolveInitialWeights(params.preset, params.weights),
@@ -84,29 +95,51 @@ export function PlacesExplorer({
   const [copied, setCopied] = useState(false);
   const [, startTransition] = useTransition();
 
+  const scopedTerritories = useMemo(
+    () => territories.filter((t) => t.kind === scope),
+    [territories, scope],
+  );
+
+  const scopedBoundaries = useMemo(() => {
+    const features = boundaries.features.filter((f: Feature) => {
+      const slug = f.properties?.slug as string | undefined;
+      return scopedTerritories.some((t) => t.slug === slug);
+    });
+    return { type: "FeatureCollection" as const, features };
+  }, [boundaries, scopedTerritories]);
+
   const scored = useMemo(
-    () => scoreTerritories(territories, weights),
-    [territories, weights],
+    () => scoreTerritories(scopedTerritories, weights),
+    [scopedTerritories, weights],
   );
 
   const queryString = useMemo(() => {
     const p = new URLSearchParams();
+    p.set("view", scope);
     p.set("preset", params.preset);
     p.set("weights", serializeWeights(weights));
     return p.toString();
-  }, [params.preset, weights]);
+  }, [scope, params.preset, weights]);
 
   const syncUrl = useCallback(
-    (preset: PresetId, nextWeights: Weights) => {
+    (preset: PresetId, nextWeights: Weights, view: PlaceKind = scope) => {
       startTransition(() => {
         void setParams({
           preset,
           weights: serializeWeights(nextWeights),
+          view,
         });
       });
     },
-    [setParams],
+    [setParams, scope],
   );
+
+  const handleScope = (kind: PlaceKind) => {
+    setHighlightedSlug(null);
+    startTransition(() => {
+      void setParams({ view: kind });
+    });
+  };
 
   const handlePreset = (id: PresetId) => {
     if (id === "custom") {
@@ -135,6 +168,11 @@ export function PlacesExplorer({
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const countLabel =
+    scope === "city"
+      ? `${metadata.cityCount} cities & towns`
+      : `${metadata.regionCount} districts`;
+
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:py-8">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
@@ -144,7 +182,8 @@ export function PlacesExplorer({
           </h1>
           <p className="text-muted-foreground max-w-2xl text-base">
             Set what matters to you — match scores update live across{" "}
-            {metadata.cityCount} territorial authorities.
+            {countLabel}. Compare settlements (Queenstown vs Wānaka) or whole
+            council districts.
           </p>
         </div>
         <Button
@@ -172,10 +211,11 @@ export function PlacesExplorer({
           <CardHeader className="pb-3">
             <CardTitle className="text-lg">Your priorities</CardTitle>
             <CardDescription>
-              Pick a life-stage preset or drag the sliders.
+              Pick geography, a life-stage preset, or drag the sliders.
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
+            <PlaceScopeToggle value={scope} onChange={handleScope} />
             <PresetPicker value={params.preset} onChange={handlePreset} />
             <PrioritySliders weights={weights} onChange={handleWeights} />
             <p className="text-muted-foreground text-sm">
@@ -193,13 +233,16 @@ export function PlacesExplorer({
         <div className="flex min-h-0 flex-col gap-6">
           <NzChoroplethMap
             territories={scored}
-            boundaries={boundaries}
+            boundaries={scopedBoundaries}
             highlightedSlug={highlightedSlug}
             queryString={queryString}
           />
           <div>
             <h2 className="mb-3 text-xl font-semibold tracking-normal">
               Ranked matches
+              <span className="text-muted-foreground ml-2 text-base font-normal">
+                · {scope === "city" ? "Cities & towns" : "Districts"}
+              </span>
             </h2>
             <RankedList
               territories={scored}

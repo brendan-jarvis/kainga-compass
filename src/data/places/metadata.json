@@ -1,11 +1,14 @@
 {
   "lastUpdated": "2026-07-10",
   "sources": [
-    "MBIE Tenancy Services — Rental bond data (median weekly rent by TA)",
-    "HUD Local Housing Statistics — median sale price, median multiple",
-    "Stats NZ / regional income estimates (career metric; flagged as regional proxy where noted)",
-    "Stats NZ Census-derived population density estimates"
+    "MBIE Tenancy Services — Rental bond data by territorial authority (district view)",
+    "MBIE Market Rent API — SA2 / finer areas for future city–town rents",
+    "HUD Local Housing Statistics — median sale price & multiple by TA",
+    "Stats NZ Urban Rural 2023/2025 — settlement geography for city/town units",
+    "Stats NZ subnational population estimates (urban rural) — density proxies",
+    "Indicative settlement splits (e.g. Queenstown vs Wānaka) where TA data alone would mask local markets"
   ],
-  "cityCount": 18,
-  "notes": "MVP fixture figures are indicative and rounded for demo ranking. Career income is a regional proxy for most TAs. Replace with live HUD/MBIE parsers when available."
+  "cityCount": 20,
+  "regionCount": 17,
+  "notes": "Cities & towns are settlement-scale places people actually choose between. Districts are territorial authorities (council areas). District metrics track public TA sources more closely; city/town metrics for multi-settlement TAs (e.g. Queenstown-Lakes) are curated splits and flagged as approximate until SA2/Market Rent pipelines are wired."
 }
