@@ -1,20 +1,19 @@
 {
   "lastUpdated": "2026-07-10",
   "sources": [
-    "MBIE Tenancy Services — Rental bond data by territorial authority (district view)",
-    "MBIE Market Rent API — SA2 / finer areas for future city–town rents",
+    "Stats NZ Territorial Authority 2023 (FeatureServer) — all 67 district/city council boundaries",
+    "Stats NZ Urban Rural Areas 2023 (FeatureServer) — selected city/town outlines",
+    "Stats NZ Statistical Area 2 2023 (FeatureServer) — suburb/neighbourhood outlines under cities",
+    "MBIE Tenancy Services — Rental bond data by territorial authority",
+    "MBIE Market Rent API — SA2 / finer areas for future rent series",
     "HUD Local Housing Statistics — median sale price & multiple by TA",
-    "Stats NZ Urban Rural Areas 2023 (FeatureServer) — city/town outlines",
-    "Stats NZ Territorial Authority 2023 (FeatureServer) — district outlines",
     "Stats NZ LEED / BED — mean & median filled-job earnings (fixtures until live ingest)",
-    "Stats NZ LEED age-group earnings — career-stage proxy (not years of experience)",
-    "Stats NZ subnational population estimates (urban rural) — density proxies",
-    "Indicative settlement metric splits where TA data alone would mask local markets"
+    "Stats NZ LEED age-group earnings — career-stage proxy (not years of experience)"
   ],
   "cityCount": 20,
-  "regionCount": 17,
-  "boundaryOfficial": 37,
+  "regionCount": 67,
+  "boundaryOfficial": 697,
   "boundaryFallback": 0,
-  "notes": "Cities & towns use Stats NZ Urban Rural 2023 polygons. Districts use Territorial Authority 2023 polygons. Geometry is generalised (Douglas–Peucker) for web size. Metrics for multi-settlement TAs remain curated approximations until SA2/Market Rent pipelines are wired. Suburbs are SA2 units spatially linked to each Urban Rural city polygon; metrics are parent-city fixtures with local variation until finer housing series are wired.",
+  "notes": "Districts view includes every Stats NZ Territorial Authority 2023 (67 TAs). Map fills and ranked table use the same complete set — no patchy subset. Cities/towns are a curated Urban Rural subset for the explorer; suburbs are SA2 units under those cities. Boundaries are generalised for web size. Metrics for many TAs remain seeded fixtures until HUD/MBIE parsers replace them.",
   "suburbCount": 610
 }

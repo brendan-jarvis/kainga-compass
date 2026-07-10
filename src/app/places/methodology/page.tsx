@@ -30,8 +30,8 @@ export default function MethodologyPage() {
         <h1 className="text-3xl font-bold tracking-tight">Methodology</h1>
         <p className="text-muted-foreground text-lg">
           Kāinga Compass is a personalised explorer, not an official ranking of
-          the “best” places to live. Scores re-rank the same public-ish
-          indicators under your weights.
+          the “best” places to live. Scores re-rank public-data-style indicators
+          under your weights.
         </p>
       </div>
 
@@ -40,7 +40,7 @@ export default function MethodologyPage() {
           <CardTitle>Match Score formula</CardTitle>
           <CardDescription>
             Each dimension is a 0–100 percentile within the active geography
-            peer set (cities & towns, or districts) — never mixed together.
+            peer set (cities & towns, or all districts) — never mixed together.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4 text-sm leading-relaxed">
@@ -57,22 +57,99 @@ weights are normalised so Σ weight = 1`}
             ))}
           </ul>
           <p className="text-muted-foreground">
-            “Growth” is no longer a single slider:{" "}
-            <strong className="text-foreground">housing growth</strong> (price &
-            rent momentum), <strong className="text-foreground">job growth</strong>,
-            and{" "}
-            <strong className="text-foreground">population growth</strong> are
-            separate so investor vs expanding-town intent is unambiguous.
+            Housing growth, job growth, and population growth are separate
+            sliders so investor vs expanding-town intent stays clear.
           </p>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle>Data sources</CardTitle>
+          <CardTitle>Map boundaries (official classifications)</CardTitle>
+          <CardDescription>
+            Outlines are Stats NZ open geographic data, generalised for the web.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="text-muted-foreground space-y-4 text-sm leading-relaxed">
+          <div>
+            <p className="text-foreground mb-1 font-medium">
+              Districts view — full coverage
+            </p>
+            <p>
+              Every territorial authority in{" "}
+              <strong className="text-foreground">
+                Stats NZ Territorial Authority 2023
+              </strong>{" "}
+              is in the map and ranked table (
+              {meta.regionCount} areas, matching the national TA set excluding
+              “Area Outside Territorial Authority”). Source layer:{" "}
+              <a
+                className="text-primary underline-offset-2 hover:underline"
+                href="https://datafinder.stats.govt.nz/layer/111194-territorial-authority-2023-generalised/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Territorial Authority 2023 (generalised)
+              </a>
+              , served via the Stats NZ ArcGIS FeatureServer used by{" "}
+              <code className="text-foreground">bun run ingest:places</code> /{" "}
+              <code className="text-foreground">expand-districts</code>.
+            </p>
+          </div>
+          <div>
+            <p className="text-foreground mb-1 font-medium">
+              Cities & towns view
+            </p>
+            <p>
+              Selected main settlements from{" "}
+              <strong className="text-foreground">
+                Stats NZ Urban Rural Areas 2023
+              </strong>{" "}
+              ({meta.cityCount} places in the current MVP set — not every urban
+              area in the country). Layer:{" "}
+              <a
+                className="text-primary underline-offset-2 hover:underline"
+                href="https://datafinder.stats.govt.nz/layer/111196-urban-rural-2023-clipped-generalised/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Urban Rural 2023 clipped generalised
+              </a>
+              .
+            </p>
+          </div>
+          <div>
+            <p className="text-foreground mb-1 font-medium">
+              Suburbs on city detail pages
+            </p>
+            <p>
+              Neighbourhood-scale polygons from{" "}
+              <strong className="text-foreground">
+                Stats NZ Statistical Area 2 (SA2) 2023
+              </strong>
+              , spatially linked to each city’s urban-area footprint (
+              {meta.suburbCount ?? "—"} suburbs). Layer via Stats NZ
+              FeatureServer{" "}
+              <code className="text-foreground">Statistical_Area_2_2023</code>.
+              Refresh with{" "}
+              <code className="text-foreground">bun run ingest:suburbs</code>.
+            </p>
+          </div>
+          <p>
+            All boundaries are simplified (Douglas–Peucker) for performance.
+            They are for choropleth visualisation — not legal cadastral
+            boundaries. Attribution: Stats NZ Tatauranga Aotearoa.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Indicator data sources</CardTitle>
           <CardDescription>
             Last fixture update: {meta.lastUpdated} · {meta.cityCount} cities &
             towns · {meta.regionCount} districts
+            {meta.suburbCount != null ? ` · ${meta.suburbCount} suburbs` : ""}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -82,60 +159,7 @@ weights are normalised so Σ weight = 1`}
             ))}
           </ul>
           <p className="text-muted-foreground mt-4 text-sm">
-            Live ingestion is scaffolded via{" "}
-            <code className="text-foreground">bun run ingest:places</code>.
-            District metrics align with public TA series; settlement splits
-            (Queenstown vs Wānaka) are curated approximations until SA2 / Market
-            Rent pipelines are wired. Validate against primary sources before
-            financial decisions.
-          </p>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Geography: cities & towns vs districts</CardTitle>
-        </CardHeader>
-        <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
-          <p>
-            <strong className="text-foreground">Cities & towns</strong> are
-            settlement-scale places people actually choose between (aligned with
-            Stats NZ urban areas / main towns). Example: Queenstown and Wānaka
-            are separate, even though both sit in Queenstown-Lakes District.
-          </p>
-          <p>
-            <strong className="text-foreground">Districts</strong> are
-            territorial authorities (city or district councils) — the level where
-            HUD and MBIE bond CSVs are published most reliably.
-          </p>
-          <p>
-            Toggle in the explorer re-scores only within that peer set. Map
-            outlines come from official Stats NZ layers (Urban Rural 2023 for
-            settlements, Territorial Authority 2023 for districts), generalised
-            for web performance. Re-run{" "}
-            <code className="text-foreground">bun run ingest:places</code> to
-            refresh.
-          </p>
-          <p>
-            Planned finer sources:{" "}
-            <a
-              className="text-primary underline-offset-2 hover:underline"
-              href="https://portal.api.business.govt.nz/api/market-rent"
-              target="_blank"
-              rel="noreferrer"
-            >
-              MBIE Market Rent API
-            </a>{" "}
-            (down to SA2),{" "}
-            <a
-              className="text-primary underline-offset-2 hover:underline"
-              href="https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              MBIE bond CSVs
-            </a>
-            ,{" "}
+            District-level housing stats should track{" "}
             <a
               className="text-primary underline-offset-2 hover:underline"
               href="https://www.hud.govt.nz/stats-and-insights/local-housing-statistics/key-data"
@@ -143,17 +167,48 @@ weights are normalised so Σ weight = 1`}
               rel="noreferrer"
             >
               HUD Local Housing Statistics
-            </a>
-            , and{" "}
+            </a>{" "}
+            and{" "}
             <a
               className="text-primary underline-offset-2 hover:underline"
-              href="https://datafinder.stats.govt.nz/layer/120965-urban-rural-2025/"
+              href="https://www.tenancy.govt.nz/about-tenancy-services/data-and-statistics/rental-bond-data/"
               target="_blank"
               rel="noreferrer"
             >
-              Stats NZ Urban Rural 2025
-            </a>
-            .
+              MBIE rental bond CSVs
+            </a>{" "}
+            once live parsers replace fixtures. Settlement and suburb metrics
+            are still curated/seeded estimates where fine-grain public series
+            are not yet wired. Validate against primary sources before financial
+            decisions.
+          </p>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle>Geography levels</CardTitle>
+        </CardHeader>
+        <CardContent className="text-muted-foreground space-y-3 text-sm leading-relaxed">
+          <p>
+            <strong className="text-foreground">Districts</strong> — all 67
+            territorial authorities (city and district councils). Explorer
+            “Districts” toggle shows every TA on the map and in the table.
+          </p>
+          <p>
+            <strong className="text-foreground">Cities & towns</strong> —
+            settlement-scale places people choose between (Urban Rural
+            settlements). Example: Queenstown and Wānaka are separate even
+            though both sit in Queenstown-Lakes District.
+          </p>
+          <p>
+            <strong className="text-foreground">Suburbs</strong> — SA2 units on
+            a city detail page (map + ranked table of neighbourhoods).
+          </p>
+          <p>
+            Toggle in the explorer re-scores only within that peer set. Opening
+            a district drills into its towns; opening a town drills into its
+            SA2 suburbs.
           </p>
         </CardContent>
       </Card>
@@ -165,8 +220,13 @@ weights are normalised so Σ weight = 1`}
         <CardContent>
           <ul className="text-muted-foreground list-disc space-y-2 pl-5 text-sm leading-relaxed">
             <li>
-              MVP covers {meta.cityCount} settlements and {meta.regionCount}{" "}
-              districts — not every NZ place.
+              District map/table covers all {meta.regionCount} TAs; cities (
+              {meta.cityCount}) and suburbs ({meta.suburbCount ?? "—"}) are
+              still an MVP subset of urban NZ.
+            </li>
+            <li>
+              Many TA and suburb metrics remain seeded fixtures until HUD/MBIE
+              (and SA2-capable rent series) are fully ingested.
             </li>
             <li>
               Settlement-level prices for multi-town districts are indicative

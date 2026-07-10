@@ -1,10 +1,3440 @@
 [
   {
+    "slug": "southland-district",
+    "name": "Southland District",
+    "kind": "region",
+    "region": "Southland",
+    "metrics": {
+      "medianRentWeek": 625,
+      "medianHousePrice": 1030000,
+      "medianMultiple": 10.8,
+      "rentYoY": 0.042429922302253543,
+      "priceYoY": 0.02439491303637624,
+      "medianIncome": 95000,
+      "medianEarningsAnnual": 68500,
+      "meanEarningsAnnual": 76500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 37500,
+          "meanAnnual": 42000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 67500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 80500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 76500,
+          "meanAnnual": 85500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76500
+        }
+      ],
+      "populationDensity": 355,
+      "populationGrowthYoY": 0.021214961151126772,
+      "jobsGrowthYoY": 0.018797774453414604
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "auckland-region",
+    "name": "Auckland",
+    "kind": "region",
+    "region": "Auckland",
+    "metrics": {
+      "medianRentWeek": 650,
+      "medianHousePrice": 1050000,
+      "medianMultiple": 8.9,
+      "rentYoY": 0.03,
+      "priceYoY": -0.02,
+      "medianIncome": 104000,
+      "populationDensity": 380,
+      "populationGrowthYoY": 0.012,
+      "jobsGrowthYoY": 0.015,
+      "medianEarningsAnnual": 75000,
+      "meanEarningsAnnual": 84000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79000,
+          "meanAnnual": 88000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84000,
+          "meanAnnual": 94000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        }
+      ]
+    }
+  },
+  {
+    "slug": "tasman-district",
+    "name": "Tasman District",
+    "kind": "region",
+    "region": "Tasman",
+    "metrics": {
+      "medianRentWeek": 550,
+      "medianHousePrice": 845000,
+      "medianMultiple": 8.5,
+      "rentYoY": 0.026473592272959645,
+      "priceYoY": 0.034352403637021786,
+      "medianIncome": 100000,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 80500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 84500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 80500
+        }
+      ],
+      "populationDensity": 248,
+      "populationGrowthYoY": 0.013236796136479823,
+      "jobsGrowthYoY": 0.02315417659119703
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "chatham-islands-territory",
+    "name": "Chatham Islands Territory",
+    "kind": "region",
+    "region": "Chatham Islands",
+    "metrics": {
+      "medianRentWeek": 632,
+      "medianHousePrice": 1050000,
+      "medianMultiple": 13,
+      "rentYoY": 0.044033881449140604,
+      "priceYoY": -0.0031880891881883137,
+      "medianIncome": 81000,
+      "medianEarningsAnnual": 58500,
+      "meanEarningsAnnual": 65500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51500,
+          "meanAnnual": 57500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58500,
+          "meanAnnual": 65500
+        }
+      ],
+      "populationDensity": 365,
+      "populationGrowthYoY": 0.022016940724570302,
+      "jobsGrowthYoY": 0.006730210980167613
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "marlborough-district",
+    "name": "Marlborough District",
+    "kind": "region",
+    "region": "Marlborough",
+    "metrics": {
+      "medianRentWeek": 625,
+      "medianHousePrice": 1030000,
+      "medianMultiple": 11.2,
+      "rentYoY": 0.04247680966276675,
+      "priceYoY": 0.01777910934761167,
+      "medianIncome": 92000,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ],
+      "populationDensity": 355,
+      "populationGrowthYoY": 0.021238404831383374,
+      "jobsGrowthYoY": 0.015903360339580105
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "westland-district",
+    "name": "Westland District",
+    "kind": "region",
+    "region": "West Coast",
+    "metrics": {
+      "medianRentWeek": 483,
+      "medianHousePrice": 680000,
+      "medianMultiple": 6.4,
+      "rentYoY": 0.0121523871505633,
+      "priceYoY": 0.04790385628119111,
+      "medianIncome": 107000,
+      "medianEarningsAnnual": 77000,
+      "meanEarningsAnnual": 86000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 42500,
+          "meanAnnual": 47500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 68000,
+          "meanAnnual": 75500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 81000,
+          "meanAnnual": 90500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 86000,
+          "meanAnnual": 96500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 77000,
+          "meanAnnual": 86000
+        }
+      ],
+      "populationDensity": 153,
+      "populationGrowthYoY": 0.00607619357528165,
+      "jobsGrowthYoY": 0.029082937123021114
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "central-otago-district",
+    "name": "Central Otago District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 658,
+      "medianHousePrice": 1115000,
+      "medianMultiple": 12.7,
+      "rentYoY": 0.049654208328574895,
+      "priceYoY": 0.009159156791865825,
+      "medianIncome": 88000,
+      "medianEarningsAnnual": 63500,
+      "meanEarningsAnnual": 71000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 35000,
+          "meanAnnual": 39000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 66500,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 71000,
+          "meanAnnual": 79500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71000
+        }
+      ],
+      "populationDensity": 403,
+      "populationGrowthYoY": 0.024827104164287447,
+      "jobsGrowthYoY": 0.0121321310964413
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "queenstown-lakes-district",
+    "name": "Queenstown-Lakes District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 680,
+      "medianHousePrice": 1400000,
+      "medianMultiple": 11.5,
+      "rentYoY": 0.06,
+      "priceYoY": 0.05,
+      "medianIncome": 90000,
+      "populationDensity": 15,
+      "populationGrowthYoY": 0.025,
+      "jobsGrowthYoY": 0.03,
+      "medianEarningsAnnual": 65000,
+      "meanEarningsAnnual": 73000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73000,
+          "meanAnnual": 82000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "hurunui-district",
+    "name": "Hurunui District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 510,
+      "medianHousePrice": 745000,
+      "medianMultiple": 8.1,
+      "rentYoY": 0.017824226203374566,
+      "priceYoY": 0.01709066672250629,
+      "medianIncome": 92000,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ],
+      "populationDensity": 190,
+      "populationGrowthYoY": 0.008912113101687283,
+      "jobsGrowthYoY": 0.0156021666910965
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "gisborne-district",
+    "name": "Gisborne District",
+    "kind": "region",
+    "region": "Gisborne",
+    "metrics": {
+      "medianRentWeek": 438,
+      "medianHousePrice": 565000,
+      "medianMultiple": 5.3,
+      "rentYoY": 0.0025126464013010257,
+      "priceYoY": 0.04534842677414418,
+      "medianIncome": 106000,
+      "medianEarningsAnnual": 76500,
+      "meanEarningsAnnual": 85500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 42000,
+          "meanAnnual": 47000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 67500,
+          "meanAnnual": 75000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 85500,
+          "meanAnnual": 96000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 76500,
+          "meanAnnual": 85500
+        }
+      ],
+      "populationDensity": 88,
+      "populationGrowthYoY": 0.0012563232006505129,
+      "jobsGrowthYoY": 0.02796493671368808
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "buller-district",
+    "name": "Buller District",
+    "kind": "region",
+    "region": "West Coast",
+    "metrics": {
+      "medianRentWeek": 548,
+      "medianHousePrice": 840000,
+      "medianMultiple": 8.7,
+      "rentYoY": 0.025954853021539742,
+      "priceYoY": 0.027573752347379923,
+      "medianIncome": 97000,
+      "medianEarningsAnnual": 70000,
+      "meanEarningsAnnual": 78500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 38500,
+          "meanAnnual": 43000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 73500,
+          "meanAnnual": 82500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 78500,
+          "meanAnnual": 88000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 70000,
+          "meanAnnual": 78500
+        }
+      ],
+      "populationDensity": 245,
+      "populationGrowthYoY": 0.012977426510769871,
+      "jobsGrowthYoY": 0.020188516651978718
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "mackenzie-district",
+    "name": "Mackenzie District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 591,
+      "medianHousePrice": 945000,
+      "medianMultiple": 13.1,
+      "rentYoY": 0.035182070247828955,
+      "priceYoY": -0.022160259298980235,
+      "medianIncome": 72000,
+      "medianEarningsAnnual": 52000,
+      "meanEarningsAnnual": 58000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28500,
+          "meanAnnual": 32000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 51000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        }
+      ],
+      "populationDensity": 306,
+      "populationGrowthYoY": 0.017591035123914477,
+      "jobsGrowthYoY": -0.001570113443303853
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "far-north-district",
+    "name": "Far North District",
+    "kind": "region",
+    "region": "Northland",
+    "metrics": {
+      "medianRentWeek": 570,
+      "medianHousePrice": 895000,
+      "medianMultiple": 12.6,
+      "rentYoY": 0.030664947363547974,
+      "priceYoY": -0.0248605109937489,
+      "medianIncome": 71000,
+      "medianEarningsAnnual": 51000,
+      "meanEarningsAnnual": 57000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28000,
+          "meanAnnual": 31500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 45000,
+          "meanAnnual": 50000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 53500,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 51000,
+          "meanAnnual": 57000
+        }
+      ],
+      "populationDensity": 276,
+      "populationGrowthYoY": 0.015332473681773987,
+      "jobsGrowthYoY": -0.002751473559765145
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "waitaki-district",
+    "name": "Waitaki District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 340,
+      "medianHousePrice": 420000,
+      "medianMultiple": 4.4,
+      "rentYoY": 0.02,
+      "priceYoY": 0.03,
+      "medianIncome": 70000,
+      "populationDensity": 8,
+      "populationGrowthYoY": -0.002,
+      "jobsGrowthYoY": 0.002,
+      "medianEarningsAnnual": 50000,
+      "meanEarningsAnnual": 56000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 27500,
+          "meanAnnual": 31000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 44000,
+          "meanAnnual": 49500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 52500,
+          "meanAnnual": 59000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "taupo-district",
+    "name": "Taupo District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 403,
+      "medianHousePrice": 480000,
+      "medianMultiple": 6.1,
+      "rentYoY": -0.005007130866870284,
+      "priceYoY": -0.007519828006625175,
+      "medianIncome": 79000,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ],
+      "populationDensity": 38,
+      "populationGrowthYoY": -0.002503565433435142,
+      "jobsGrowthYoY": 0.004835075247101487
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "ruapehu-district",
+    "name": "Ruapehu District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 477,
+      "medianHousePrice": 660000,
+      "medianMultiple": 6.3,
+      "rentYoY": 0.01076587111223489,
+      "priceYoY": 0.0417792040295899,
+      "medianIncome": 104000,
+      "medianEarningsAnnual": 75000,
+      "meanEarningsAnnual": 84000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79000,
+          "meanAnnual": 88000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84000,
+          "meanAnnual": 94000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        }
+      ],
+      "populationDensity": 143,
+      "populationGrowthYoY": 0.005382935556117445,
+      "jobsGrowthYoY": 0.026403401762945578
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "selwyn-district",
+    "name": "Selwyn District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 590,
+      "medianHousePrice": 945000,
+      "medianMultiple": 11.8,
+      "rentYoY": 0.034942023647017775,
+      "priceYoY": -0.005164353381842374,
+      "medianIncome": 80000,
+      "medianEarningsAnnual": 57500,
+      "meanEarningsAnnual": 64500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50500,
+          "meanAnnual": 57000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 67500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64500,
+          "meanAnnual": 72000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57500,
+          "meanAnnual": 64500
+        }
+      ],
+      "populationDensity": 305,
+      "populationGrowthYoY": 0.017471011823508888,
+      "jobsGrowthYoY": 0.005865595395443963
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "clutha-district",
+    "name": "Clutha District",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 634,
+      "medianHousePrice": 1055000,
+      "medianMultiple": 10.2,
+      "rentYoY": 0.04443752813152969,
+      "priceYoY": 0.04014465361833573,
+      "medianIncome": 103000,
+      "medianEarningsAnnual": 74000,
+      "meanEarningsAnnual": 83000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 40500,
+          "meanAnnual": 45500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 77500,
+          "meanAnnual": 87000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 83000,
+          "meanAnnual": 93000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        }
+      ],
+      "populationDensity": 368,
+      "populationGrowthYoY": 0.022218764065764843,
+      "jobsGrowthYoY": 0.025688285958021882
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "ashburton-district",
+    "name": "Ashburton District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 549,
+      "medianHousePrice": 840000,
+      "medianMultiple": 8.5,
+      "rentYoY": 0.026191332689486438,
+      "priceYoY": 0.032356813903898,
+      "medianIncome": 99000,
+      "medianEarningsAnnual": 71500,
+      "meanEarningsAnnual": 80000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80000,
+          "meanAnnual": 89500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        }
+      ],
+      "populationDensity": 246,
+      "populationGrowthYoY": 0.013095666344743219,
+      "jobsGrowthYoY": 0.022281106082955377
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "hastings-district",
+    "name": "Hastings District",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 78000,
+      "populationDensity": 60,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "waikato-district",
+    "name": "Waikato District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 575,
+      "medianHousePrice": 910000,
+      "medianMultiple": 8.6,
+      "rentYoY": 0.03179317041765898,
+      "priceYoY": 0.046528774481266744,
+      "medianIncome": 106000,
+      "medianEarningsAnnual": 76500,
+      "meanEarningsAnnual": 85500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 42000,
+          "meanAnnual": 47000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 67500,
+          "meanAnnual": 75000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 85500,
+          "meanAnnual": 96000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 76500,
+          "meanAnnual": 85500
+        }
+      ],
+      "populationDensity": 284,
+      "populationGrowthYoY": 0.01589658520882949,
+      "jobsGrowthYoY": 0.0284813388355542
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "rangitikei-district",
+    "name": "Rangitikei District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 616,
+      "medianHousePrice": 1010000,
+      "medianMultiple": 12.8,
+      "rentYoY": 0.0406413219962269,
+      "priceYoY": -0.008174520358443259,
+      "medianIncome": 79000,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ],
+      "populationDensity": 343,
+      "populationGrowthYoY": 0.02032066099811345,
+      "jobsGrowthYoY": 0.004548647343181074
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "whakatane-district",
+    "name": "Whakatane District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 627,
+      "medianHousePrice": 1035000,
+      "medianMultiple": 11.4,
+      "rentYoY": 0.04287800046149641,
+      "priceYoY": 0.016177186910063028,
+      "medianIncome": 91000,
+      "medianEarningsAnnual": 65500,
+      "meanEarningsAnnual": 73500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57500,
+          "meanAnnual": 64500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69000,
+          "meanAnnual": 77000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73500,
+          "meanAnnual": 82500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        }
+      ],
+      "populationDensity": 358,
+      "populationGrowthYoY": 0.021439000230748205,
+      "jobsGrowthYoY": 0.015202519273152575
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "tararua-district",
+    "name": "Tararua District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 541,
+      "medianHousePrice": 820000,
+      "medianMultiple": 8.3,
+      "rentYoY": 0.024437225828878577,
+      "priceYoY": 0.031345985215157274,
+      "medianIncome": 99000,
+      "medianEarningsAnnual": 71500,
+      "meanEarningsAnnual": 80000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80000,
+          "meanAnnual": 89500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        }
+      ],
+      "populationDensity": 235,
+      "populationGrowthYoY": 0.012218612914439288,
+      "jobsGrowthYoY": 0.021838868531631306
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "wairoa-district",
+    "name": "Wairoa District",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 596,
+      "medianHousePrice": 960000,
+      "medianMultiple": 9.1,
+      "rentYoY": 0.036375304181128734,
+      "priceYoY": 0.04438524451106787,
+      "medianIncome": 105000,
+      "medianEarningsAnnual": 75500,
+      "meanEarningsAnnual": 84500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66500,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79500,
+          "meanAnnual": 88500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84500,
+          "meanAnnual": 94500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 84500
+        }
+      ],
+      "populationDensity": 314,
+      "populationGrowthYoY": 0.018187652090564367,
+      "jobsGrowthYoY": 0.027543544473592193
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "waimate-district",
+    "name": "Waimate District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 622,
+      "medianHousePrice": 1025000,
+      "medianMultiple": 12.8,
+      "rentYoY": 0.04177957867737859,
+      "priceYoY": -0.005719655994325876,
+      "medianIncome": 80000,
+      "medianEarningsAnnual": 57500,
+      "meanEarningsAnnual": 64500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50500,
+          "meanAnnual": 57000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 67500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64500,
+          "meanAnnual": 72000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57500,
+          "meanAnnual": 64500
+        }
+      ],
+      "populationDensity": 350,
+      "populationGrowthYoY": 0.020889789338689294,
+      "jobsGrowthYoY": 0.00562265050248243
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "south-taranaki-district",
+    "name": "South Taranaki District",
+    "kind": "region",
+    "region": "Taranaki",
+    "metrics": {
+      "medianRentWeek": 649,
+      "medianHousePrice": 1090000,
+      "medianMultiple": 10.9,
+      "rentYoY": 0.04760320653673261,
+      "priceYoY": 0.03352130925282837,
+      "medianIncome": 100000,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 80500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 84500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 80500
+        }
+      ],
+      "populationDensity": 389,
+      "populationGrowthYoY": 0.023801603268366306,
+      "jobsGrowthYoY": 0.022790572798112408
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "waitomo-district",
+    "name": "Waitomo District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 385,
+      "medianHousePrice": 435000,
+      "medianMultiple": 4.3,
+      "rentYoY": -0.008885652725584805,
+      "priceYoY": 0.03740473924204707,
+      "medianIncome": 102000,
+      "medianEarningsAnnual": 73500,
+      "meanEarningsAnnual": 82500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 40500,
+          "meanAnnual": 45500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 64500,
+          "meanAnnual": 72500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 77000,
+          "meanAnnual": 86500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 82500,
+          "meanAnnual": 92500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 73500,
+          "meanAnnual": 82500
+        }
+      ],
+      "populationDensity": 12,
+      "populationGrowthYoY": -0.0044428263627924024,
+      "jobsGrowthYoY": 0.024489573418395597
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "grey-district",
+    "name": "Grey District",
+    "kind": "region",
+    "region": "West Coast",
+    "metrics": {
+      "medianRentWeek": 551,
+      "medianHousePrice": 850000,
+      "medianMultiple": 12,
+      "rentYoY": 0.026740410476922986,
+      "priceYoY": -0.024334321580827236,
+      "medianIncome": 71000,
+      "medianEarningsAnnual": 51000,
+      "meanEarningsAnnual": 57000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28000,
+          "meanAnnual": 31500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 45000,
+          "meanAnnual": 50000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 53500,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 51000,
+          "meanAnnual": 57000
+        }
+      ],
+      "populationDensity": 250,
+      "populationGrowthYoY": 0.013370205238461493,
+      "jobsGrowthYoY": -0.0025212656916119157
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "dunedin-city",
+    "name": "Dunedin City",
+    "kind": "region",
+    "region": "Otago",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.5,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 78000,
+      "populationDensity": 400,
+      "populationGrowthYoY": 0.004,
+      "jobsGrowthYoY": 0.006,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "central-hawke-s-bay-district",
+    "name": "Central Hawke's Bay District",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 635,
+      "medianHousePrice": 1055000,
+      "medianMultiple": 10,
+      "rentYoY": 0.04456795367412269,
+      "priceYoY": 0.04338037580251694,
+      "medianIncome": 105000,
+      "medianEarningsAnnual": 75500,
+      "meanEarningsAnnual": 84500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66500,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79500,
+          "meanAnnual": 88500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84500,
+          "meanAnnual": 94500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 84500
+        }
+      ],
+      "populationDensity": 369,
+      "populationGrowthYoY": 0.022283976837061344,
+      "jobsGrowthYoY": 0.027103914413601164
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "kaipara-district",
+    "name": "Kaipara District",
+    "kind": "region",
+    "region": "Northland",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 770000,
+      "medianMultiple": 8.6,
+      "rentYoY": 0.019909320212900636,
+      "priceYoY": 0.0149964277818799,
+      "medianIncome": 90000,
+      "medianEarningsAnnual": 65000,
+      "meanEarningsAnnual": 73000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73000,
+          "meanAnnual": 82000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        }
+      ],
+      "populationDensity": 204,
+      "populationGrowthYoY": 0.009954660106450318,
+      "jobsGrowthYoY": 0.014685937154572459
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "opotiki-district",
+    "name": "Ōpōtiki District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 397,
+      "medianHousePrice": 460000,
+      "medianMultiple": 5.5,
+      "rentYoY": -0.006357746655121446,
+      "priceYoY": 0.0004832221567630801,
+      "medianIncome": 83000,
+      "medianEarningsAnnual": 60000,
+      "meanEarningsAnnual": 67000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 33000,
+          "meanAnnual": 37000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 53000,
+          "meanAnnual": 59000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 67000,
+          "meanAnnual": 75000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        }
+      ],
+      "populationDensity": 29,
+      "populationGrowthYoY": -0.003178873327560723,
+      "jobsGrowthYoY": 0.008336409693583846
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "whangarei-district",
+    "name": "Whangarei District",
+    "kind": "region",
+    "region": "Northland",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 640000,
+      "medianMultiple": 6.2,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 72000,
+      "populationDensity": 70,
+      "populationGrowthYoY": 0.01,
+      "jobsGrowthYoY": 0.011,
+      "medianEarningsAnnual": 52000,
+      "meanEarningsAnnual": 58000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28500,
+          "meanAnnual": 32000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 51000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "timaru-district",
+    "name": "Timaru District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 561,
+      "medianHousePrice": 870000,
+      "medianMultiple": 11,
+      "rentYoY": 0.028755417666397984,
+      "priceYoY": -0.007201252821832895,
+      "medianIncome": 79000,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ],
+      "populationDensity": 263,
+      "populationGrowthYoY": 0.014377708833198992,
+      "jobsGrowthYoY": 0.00497445189044811
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "rotorua-district",
+    "name": "Rotorua District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 450,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.9,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 74000,
+      "populationDensity": 90,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 53000,
+      "meanEarningsAnnual": 59000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29000,
+          "meanAnnual": 32500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46500,
+          "meanAnnual": 52000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 59500,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 53000,
+          "meanAnnual": 59000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "manawatu-district",
+    "name": "Manawatu District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 649,
+      "medianHousePrice": 1095000,
+      "medianMultiple": 11,
+      "rentYoY": 0.04773766707163304,
+      "priceYoY": 0.033017587196081874,
+      "medianIncome": 100000,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 80500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 84500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 80500
+        }
+      ],
+      "populationDensity": 390,
+      "populationGrowthYoY": 0.02386883353581652,
+      "jobsGrowthYoY": 0.022570194398285823
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "south-wairarapa-district",
+    "name": "South Wairarapa District",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 655,
+      "medianHousePrice": 1105000,
+      "medianMultiple": 13.6,
+      "rentYoY": 0.04883287496864795,
+      "priceYoY": -0.004343849681317805,
+      "medianIncome": 81000,
+      "medianEarningsAnnual": 58500,
+      "meanEarningsAnnual": 65500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51500,
+          "meanAnnual": 57500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58500,
+          "meanAnnual": 65500
+        }
+      ],
+      "populationDensity": 397,
+      "populationGrowthYoY": 0.024416437484323976,
+      "jobsGrowthYoY": 0.006224565764423461
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "whanganui-district",
+    "name": "Whanganui District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 498,
+      "medianHousePrice": 715000,
+      "medianMultiple": 7.9,
+      "rentYoY": 0.015389990569092333,
+      "priceYoY": 0.01576728144660592,
+      "medianIncome": 91000,
+      "medianEarningsAnnual": 65500,
+      "meanEarningsAnnual": 73500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57500,
+          "meanAnnual": 64500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69000,
+          "meanAnnual": 77000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73500,
+          "meanAnnual": 82500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        }
+      ],
+      "populationDensity": 174,
+      "populationGrowthYoY": 0.007694995284546167,
+      "jobsGrowthYoY": 0.015023185632890092
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "masterton-district",
+    "name": "Masterton District",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 494,
+      "medianHousePrice": 705000,
+      "medianMultiple": 9.7,
+      "rentYoY": 0.014515754645690321,
+      "priceYoY": -0.02021975979208946,
+      "medianIncome": 73000,
+      "medianEarningsAnnual": 52500,
+      "meanEarningsAnnual": 59000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29000,
+          "meanAnnual": 32500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 52000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52500,
+          "meanAnnual": 59000
+        }
+      ],
+      "populationDensity": 168,
+      "populationGrowthYoY": 0.007257877322845161,
+      "jobsGrowthYoY": -0.000721144909039139
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "thames-coromandel-district",
+    "name": "Thames-Coromandel District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 404,
+      "medianHousePrice": 480000,
+      "medianMultiple": 5.9,
+      "rentYoY": -0.004946149308234454,
+      "priceYoY": -0.0033893426135182363,
+      "medianIncome": 81000,
+      "medianEarningsAnnual": 58500,
+      "meanEarningsAnnual": 65500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51500,
+          "meanAnnual": 57500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58500,
+          "meanAnnual": 65500
+        }
+      ],
+      "populationDensity": 39,
+      "populationGrowthYoY": -0.002473074654117227,
+      "jobsGrowthYoY": 0.006642162606585772
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "waimakariri-district",
+    "name": "Waimakariri District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 649,
+      "medianHousePrice": 1095000,
+      "medianMultiple": 11.4,
+      "rentYoY": 0.04773098450154065,
+      "priceYoY": 0.02665882129222155,
+      "medianIncome": 96000,
+      "medianEarningsAnnual": 69000,
+      "meanEarningsAnnual": 77500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 38000,
+          "meanAnnual": 42500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 68000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 72500,
+          "meanAnnual": 81500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 77500,
+          "meanAnnual": 87000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 69000,
+          "meanAnnual": 77500
+        }
+      ],
+      "populationDensity": 390,
+      "populationGrowthYoY": 0.023865492250770327,
+      "jobsGrowthYoY": 0.019788234315346927
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "new-plymouth-district",
+    "name": "New Plymouth District",
+    "kind": "region",
+    "region": "Taranaki",
+    "metrics": {
+      "medianRentWeek": 470,
+      "medianHousePrice": 620000,
+      "medianMultiple": 5.7,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 85000,
+      "populationDensity": 80,
+      "populationGrowthYoY": 0.007,
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 61000,
+      "meanEarningsAnnual": 68000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 33500,
+          "meanAnnual": 37500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 53500,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "stratford-district",
+    "name": "Stratford District",
+    "kind": "region",
+    "region": "Taranaki",
+    "metrics": {
+      "medianRentWeek": 621,
+      "medianHousePrice": 1025000,
+      "medianMultiple": 12.2,
+      "rentYoY": 0.04174191952683031,
+      "priceYoY": 0.0012786970287561455,
+      "medianIncome": 84000,
+      "medianEarningsAnnual": 60500,
+      "meanEarningsAnnual": 68000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 33500,
+          "meanAnnual": 37500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 53000,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 68000,
+          "meanAnnual": 76000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 68000
+        }
+      ],
+      "populationDensity": 350,
+      "populationGrowthYoY": 0.020870959763415155,
+      "jobsGrowthYoY": 0.008684429950080813
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "western-bay-of-plenty-district",
+    "name": "Western Bay of Plenty District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 486,
+      "medianHousePrice": 685000,
+      "medianMultiple": 7.1,
+      "rentYoY": 0.012694256752729416,
+      "priceYoY": 0.02662446085363627,
+      "medianIncome": 96000,
+      "medianEarningsAnnual": 69000,
+      "meanEarningsAnnual": 77500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 38000,
+          "meanAnnual": 42500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 68000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 72500,
+          "meanAnnual": 81500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 77500,
+          "meanAnnual": 87000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 69000,
+          "meanAnnual": 77500
+        }
+      ],
+      "populationDensity": 156,
+      "populationGrowthYoY": 0.006347128376364708,
+      "jobsGrowthYoY": 0.019773201623465866
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "otorohanga-district",
+    "name": "Ōtorohanga District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 548,
+      "medianHousePrice": 840000,
+      "medianMultiple": 10.2,
+      "rentYoY": 0.026087346212007104,
+      "priceYoY": -0.0016931556724011886,
+      "medianIncome": 82000,
+      "medianEarningsAnnual": 59000,
+      "meanEarningsAnnual": 66000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32500,
+          "meanAnnual": 36500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        }
+      ],
+      "populationDensity": 246,
+      "populationGrowthYoY": 0.013043673106003552,
+      "jobsGrowthYoY": 0.007384244393324481
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "kaikoura-district",
+    "name": "Kaikoura District",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 579,
+      "medianHousePrice": 915000,
+      "medianMultiple": 11.3,
+      "rentYoY": 0.03256580085493624,
+      "priceYoY": -0.004398775324225425,
+      "medianIncome": 81000,
+      "medianEarningsAnnual": 58500,
+      "meanEarningsAnnual": 65500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51500,
+          "meanAnnual": 57500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65500,
+          "meanAnnual": 73500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58500,
+          "meanAnnual": 65500
+        }
+      ],
+      "populationDensity": 289,
+      "populationGrowthYoY": 0.01628290042746812,
+      "jobsGrowthYoY": 0.006200535795651377
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "south-waikato-district",
+    "name": "South Waikato District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 657,
+      "medianHousePrice": 1110000,
+      "medianMultiple": 12.3,
+      "rentYoY": 0.04931731245480477,
+      "priceYoY": 0.014523407965898516,
+      "medianIncome": 90000,
+      "medianEarningsAnnual": 65000,
+      "meanEarningsAnnual": 73000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73000,
+          "meanAnnual": 82000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        }
+      ],
+      "populationDensity": 400,
+      "populationGrowthYoY": 0.024658656227402386,
+      "jobsGrowthYoY": 0.014478990985080601
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "matamata-piako-district",
+    "name": "Matamata-Piako District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 532,
+      "medianHousePrice": 800000,
+      "medianMultiple": 10.4,
+      "rentYoY": 0.022588741770014166,
+      "priceYoY": -0.012628970891237257,
+      "medianIncome": 77000,
+      "medianEarningsAnnual": 55500,
+      "meanEarningsAnnual": 62000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 30500,
+          "meanAnnual": 34000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49000,
+          "meanAnnual": 54500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 58500,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62000
+        }
+      ],
+      "populationDensity": 222,
+      "populationGrowthYoY": 0.011294370885007083,
+      "jobsGrowthYoY": 0.0025998252350837
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "christchurch-city",
+    "name": "Christchurch City",
+    "kind": "region",
+    "region": "Canterbury",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 680000,
+      "medianMultiple": 5.8,
+      "rentYoY": 0.05,
+      "priceYoY": 0.02,
+      "medianIncome": 92000,
+      "populationDensity": 650,
+      "populationGrowthYoY": 0.015,
+      "jobsGrowthYoY": 0.016,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "waipa-district",
+    "name": "Waipa District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 529,
+      "medianHousePrice": 795000,
+      "medianMultiple": 10.6,
+      "rentYoY": 0.02193479938898235,
+      "priceYoY": -0.016328169014304873,
+      "medianIncome": 75000,
+      "medianEarningsAnnual": 54000,
+      "meanEarningsAnnual": 60500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29500,
+          "meanAnnual": 33500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 47500,
+          "meanAnnual": 53000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 56500,
+          "meanAnnual": 63500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 68000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 54000,
+          "meanAnnual": 60500
+        }
+      ],
+      "populationDensity": 218,
+      "populationGrowthYoY": 0.010967399694491176,
+      "jobsGrowthYoY": 0.000981426056241617
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "hauraki-district",
+    "name": "Hauraki District",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 559,
+      "medianHousePrice": 870000,
+      "medianMultiple": 10.1,
+      "rentYoY": 0.028393048616126175,
+      "priceYoY": 0.00533558659255505,
+      "medianIncome": 86000,
+      "medianEarningsAnnual": 62000,
+      "meanEarningsAnnual": 69500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34000,
+          "meanAnnual": 38000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 78000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        }
+      ],
+      "populationDensity": 261,
+      "populationGrowthYoY": 0.014196524308063087,
+      "jobsGrowthYoY": 0.010459319134242834
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "gore-district",
+    "name": "Gore District",
+    "kind": "region",
+    "region": "Southland",
+    "metrics": {
+      "medianRentWeek": 426,
+      "medianHousePrice": 535000,
+      "medianMultiple": 5.8,
+      "rentYoY": -0.0001308015920221811,
+      "priceYoY": 0.017589936964213848,
+      "medianIncome": 92000,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ],
+      "populationDensity": 71,
+      "populationGrowthYoY": -0.00006540079601109056,
+      "jobsGrowthYoY": 0.01582059742184356
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "carterton-district",
+    "name": "Carterton District",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 393,
+      "medianHousePrice": 455000,
+      "medianMultiple": 5.5,
+      "rentYoY": -0.007176806689240039,
+      "priceYoY": -0.0024596242047846308,
+      "medianIncome": 82000,
+      "medianEarningsAnnual": 59000,
+      "meanEarningsAnnual": 66000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32500,
+          "meanAnnual": 36500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        }
+      ],
+      "populationDensity": 24,
+      "populationGrowthYoY": -0.0035884033446200196,
+      "jobsGrowthYoY": 0.007048914410406725
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "horowhenua-district",
+    "name": "Horowhenua District",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 770000,
+      "medianMultiple": 8.3,
+      "rentYoY": 0.020033474708907303,
+      "priceYoY": 0.019302585106343036,
+      "medianIncome": 93000,
+      "medianEarningsAnnual": 67000,
+      "meanEarningsAnnual": 75000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 37000,
+          "meanAnnual": 41500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 70500,
+          "meanAnnual": 79000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 67000,
+          "meanAnnual": 75000
+        }
+      ],
+      "populationDensity": 205,
+      "populationGrowthYoY": 0.010016737354453652,
+      "jobsGrowthYoY": 0.01656988098402508
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "kapiti-coast-district",
+    "name": "Kapiti Coast District",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 607,
+      "medianHousePrice": 985000,
+      "medianMultiple": 9.2,
+      "rentYoY": 0.038559050620533525,
+      "priceYoY": 0.047600101623684166,
+      "medianIncome": 107000,
+      "medianEarningsAnnual": 77000,
+      "meanEarningsAnnual": 86000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 42500,
+          "meanAnnual": 47500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 68000,
+          "meanAnnual": 75500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 81000,
+          "meanAnnual": 90500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 86000,
+          "meanAnnual": 96500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 77000,
+          "meanAnnual": 86000
+        }
+      ],
+      "populationDensity": 329,
+      "populationGrowthYoY": 0.019279525310266762,
+      "jobsGrowthYoY": 0.028950044460361823
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "upper-hutt-city",
+    "name": "Upper Hutt City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 634,
+      "medianHousePrice": 1055000,
+      "medianMultiple": 14.7,
+      "rentYoY": 0.04433895341586321,
+      "priceYoY": -0.0226129082031548,
+      "medianIncome": 72000,
+      "medianEarningsAnnual": 52000,
+      "meanEarningsAnnual": 58000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28500,
+          "meanAnnual": 32000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 51000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        }
+      ],
+      "populationDensity": 367,
+      "populationGrowthYoY": 0.022169476707931606,
+      "jobsGrowthYoY": -0.0017681473388802258
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "invercargill-city",
+    "name": "Invercargill City",
+    "kind": "region",
+    "region": "Southland",
+    "metrics": {
+      "medianRentWeek": 380,
+      "medianHousePrice": 420000,
+      "medianMultiple": 4.2,
+      "rentYoY": 0.05,
+      "priceYoY": 0.04,
+      "medianIncome": 76000,
+      "populationDensity": 450,
+      "populationGrowthYoY": 0.003,
+      "jobsGrowthYoY": 0.007,
+      "medianEarningsAnnual": 55000,
+      "meanEarningsAnnual": 62000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 30500,
+          "meanAnnual": 34000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 48500,
+          "meanAnnual": 54500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "nelson-city",
+    "name": "Nelson City",
+    "kind": "region",
+    "region": "Nelson",
+    "metrics": {
+      "medianRentWeek": 490,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.8,
+      "rentYoY": 0.03,
+      "priceYoY": 0.01,
+      "medianIncome": 79000,
+      "populationDensity": 600,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "palmerston-north-city",
+    "name": "Palmerston North City",
+    "kind": "region",
+    "region": "Manawatū-Whanganui",
+    "metrics": {
+      "medianRentWeek": 460,
+      "medianHousePrice": 580000,
+      "medianMultiple": 5.6,
+      "rentYoY": 0.03,
+      "priceYoY": 0.02,
+      "medianIncome": 82000,
+      "populationDensity": 900,
+      "populationGrowthYoY": 0.009,
+      "jobsGrowthYoY": 0.012,
+      "medianEarningsAnnual": 59000,
+      "meanEarningsAnnual": 66000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32500,
+          "meanAnnual": 36500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "lower-hutt-city",
+    "name": "Lower Hutt City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 560,
+      "medianHousePrice": 750000,
+      "medianMultiple": 6.5,
+      "rentYoY": 0.02,
+      "priceYoY": -0.03,
+      "medianIncome": 100000,
+      "populationDensity": 1200,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 81000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 85000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 81000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "wellington-city",
+    "name": "Wellington City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 620,
+      "medianHousePrice": 880000,
+      "medianMultiple": 7.2,
+      "rentYoY": 0.02,
+      "priceYoY": -0.04,
+      "medianIncome": 112000,
+      "populationDensity": 1900,
+      "populationGrowthYoY": 0.005,
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 81000,
+      "meanEarningsAnnual": 91000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 44500,
+          "meanAnnual": 50000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 85000,
+          "meanAnnual": 95500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 90500,
+          "meanAnnual": 102000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 81000,
+          "meanAnnual": 91000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "porirua-city",
+    "name": "Porirua City",
+    "kind": "region",
+    "region": "Wellington",
+    "metrics": {
+      "medianRentWeek": 538,
+      "medianHousePrice": 815000,
+      "medianMultiple": 11.2,
+      "rentYoY": 0.023934557521715756,
+      "priceYoY": -0.01976736597716808,
+      "medianIncome": 73000,
+      "medianEarningsAnnual": 52500,
+      "meanEarningsAnnual": 59000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29000,
+          "meanAnnual": 32500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 52000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52500,
+          "meanAnnual": 59000
+        }
+      ],
+      "populationDensity": 231,
+      "populationGrowthYoY": 0.011967278760857878,
+      "jobsGrowthYoY": -0.0005232226150110363
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
+    "slug": "tauranga-city",
+    "name": "Tauranga City",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 580,
+      "medianHousePrice": 850000,
+      "medianMultiple": 7.5,
+      "rentYoY": 0.04,
+      "priceYoY": 0.03,
+      "medianIncome": 86000,
+      "populationDensity": 1100,
+      "populationGrowthYoY": 0.022,
+      "jobsGrowthYoY": 0.018,
+      "medianEarningsAnnual": 62000,
+      "meanEarningsAnnual": 69000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34000,
+          "meanAnnual": 38000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 60500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 72500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "hamilton-city",
+    "name": "Hamilton City",
+    "kind": "region",
+    "region": "Waikato",
+    "metrics": {
+      "medianRentWeek": 520,
+      "medianHousePrice": 720000,
+      "medianMultiple": 6.4,
+      "rentYoY": 0.04,
+      "priceYoY": 0.01,
+      "medianIncome": 88000,
+      "populationDensity": 1500,
+      "populationGrowthYoY": 0.018,
+      "jobsGrowthYoY": 0.02,
+      "medianEarningsAnnual": 63000,
+      "meanEarningsAnnual": 71000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34500,
+          "meanAnnual": 39000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 70500,
+          "meanAnnual": 79500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 71000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "napier-city",
+    "name": "Napier City",
+    "kind": "region",
+    "region": "Hawke's Bay",
+    "metrics": {
+      "medianRentWeek": 480,
+      "medianHousePrice": 650000,
+      "medianMultiple": 6.1,
+      "rentYoY": 0.04,
+      "priceYoY": 0.02,
+      "medianIncome": 80000,
+      "populationDensity": 700,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 58000,
+      "meanEarningsAnnual": 65000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51000,
+          "meanAnnual": 57000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        }
+      ]
+    },
+    "proxies": [
+      "career"
+    ]
+  },
+  {
+    "slug": "kawerau-district",
+    "name": "Kawerau District",
+    "kind": "region",
+    "region": "Bay of Plenty",
+    "metrics": {
+      "medianRentWeek": 474,
+      "medianHousePrice": 655000,
+      "medianMultiple": 6.8,
+      "rentYoY": 0.010208685887046159,
+      "priceYoY": 0.025965967644006015,
+      "medianIncome": 96000,
+      "medianEarningsAnnual": 69000,
+      "meanEarningsAnnual": 77500,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 38000,
+          "meanAnnual": 42500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 60500,
+          "meanAnnual": 68000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 72500,
+          "meanAnnual": 81500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 77500,
+          "meanAnnual": 87000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 69000,
+          "meanAnnual": 77500
+        }
+      ],
+      "populationDensity": 140,
+      "populationGrowthYoY": 0.0051043429435230795,
+      "jobsGrowthYoY": 0.019485110844252633
+    },
+    "proxies": [
+      "career",
+      "housingGrowth",
+      "jobGrowth",
+      "populationGrowth"
+    ]
+  },
+  {
     "slug": "whangarei",
     "name": "Whangārei",
     "kind": "city",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "metrics": {
       "medianRentWeek": 470,
       "medianHousePrice": 640000,
@@ -605,7 +4035,8 @@
     },
     "proxies": [
       "career"
-    ]
+    ],
+    "parentSlug": "porirua-city"
   },
   {
     "slug": "nelson",
@@ -757,7 +4188,8 @@
     },
     "proxies": [
       "career"
-    ]
+    ],
+    "parentSlug": "timaru-district"
   },
   {
     "slug": "dunedin",
@@ -1015,841 +4447,11 @@
     "parentSlug": "invercargill-city"
   },
   {
-    "slug": "auckland-region",
-    "name": "Auckland",
-    "kind": "region",
-    "region": "Auckland",
-    "metrics": {
-      "medianRentWeek": 650,
-      "medianHousePrice": 1050000,
-      "medianMultiple": 8.9,
-      "rentYoY": 0.03,
-      "priceYoY": -0.02,
-      "medianIncome": 104000,
-      "populationDensity": 380,
-      "populationGrowthYoY": 0.012,
-      "jobsGrowthYoY": 0.015,
-      "medianEarningsAnnual": 75000,
-      "meanEarningsAnnual": 84000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 41500,
-          "meanAnnual": 46000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 66000,
-          "meanAnnual": 74000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 79000,
-          "meanAnnual": 88000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 84000,
-          "meanAnnual": 94000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 75000,
-          "meanAnnual": 84000
-        }
-      ]
-    }
-  },
-  {
-    "slug": "whangarei-district",
-    "name": "Whangārei District",
-    "kind": "region",
-    "region": "Northland",
-    "metrics": {
-      "medianRentWeek": 470,
-      "medianHousePrice": 640000,
-      "medianMultiple": 6.2,
-      "rentYoY": 0.03,
-      "priceYoY": 0.01,
-      "medianIncome": 72000,
-      "populationDensity": 70,
-      "populationGrowthYoY": 0.01,
-      "jobsGrowthYoY": 0.011,
-      "medianEarningsAnnual": 52000,
-      "meanEarningsAnnual": 58000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 28500,
-          "meanAnnual": 32000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 46000,
-          "meanAnnual": 51000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 54500,
-          "meanAnnual": 61000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 58000,
-          "meanAnnual": 65000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 52000,
-          "meanAnnual": 58000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "hamilton-city",
-    "name": "Hamilton City",
-    "kind": "region",
-    "region": "Waikato",
-    "metrics": {
-      "medianRentWeek": 520,
-      "medianHousePrice": 720000,
-      "medianMultiple": 6.4,
-      "rentYoY": 0.04,
-      "priceYoY": 0.01,
-      "medianIncome": 88000,
-      "populationDensity": 1500,
-      "populationGrowthYoY": 0.018,
-      "jobsGrowthYoY": 0.02,
-      "medianEarningsAnnual": 63000,
-      "meanEarningsAnnual": 71000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 34500,
-          "meanAnnual": 39000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 55500,
-          "meanAnnual": 62500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 66000,
-          "meanAnnual": 74500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 70500,
-          "meanAnnual": 79500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 63000,
-          "meanAnnual": 71000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "tauranga-city",
-    "name": "Tauranga City",
-    "kind": "region",
-    "region": "Bay of Plenty",
-    "metrics": {
-      "medianRentWeek": 580,
-      "medianHousePrice": 850000,
-      "medianMultiple": 7.5,
-      "rentYoY": 0.04,
-      "priceYoY": 0.03,
-      "medianIncome": 86000,
-      "populationDensity": 1100,
-      "populationGrowthYoY": 0.022,
-      "jobsGrowthYoY": 0.018,
-      "medianEarningsAnnual": 62000,
-      "meanEarningsAnnual": 69000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 34000,
-          "meanAnnual": 38000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 54500,
-          "meanAnnual": 60500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 65000,
-          "meanAnnual": 72500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 69500,
-          "meanAnnual": 77500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 62000,
-          "meanAnnual": 69000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "rotorua-district",
-    "name": "Rotorua District",
-    "kind": "region",
-    "region": "Bay of Plenty",
-    "metrics": {
-      "medianRentWeek": 450,
-      "medianHousePrice": 580000,
-      "medianMultiple": 5.9,
-      "rentYoY": 0.04,
-      "priceYoY": 0.03,
-      "medianIncome": 74000,
-      "populationDensity": 90,
-      "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01,
-      "medianEarningsAnnual": 53000,
-      "meanEarningsAnnual": 59000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 29000,
-          "meanAnnual": 32500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 46500,
-          "meanAnnual": 52000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 55500,
-          "meanAnnual": 62000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 59500,
-          "meanAnnual": 66000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 53000,
-          "meanAnnual": 59000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "napier-city",
-    "name": "Napier City",
-    "kind": "region",
-    "region": "Hawke's Bay",
-    "metrics": {
-      "medianRentWeek": 480,
-      "medianHousePrice": 650000,
-      "medianMultiple": 6.1,
-      "rentYoY": 0.04,
-      "priceYoY": 0.02,
-      "medianIncome": 80000,
-      "populationDensity": 700,
-      "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009,
-      "medianEarningsAnnual": 58000,
-      "meanEarningsAnnual": 65000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 32000,
-          "meanAnnual": 36000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 51000,
-          "meanAnnual": 57000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 61000,
-          "meanAnnual": 68500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 65000,
-          "meanAnnual": 73000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 58000,
-          "meanAnnual": 65000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "hastings-district",
-    "name": "Hastings District",
-    "kind": "region",
-    "region": "Hawke's Bay",
-    "metrics": {
-      "medianRentWeek": 470,
-      "medianHousePrice": 640000,
-      "medianMultiple": 6,
-      "rentYoY": 0.04,
-      "priceYoY": 0.02,
-      "medianIncome": 78000,
-      "populationDensity": 60,
-      "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01,
-      "medianEarningsAnnual": 56000,
-      "meanEarningsAnnual": 63000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 31000,
-          "meanAnnual": 34500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 49500,
-          "meanAnnual": 55500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 59000,
-          "meanAnnual": 66000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 62500,
-          "meanAnnual": 70500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 56000,
-          "meanAnnual": 63000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "new-plymouth-district",
-    "name": "New Plymouth District",
-    "kind": "region",
-    "region": "Taranaki",
-    "metrics": {
-      "medianRentWeek": 470,
-      "medianHousePrice": 620000,
-      "medianMultiple": 5.7,
-      "rentYoY": 0.03,
-      "priceYoY": 0.02,
-      "medianIncome": 85000,
-      "populationDensity": 80,
-      "populationGrowthYoY": 0.007,
-      "jobsGrowthYoY": 0.01,
-      "medianEarningsAnnual": 61000,
-      "meanEarningsAnnual": 68000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 33500,
-          "meanAnnual": 37500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 53500,
-          "meanAnnual": 60000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 64000,
-          "meanAnnual": 71500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 68500,
-          "meanAnnual": 76000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 61000,
-          "meanAnnual": 68000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "palmerston-north-city",
-    "name": "Palmerston North City",
-    "kind": "region",
-    "region": "Manawatū-Whanganui",
-    "metrics": {
-      "medianRentWeek": 460,
-      "medianHousePrice": 580000,
-      "medianMultiple": 5.6,
-      "rentYoY": 0.03,
-      "priceYoY": 0.02,
-      "medianIncome": 82000,
-      "populationDensity": 900,
-      "populationGrowthYoY": 0.009,
-      "jobsGrowthYoY": 0.012,
-      "medianEarningsAnnual": 59000,
-      "meanEarningsAnnual": 66000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 32500,
-          "meanAnnual": 36500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 52000,
-          "meanAnnual": 58000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 62000,
-          "meanAnnual": 69500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 66000,
-          "meanAnnual": 74000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 59000,
-          "meanAnnual": 66000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "wellington-city",
-    "name": "Wellington City",
-    "kind": "region",
-    "region": "Wellington",
-    "metrics": {
-      "medianRentWeek": 620,
-      "medianHousePrice": 880000,
-      "medianMultiple": 7.2,
-      "rentYoY": 0.02,
-      "priceYoY": -0.04,
-      "medianIncome": 112000,
-      "populationDensity": 1900,
-      "populationGrowthYoY": 0.005,
-      "jobsGrowthYoY": 0.008,
-      "medianEarningsAnnual": 81000,
-      "meanEarningsAnnual": 91000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 44500,
-          "meanAnnual": 50000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 71500,
-          "meanAnnual": 80000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 85000,
-          "meanAnnual": 95500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 90500,
-          "meanAnnual": 102000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 81000,
-          "meanAnnual": 91000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "lower-hutt-city",
-    "name": "Lower Hutt City",
-    "kind": "region",
-    "region": "Wellington",
-    "metrics": {
-      "medianRentWeek": 560,
-      "medianHousePrice": 750000,
-      "medianMultiple": 6.5,
-      "rentYoY": 0.02,
-      "priceYoY": -0.03,
-      "medianIncome": 100000,
-      "populationDensity": 1200,
-      "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009,
-      "medianEarningsAnnual": 72000,
-      "meanEarningsAnnual": 81000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 39500,
-          "meanAnnual": 44500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 63500,
-          "meanAnnual": 71500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 75500,
-          "meanAnnual": 85000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 80500,
-          "meanAnnual": 90500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 72000,
-          "meanAnnual": 81000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "christchurch-city",
-    "name": "Christchurch City",
-    "kind": "region",
-    "region": "Canterbury",
-    "metrics": {
-      "medianRentWeek": 520,
-      "medianHousePrice": 680000,
-      "medianMultiple": 5.8,
-      "rentYoY": 0.05,
-      "priceYoY": 0.02,
-      "medianIncome": 92000,
-      "populationDensity": 650,
-      "populationGrowthYoY": 0.015,
-      "jobsGrowthYoY": 0.016,
-      "medianEarningsAnnual": 66000,
-      "meanEarningsAnnual": 74000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 36500,
-          "meanAnnual": 40500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 58000,
-          "meanAnnual": 65000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 69500,
-          "meanAnnual": 77500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 74000,
-          "meanAnnual": 83000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 66000,
-          "meanAnnual": 74000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "dunedin-city",
-    "name": "Dunedin City",
-    "kind": "region",
-    "region": "Otago",
-    "metrics": {
-      "medianRentWeek": 450,
-      "medianHousePrice": 580000,
-      "medianMultiple": 5.5,
-      "rentYoY": 0.03,
-      "priceYoY": 0.01,
-      "medianIncome": 78000,
-      "populationDensity": 400,
-      "populationGrowthYoY": 0.004,
-      "jobsGrowthYoY": 0.006,
-      "medianEarningsAnnual": 56000,
-      "meanEarningsAnnual": 63000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 31000,
-          "meanAnnual": 34500
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 49500,
-          "meanAnnual": 55500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 59000,
-          "meanAnnual": 66000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 62500,
-          "meanAnnual": 70500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 56000,
-          "meanAnnual": 63000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "waitaki-district",
-    "name": "Waitaki District",
-    "kind": "region",
-    "region": "Otago",
-    "metrics": {
-      "medianRentWeek": 340,
-      "medianHousePrice": 420000,
-      "medianMultiple": 4.4,
-      "rentYoY": 0.02,
-      "priceYoY": 0.03,
-      "medianIncome": 70000,
-      "populationDensity": 8,
-      "populationGrowthYoY": -0.002,
-      "jobsGrowthYoY": 0.002,
-      "medianEarningsAnnual": 50000,
-      "meanEarningsAnnual": 56000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 27500,
-          "meanAnnual": 31000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 44000,
-          "meanAnnual": 49500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 52500,
-          "meanAnnual": 59000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 56000,
-          "meanAnnual": 62500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 50000,
-          "meanAnnual": 56000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "queenstown-lakes-district",
-    "name": "Queenstown-Lakes District",
-    "kind": "region",
-    "region": "Otago",
-    "metrics": {
-      "medianRentWeek": 680,
-      "medianHousePrice": 1400000,
-      "medianMultiple": 11.5,
-      "rentYoY": 0.06,
-      "priceYoY": 0.05,
-      "medianIncome": 90000,
-      "populationDensity": 15,
-      "populationGrowthYoY": 0.025,
-      "jobsGrowthYoY": 0.03,
-      "medianEarningsAnnual": 65000,
-      "meanEarningsAnnual": 73000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 36000,
-          "meanAnnual": 40000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 57000,
-          "meanAnnual": 64000
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 68500,
-          "meanAnnual": 76500
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 73000,
-          "meanAnnual": 82000
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 65000,
-          "meanAnnual": 73000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "invercargill-city",
-    "name": "Invercargill City",
-    "kind": "region",
-    "region": "Southland",
-    "metrics": {
-      "medianRentWeek": 380,
-      "medianHousePrice": 420000,
-      "medianMultiple": 4.2,
-      "rentYoY": 0.05,
-      "priceYoY": 0.04,
-      "medianIncome": 76000,
-      "populationDensity": 450,
-      "populationGrowthYoY": 0.003,
-      "jobsGrowthYoY": 0.007,
-      "medianEarningsAnnual": 55000,
-      "meanEarningsAnnual": 62000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 30500,
-          "meanAnnual": 34000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 48500,
-          "meanAnnual": 54500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 58000,
-          "meanAnnual": 65000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 61500,
-          "meanAnnual": 69500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 55000,
-          "meanAnnual": 62000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
-    "slug": "nelson-city",
-    "name": "Nelson City",
-    "kind": "region",
-    "region": "Nelson",
-    "metrics": {
-      "medianRentWeek": 490,
-      "medianHousePrice": 720000,
-      "medianMultiple": 6.8,
-      "rentYoY": 0.03,
-      "priceYoY": 0.01,
-      "medianIncome": 79000,
-      "populationDensity": 600,
-      "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.008,
-      "medianEarningsAnnual": 57000,
-      "meanEarningsAnnual": 64000,
-      "earningsByAge": [
-        {
-          "label": "15–24 years",
-          "medianAnnual": 31500,
-          "meanAnnual": 35000
-        },
-        {
-          "label": "25–34 years",
-          "medianAnnual": 50000,
-          "meanAnnual": 56500
-        },
-        {
-          "label": "35–44 years",
-          "medianAnnual": 60000,
-          "meanAnnual": 67000
-        },
-        {
-          "label": "45–54 years",
-          "medianAnnual": 64000,
-          "meanAnnual": 71500
-        },
-        {
-          "label": "55–64 years",
-          "medianAnnual": 57000,
-          "meanAnnual": 64000
-        }
-      ]
-    },
-    "proxies": [
-      "career"
-    ]
-  },
-  {
     "slug": "whangarei--otangarei",
     "name": "Otangarei",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 470,
@@ -1900,7 +4502,7 @@
     "name": "Mairtown",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 469,
@@ -1951,7 +4553,7 @@
     "name": "Tarewa",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 457,
@@ -2002,7 +4604,7 @@
     "name": "Kamo Central",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 429,
@@ -2053,7 +4655,7 @@
     "name": "Sherwood Rise",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 429,
@@ -2104,7 +4706,7 @@
     "name": "Woodhill-Vinetown",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 446,
@@ -2155,7 +4757,7 @@
     "name": "Kamo East",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 425,
@@ -2206,7 +4808,7 @@
     "name": "Morningside (Whangarei District)",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 483,
@@ -2257,7 +4859,7 @@
     "name": "Horahora",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 474,
@@ -2308,7 +4910,7 @@
     "name": "Onerahi Park",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 448,
@@ -2359,7 +4961,7 @@
     "name": "Onerahi",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 445,
@@ -2410,7 +5012,7 @@
     "name": "Tikipunga South",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 478,
@@ -2461,7 +5063,7 @@
     "name": "Whangarei Central",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 514,
@@ -2512,7 +5114,7 @@
     "name": "Tikipunga North",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 475,
@@ -2563,7 +5165,7 @@
     "name": "Kensington (Whangarei District)",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 525,
@@ -2614,7 +5216,7 @@
     "name": "Raumanga",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 442,
@@ -2665,7 +5267,7 @@
     "name": "Riverside",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 483,
@@ -2716,7 +5318,7 @@
     "name": "Kamo West",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 500,
@@ -2767,7 +5369,7 @@
     "name": "Granfield Reserve",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 523,
@@ -2818,7 +5420,7 @@
     "name": "Maunu",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 423,
@@ -2869,7 +5471,7 @@
     "name": "Port-Limeburners",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 497,
@@ -2920,7 +5522,7 @@
     "name": "Whau Valley",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 497,
@@ -2971,7 +5573,7 @@
     "name": "Pukenui",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 436,
@@ -3022,7 +5624,7 @@
     "name": "Abbey Caves-Glenbervie",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 485,
@@ -3073,7 +5675,7 @@
     "name": "Parua Bay",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 416,
@@ -3124,7 +5726,7 @@
     "name": "Otaika-Portland",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 480,
@@ -3175,7 +5777,7 @@
     "name": "Kauri",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 520,
@@ -3226,7 +5828,7 @@
     "name": "Kiripaka",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 445,
@@ -3277,7 +5879,7 @@
     "name": "Matarau",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 505,
@@ -3328,7 +5930,7 @@
     "name": "Pataua",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 500,
@@ -3379,7 +5981,7 @@
     "name": "Maungatapere",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 490,
@@ -3430,7 +6032,7 @@
     "name": "Bream Bay",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 491,
@@ -3481,7 +6083,7 @@
     "name": "Oakleigh-Mangapai",
     "kind": "suburb",
     "region": "Northland",
-    "district": "Whangārei District",
+    "district": "Whangarei District",
     "parentSlug": "whangarei",
     "metrics": {
       "medianRentWeek": 515,
