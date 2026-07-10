@@ -126,9 +126,19 @@ export function PlacesExplorer({
 
   const handleScope = (kind: PlaceKind) => {
     setHighlightedSlug(null);
+    setFocusedSlug(null);
     startTransition(() => {
       void setParams({ view: kind });
     });
+  };
+
+  const handleFocusPlace = (slug: string) => {
+    setFocusedSlug(slug);
+    setHighlightedSlug(slug);
+    // Scroll map into view on smaller screens
+    document
+      .getElementById("places-map")
+      ?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   };
 
   const handlePreset = (id: PresetId) => {
@@ -217,12 +227,15 @@ export function PlacesExplorer({
         </Card>
 
         <div className="flex min-h-0 flex-col gap-6">
-          <NzChoroplethMap
-            territories={scored}
-            boundaries={scopedBoundaries}
-            highlightedSlug={highlightedSlug}
-            queryString={queryString}
-          />
+          <div id="places-map">
+            <NzChoroplethMap
+              territories={scored}
+              boundaries={scopedBoundaries}
+              highlightedSlug={highlightedSlug}
+              focusedSlug={focusedSlug}
+              queryString={queryString}
+            />
+          </div>
           <div>
             <h2 className="mb-3 text-xl font-semibold tracking-normal">
               Ranked matches
@@ -233,7 +246,9 @@ export function PlacesExplorer({
             <RankedList
               territories={scored}
               queryString={queryString}
+              focusedSlug={focusedSlug}
               onHover={setHighlightedSlug}
+              onFocus={handleFocusPlace}
             />
           </div>
         </div>

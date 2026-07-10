@@ -58,7 +58,7 @@ function FitScopeBounds({
       return;
     }
     try {
-      const layer = L.geoJSON(boundaries as GeoJSON.GeoJsonObject);
+      const layer = L.geoJSON(boundaries);
       map.fitBounds(layer.getBounds().pad(0.08), {
         padding: [28, 28],
         maxZoom: 8,
@@ -88,7 +88,7 @@ function FocusPlace({
     );
     if (!feature) return;
     try {
-      const layer = L.geoJSON(feature as GeoJSON.GeoJsonObject);
+      const layer = L.geoJSON(feature);
       const bounds = layer.getBounds();
       if (!bounds.isValid()) return;
       map.fitBounds(bounds.pad(0.35), {
