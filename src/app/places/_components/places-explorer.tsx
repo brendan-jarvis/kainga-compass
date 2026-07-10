@@ -236,12 +236,6 @@ export function PlacesExplorer({
         </div>
 
         <div className="min-w-0">
-          <h2 className="mb-3 text-xl font-semibold tracking-normal">
-            Ranked matches
-            <span className="text-muted-foreground ml-2 text-base font-normal">
-              · {scope === "city" ? "Cities & towns" : "Districts"}
-            </span>
-          </h2>
           <RankedList
             territories={scored}
             queryString={queryString}

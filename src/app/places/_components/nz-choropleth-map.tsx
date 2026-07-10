@@ -65,19 +65,22 @@ function isMainlandNzFeature(feature: Feature): boolean {
 
 const STROKE_DEFAULT = "rgba(100, 100, 100, 0.4)";
 const STROKE_HOVER = "rgba(60, 60, 60, 0.7)";
-const STROKE_TOP = "#ea580c";
-const STROKE_FOCUS = "#c2410c";
+const STROKE_TOP = "#059669"; // emerald — top match
+const STROKE_FOCUS = "#047857";
 
-/** Linear RGB mix: orange (weaker) → emerald (stronger). */
+/**
+ * Green (stronger match) → red (weaker), aligned with match-score badge tones.
+ * t: 0 = worst rank, 1 = best rank
+ */
 function rankHeatFill(rank: number, total: number, isDark: boolean): string {
   if (total <= 0) {
-    return isDark ? "rgba(234,88,12,0.2)" : "rgba(234,88,12,0.18)";
+    return isDark ? "rgba(244,63,94,0.2)" : "rgba(244,63,94,0.18)";
   }
-  const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1); // 0 weak → 1 strong
-  // orange-600 #ea580c → emerald-500 #10b981
-  const r = Math.round(234 + t * (16 - 234));
-  const g = Math.round(88 + t * (185 - 88));
-  const b = Math.round(12 + t * (129 - 12));
+  const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1);
+  // rose-500 #f43f5e → emerald-500 #10b981
+  const r = Math.round(244 + t * (16 - 244));
+  const g = Math.round(63 + t * (185 - 63));
+  const b = Math.round(94 + t * (129 - 94));
   const a = isDark ? 0.28 + t * 0.5 : 0.32 + t * 0.48;
   return `rgba(${r},${g},${b},${a.toFixed(3)})`;
 }

@@ -3,12 +3,12 @@ import { cn } from "~/lib/utils";
 
 function scoreTone(score: number): string {
   if (score >= 70)
-    return "border-primary/30 bg-primary/15 text-primary";
+    return "border-emerald-600/35 bg-emerald-500/15 text-emerald-700 dark:border-emerald-400/40 dark:bg-emerald-400/15 dark:text-emerald-300";
   if (score >= 50)
-    return "border-teal-600/30 bg-teal-600/10 text-teal-700 dark:border-teal-400/30 dark:bg-teal-400/15 dark:text-teal-300";
+    return "border-lime-600/30 bg-lime-500/12 text-lime-800 dark:border-lime-400/30 dark:bg-lime-400/15 dark:text-lime-300";
   if (score >= 35)
-    return "border-amber-600/30 bg-amber-500/10 text-amber-800 dark:border-amber-400/30 dark:bg-amber-400/15 dark:text-amber-300";
-  return "border-rose-600/30 bg-rose-500/10 text-rose-700 dark:border-rose-400/30 dark:bg-rose-400/15 dark:text-rose-300";
+    return "border-amber-600/30 bg-amber-500/12 text-amber-800 dark:border-amber-400/30 dark:bg-amber-400/15 dark:text-amber-300";
+  return "border-rose-600/35 bg-rose-500/12 text-rose-700 dark:border-rose-400/40 dark:bg-rose-400/15 dark:text-rose-300";
 }
 
 export function MatchScoreBadge({
@@ -29,8 +29,8 @@ export function MatchScoreBadge({
 }
 
 export function scoreColor(score: number): string {
-  if (score >= 70) return "#ea580c";
-  if (score >= 50) return "#f59e0b";
-  if (score >= 35) return "#a3a3a3";
-  return "#d4d4d4";
+  if (score >= 70) return "#10b981";
+  if (score >= 50) return "#84cc16";
+  if (score >= 35) return "#f59e0b";
+  return "#f43f5e";
 }

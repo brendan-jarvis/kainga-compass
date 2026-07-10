@@ -96,13 +96,13 @@ export function RankedList({
         role="region"
         aria-label="Ranked matches table — swipe sideways for more columns"
       >
-        <Table className="min-w-[44rem] text-base">
+        <Table className="min-w-[36rem] w-full table-fixed text-base sm:min-w-[40rem]">
           <TableHeader>
             <TableRow className="hover:bg-transparent">
-              <TableHead className="w-10">
+              <TableHead className="w-9">
                 <HeaderTip label="#" tip={COLUMN_HELP.rank} />
               </TableHead>
-              <TableHead className="min-w-[9rem]">
+              <TableHead className="w-[28%] min-w-0 max-w-[11rem] sm:max-w-[13rem]">
                 <HeaderTip label="Place" tip={COLUMN_HELP.place} />
               </TableHead>
               <TableHead className="text-right">
@@ -167,18 +167,18 @@ export function RankedList({
                   onMouseLeave={() => onHover?.(null)}
                   onClick={() => onFocus?.(t.slug)}
                 >
-                  <TableCell className="text-muted-foreground tabular-nums">
+                  <TableCell className="text-muted-foreground w-9 tabular-nums">
                     {i + 1}
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="min-w-0 max-w-[11rem] whitespace-normal sm:max-w-[13rem]">
                     <Link
                       href={`/places/${t.slug}${qs}`}
-                      className="hover:text-primary font-medium"
+                      className="hover:text-primary font-medium break-words"
                       onClick={(e) => e.stopPropagation()}
                     >
                       {t.name}
                     </Link>
-                    <div className="text-muted-foreground text-sm">
+                    <div className="text-muted-foreground text-sm leading-snug break-words whitespace-normal">
                       {t.region}
                       {t.kind === "city" && t.district
                         ? ` · ${t.district}`
@@ -212,7 +212,7 @@ export function RankedList({
         </Table>
       </div>
       <p className="text-muted-foreground border-t px-3 py-2 text-sm">
-        Map: orange = weaker match, emerald = stronger · swipe sideways for more
+        Map: red = weaker match, green = stronger · swipe sideways for more
         columns · tap a row to focus the map
       </p>
     </div>
