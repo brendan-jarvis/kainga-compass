@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 
 import type { ScoredTerritory } from "~/lib/places/types";
+import { cn } from "~/lib/utils";
 
 import "leaflet/dist/leaflet.css";
 
@@ -25,38 +26,31 @@ type Props = {
   /** Focus/zoom target from ranked list click */
   focusedSlug?: string | null;
   queryString?: string;
+  className?: string;
 };
 
+/** Mainland NZ — slightly tighter than full EEZ so fitBounds zooms in. */
 const NZ_BOUNDS: L.LatLngBoundsExpression = [
-  [-47.5, 166.0],
-  [-34.0, 179.0],
+  [-47.4, 166.2],
+  [-34.2, 178.8],
 ];
 
-/** Light grey outlines — structure without competing with the heatmap. */
-const STROKE_DEFAULT = "rgba(120, 120, 120, 0.45)";
-const STROKE_HOVER = "rgba(80, 80, 80, 0.75)";
-const STROKE_TOP = "rgba(234, 88, 12, 0.85)"; // orange-600 — top match
-const STROKE_FOCUS = "#ea580c"; // orange-600 solid focus
+const STROKE_DEFAULT = "rgba(100, 100, 100, 0.4)";
+const STROKE_HOVER = "rgba(60, 60, 60, 0.7)";
+const STROKE_TOP = "#ea580c";
+const STROKE_FOCUS = "#c2410c";
 
-/**
- * Heatmap fill by rank (1 = best match).
- * Communicates: hotter = better personalised match; cool grey = weaker.
- */
+/** Linear RGB mix: emerald (weak) → orange (strong). */
 function rankHeatFill(rank: number, total: number, isDark: boolean): string {
-  if (total <= 0) return isDark ? "rgba(100,100,100,0.2)" : "rgba(160,160,160,0.15)";
-  const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1); // 1 top → 0 bottom
-  // Warm orange ramp; bottom ranks stay pale grey so boundaries don't dominate.
-  if (isDark) {
-    const r = Math.round(100 + t * 151);
-    const g = Math.round(100 + t * 46);
-    const b = Math.round(100 - t * 40);
-    const a = 0.18 + t * 0.52;
-    return `rgba(${r},${g},${b},${a.toFixed(3)})`;
+  if (total <= 0) {
+    return isDark ? "rgba(16,185,129,0.2)" : "rgba(16,185,129,0.18)";
   }
-  const r = Math.round(180 + t * 54);
-  const g = Math.round(180 - t * 92);
-  const b = Math.round(180 - t * 148);
-  const a = 0.12 + t * 0.48;
+  const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1); // 0 weak → 1 strong
+  // emerald-500 #10b981 → orange-600 #ea580c
+  const r = Math.round(16 + t * (234 - 16));
+  const g = Math.round(185 + t * (88 - 185));
+  const b = Math.round(129 + t * (12 - 129));
+  const a = isDark ? 0.28 + t * 0.5 : 0.32 + t * 0.48;
   return `rgba(${r},${g},${b},${a.toFixed(3)})`;
 }
 
@@ -79,21 +73,41 @@ function FitScopeBounds({
     if (key === lastScopeKey.current) return;
     lastScopeKey.current = key;
     if (focusedSlug) return;
-    if (boundaries.features.length === 0) {
-      map.fitBounds(NZ_BOUNDS, { padding: [20, 20] });
-      return;
-    }
-    try {
-      const layer = L.geoJSON(boundaries);
-      map.fitBounds(layer.getBounds().pad(0.08), {
-        padding: [28, 28],
-        maxZoom: 8,
-        animate: true,
-      });
-    } catch {
-      map.fitBounds(NZ_BOUNDS, { padding: [20, 20] });
-    }
+
+    const fit = () => {
+      if (boundaries.features.length === 0) {
+        map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
+        return;
+      }
+      try {
+        const layer = L.geoJSON(boundaries);
+        map.fitBounds(layer.getBounds().pad(0.04), {
+          padding: [16, 16],
+          maxZoom: 7,
+          animate: true,
+        });
+      } catch {
+        map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
+      }
+    };
+
+    // Allow container size to settle (tall layout) before fitting.
+    requestAnimationFrame(() => {
+      map.invalidateSize();
+      fit();
+    });
   }, [map, boundaries, focusedSlug]);
+
+  // Refit when container is resized (layout breakpoints).
+  useEffect(() => {
+    const el = map.getContainer();
+    if (typeof ResizeObserver === "undefined") return;
+    const ro = new ResizeObserver(() => {
+      map.invalidateSize({ animate: false });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [map]);
 
   return null;
 }
@@ -118,10 +132,10 @@ function FocusPlace({
       const bounds = layer.getBounds();
       if (!bounds.isValid()) return;
       map.fitBounds(bounds.pad(0.35), {
-        padding: [40, 40],
+        padding: [36, 36],
         maxZoom: 11,
         animate: true,
-        duration: 0.6,
+        duration: 0.55,
       });
     } catch {
       // ignore invalid geometry
@@ -137,6 +151,7 @@ export function NzChoroplethMap({
   highlightedSlug,
   focusedSlug,
   queryString,
+  className,
 }: Props) {
   const router = useRouter();
   const { resolvedTheme } = useTheme();
@@ -149,7 +164,6 @@ export function NzChoroplethMap({
       string,
       { territory: ScoredTerritory; rank: number }
     >();
-    // territories already sorted best → worst by matchScore
     territories.forEach((t, i) => {
       map.set(t.slug, { territory: t, rank: i + 1 });
     });
@@ -166,7 +180,6 @@ export function NzChoroplethMap({
     const isHovered = Boolean(slug && slug === highlightedSlug && !isFocused);
     const isTop = Boolean(slug && slug === topSlug);
 
-    // Heatmap = personalised rank; outlines stay quiet grey unless top/focus.
     let color = STROKE_DEFAULT;
     let weight = 1;
 
@@ -178,12 +191,11 @@ export function NzChoroplethMap({
       weight = 2;
     } else if (isTop) {
       color = STROKE_TOP;
-      weight = 2.25;
+      weight = 2.5;
     }
 
     return {
       fillColor: rankHeatFill(rank, total, isDark),
-      // Alpha lives in rgba fill; keep Leaflet fillOpacity at 1
       fillOpacity: 1,
       weight,
       opacity: 1,
@@ -215,21 +227,12 @@ export function NzChoroplethMap({
       },
       mouseover: (e: LeafletMouseEvent) => {
         const target = e.target as { setStyle: (s: PathOptions) => void };
-        target.setStyle({
-          weight: 2.5,
-          color: STROKE_HOVER,
-        });
-        target.setStyle({
-          // bring to front
-        });
-        // Leaflet path bringToFront if available
+        target.setStyle({ weight: 2.5, color: STROKE_HOVER });
         const path = e.target as L.Path;
         if (typeof path.bringToFront === "function") path.bringToFront();
       },
       mouseout: (e: LeafletMouseEvent) => {
-        const target = e.target as {
-          setStyle: (s: PathOptions) => void;
-        };
+        const target = e.target as { setStyle: (s: PathOptions) => void };
         target.setStyle(styleFeature(feature));
       },
     });
@@ -247,7 +250,13 @@ export function NzChoroplethMap({
   ].join(";");
 
   return (
-    <div className="border-border relative h-[360px] w-full overflow-hidden rounded-xl border sm:h-[420px] lg:h-full lg:min-h-[480px]">
+    <div
+      className={cn(
+        // Tall portrait map — NZ is north–south, not a wide landscape panel
+        "border-border relative h-[min(72vh,640px)] w-full overflow-hidden rounded-xl border sm:h-[min(75vh,720px)]",
+        className,
+      )}
+    >
       <MapContainer
         center={[-41.2, 174.5]}
         zoom={5}
@@ -270,15 +279,13 @@ export function NzChoroplethMap({
         />
       </MapContainer>
 
-      {/* Legend: what the map is trying to say */}
-      <div className="bg-background/90 border-border absolute bottom-3 left-3 z-[1000] max-w-[220px] rounded-lg border px-3 py-2 text-xs shadow-sm backdrop-blur-sm">
+      <div className="bg-background/90 border-border absolute bottom-3 left-3 z-[1000] max-w-[200px] rounded-lg border px-3 py-2 text-xs shadow-sm backdrop-blur-sm">
         <p className="text-foreground mb-1.5 font-medium">Match heatmap</p>
         <div
-          className="mb-1 h-2 w-full rounded-full"
+          className="mb-1 h-2.5 w-full rounded-full"
           style={{
-            background: isDark
-              ? "linear-gradient(90deg, rgba(100,100,100,0.35), rgba(251,146,60,0.85))"
-              : "linear-gradient(90deg, rgba(180,180,180,0.35), rgba(234,88,12,0.75))",
+            background:
+              "linear-gradient(90deg, rgba(16,185,129,0.85), rgba(234,88,12,0.9))",
           }}
         />
         <div className="text-muted-foreground flex justify-between">
@@ -286,7 +293,7 @@ export function NzChoroplethMap({
           <span>Stronger</span>
         </div>
         <p className="text-muted-foreground mt-1.5 leading-snug">
-          Warm fill = higher rank for your weights. Orange outline = top match
+          Emerald → orange by rank. Orange outline = top match
           {focusedSlug ? " or focused place" : ""}.
         </p>
       </div>

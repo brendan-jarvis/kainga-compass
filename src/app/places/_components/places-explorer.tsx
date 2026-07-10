@@ -170,7 +170,7 @@ export function PlacesExplorer({
       : `${metadata.regionCount} districts`;
 
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:py-8">
+    <div className="mx-auto flex w-full max-w-[1600px] flex-col gap-5 px-4 py-5 sm:px-6 lg:py-6">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-1">
           <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
@@ -202,8 +202,15 @@ export function PlacesExplorer({
         </Button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        <Card className="border-primary/10 h-fit">
+      {/*
+        NZ is tall (N–S). Use a portrait map column instead of a wide landscape
+        panel so fitBounds can zoom into the country instead of ocean.
+        xl+: [priorities | tall map | ranked list]
+        lg:  [priorities | map+list]
+        <lg: stack
+      */}
+      <div className="grid items-start gap-5 lg:grid-cols-[minmax(260px,300px)_minmax(0,1fr)] xl:grid-cols-[minmax(260px,300px)_minmax(280px,400px)_minmax(0,1fr)]">
+        <Card className="border-primary/10 lg:sticky lg:top-16 lg:max-h-[calc(100vh-5rem)] lg:overflow-y-auto">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg">Your priorities</CardTitle>
             <CardDescription>
@@ -226,31 +233,31 @@ export function PlacesExplorer({
           </CardContent>
         </Card>
 
-        <div className="flex min-h-0 flex-col gap-6">
-          <div id="places-map">
-            <NzChoroplethMap
-              territories={scored}
-              boundaries={scopedBoundaries}
-              highlightedSlug={highlightedSlug}
-              focusedSlug={focusedSlug}
-              queryString={queryString}
-            />
-          </div>
-          <div>
-            <h2 className="mb-3 text-xl font-semibold tracking-normal">
-              Ranked matches
-              <span className="text-muted-foreground ml-2 text-base font-normal">
-                · {scope === "city" ? "Cities & towns" : "Districts"}
-              </span>
-            </h2>
-            <RankedList
-              territories={scored}
-              queryString={queryString}
-              focusedSlug={focusedSlug}
-              onHover={setHighlightedSlug}
-              onFocus={handleFocusPlace}
-            />
-          </div>
+        <div id="places-map" className="xl:sticky xl:top-16">
+          <NzChoroplethMap
+            territories={scored}
+            boundaries={scopedBoundaries}
+            highlightedSlug={highlightedSlug}
+            focusedSlug={focusedSlug}
+            queryString={queryString}
+            className="mx-auto max-w-[400px] xl:mx-0 xl:max-w-none"
+          />
+        </div>
+
+        <div className="min-w-0 lg:col-span-2 xl:col-span-1">
+          <h2 className="mb-3 text-xl font-semibold tracking-normal">
+            Ranked matches
+            <span className="text-muted-foreground ml-2 text-base font-normal">
+              · {scope === "city" ? "Cities & towns" : "Districts"}
+            </span>
+          </h2>
+          <RankedList
+            territories={scored}
+            queryString={queryString}
+            focusedSlug={focusedSlug}
+            onHover={setHighlightedSlug}
+            onFocus={handleFocusPlace}
+          />
         </div>
       </div>
     </div>
