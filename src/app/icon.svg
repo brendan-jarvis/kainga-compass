@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <rect width="32" height="32" rx="8" fill="#059669"/>
+  <circle cx="16" cy="16" r="9.5" stroke="#ecfdf5" stroke-width="1.75"/>
+  <!-- North needle -->
+  <path d="M16 6.5 L19 16.5 L16 14.25 L13 16.5 Z" fill="#ecfdf5"/>
+  <!-- South needle (muted) -->
+  <path d="M16 25.5 L19 15.5 L16 17.75 L13 15.5 Z" fill="#a7f3d0"/>
+  <circle cx="16" cy="16" r="2" fill="#ecfdf5"/>
+</svg>

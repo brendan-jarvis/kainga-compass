@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: "Kāinga Compass",
   description:
     "Find where in Aotearoa fits the life you're building — affordability, career, growth, and lifestyle.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
+  icons: [{ rel: "icon", url: "/favicon.svg", type: "image/svg+xml" }],
 };
 
 const roboto = Roboto({
