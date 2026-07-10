@@ -110,8 +110,11 @@ weights are normalised so Σ weight = 1`}
           </p>
           <p>
             Toggle in the explorer re-scores only within that peer set. Map
-            polygons are simplified illustrative shapes, not official Stats NZ
-            boundaries.
+            outlines come from official Stats NZ layers (Urban Rural 2023 for
+            settlements, Territorial Authority 2023 for districts), generalised
+            for web performance. Re-run{" "}
+            <code className="text-foreground">bun run ingest:places</code> to
+            refresh.
           </p>
           <p>
             Planned finer sources:{" "}

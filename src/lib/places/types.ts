@@ -70,4 +70,8 @@ export type PlacesMetadata = {
   cityCount: number;
   regionCount: number;
   notes?: string;
+  /** Features matched to Stats NZ official polygons. */
+  boundaryOfficial?: number;
+  /** Features using fallback centroid circles. */
+  boundaryFallback?: number;
 };

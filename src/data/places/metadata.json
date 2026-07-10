@@ -4,11 +4,14 @@
     "MBIE Tenancy Services — Rental bond data by territorial authority (district view)",
     "MBIE Market Rent API — SA2 / finer areas for future city–town rents",
     "HUD Local Housing Statistics — median sale price & multiple by TA",
-    "Stats NZ Urban Rural 2023/2025 — settlement geography for city/town units",
+    "Stats NZ Urban Rural Areas 2023 (FeatureServer) — city/town outlines",
+    "Stats NZ Territorial Authority 2023 (FeatureServer) — district outlines",
     "Stats NZ subnational population estimates (urban rural) — density proxies",
-    "Indicative settlement splits (e.g. Queenstown vs Wānaka) where TA data alone would mask local markets"
+    "Indicative settlement metric splits where TA data alone would mask local markets"
   ],
   "cityCount": 20,
   "regionCount": 17,
-  "notes": "Cities & towns are settlement-scale places people actually choose between. Districts are territorial authorities (council areas). District metrics track public TA sources more closely; city/town metrics for multi-settlement TAs (e.g. Queenstown-Lakes) are curated splits and flagged as approximate until SA2/Market Rent pipelines are wired."
+  "boundaryOfficial": 37,
+  "boundaryFallback": 0,
+  "notes": "Cities & towns use Stats NZ Urban Rural 2023 polygons. Districts use Territorial Authority 2023 polygons. Geometry is generalised (Douglas–Peucker) for web size. Metrics for multi-settlement TAs remain curated approximations until SA2/Market Rent pipelines are wired."
 }
