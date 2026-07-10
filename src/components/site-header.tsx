@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Compass } from "lucide-react";
 
 import { buttonVariants } from "~/components/ui/button";
+import { ThemeToggle } from "~/components/theme-toggle";
 import { cn } from "~/lib/utils";
 
 const links = [
@@ -17,7 +18,7 @@ export function SiteHeader() {
           href="/"
           className="text-foreground flex items-center gap-2 font-semibold tracking-tight"
         >
-          <span className="bg-emerald-500/15 text-emerald-400 flex size-8 items-center justify-center rounded-lg">
+          <span className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-lg">
             <Compass className="size-4" />
           </span>
           <span className="hidden sm:inline">Kāinga Compass</span>
@@ -37,12 +38,10 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          <ThemeToggle />
           <Link
             href="/places"
-            className={cn(
-              buttonVariants({ size: "sm" }),
-              "bg-emerald-600 text-white hover:bg-emerald-500",
-            )}
+            className={cn(buttonVariants({ size: "sm" }))}
           >
             Open map
           </Link>

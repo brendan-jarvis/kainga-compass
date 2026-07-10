@@ -78,7 +78,7 @@ function DimensionBar({
       </div>
       <div className="bg-muted h-2 overflow-hidden rounded-full">
         <div
-          className="h-full rounded-full bg-emerald-500/80 transition-all"
+          className="bg-primary/80 h-full rounded-full transition-all"
           style={{ width: `${Math.max(4, Math.min(100, score))}%` }}
         />
       </div>
@@ -204,7 +204,7 @@ export default async function TerritoryDetailPage({
         Figures are indicative MVP fixtures (updated {metadata.lastUpdated}).{" "}
         <Link
           href="/places/methodology"
-          className="text-emerald-400 underline-offset-2 hover:underline"
+          className="text-primary underline-offset-2 hover:underline"
         >
           Sources and limitations
         </Link>

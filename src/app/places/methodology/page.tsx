@@ -23,7 +23,7 @@ export default function MethodologyPage() {
   return (
     <div className="mx-auto w-full max-w-3xl space-y-8 px-4 py-10 sm:px-6">
       <div className="space-y-3">
-        <p className="text-emerald-400 text-sm font-medium tracking-wide uppercase">
+        <p className="text-primary text-sm font-medium tracking-wide uppercase">
           Transparency
         </p>
         <h1 className="text-3xl font-bold tracking-tight">Methodology</h1>
@@ -157,7 +157,7 @@ weights are normalised so Σ weight = 1`}
       <p className="text-sm">
         <Link
           href="/places"
-          className="text-emerald-400 underline-offset-2 hover:underline"
+          className="text-primary underline-offset-2 hover:underline"
         >
           ← Back to explorer
         </Link>

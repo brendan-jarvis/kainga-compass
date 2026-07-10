@@ -2,10 +2,13 @@ import { Badge } from "~/components/ui/badge";
 import { cn } from "~/lib/utils";
 
 function scoreTone(score: number): string {
-  if (score >= 70) return "border-emerald-500/30 bg-emerald-500/15 text-emerald-300";
-  if (score >= 50) return "border-teal-500/30 bg-teal-500/15 text-teal-300";
-  if (score >= 35) return "border-amber-500/30 bg-amber-500/15 text-amber-300";
-  return "border-rose-500/30 bg-rose-500/15 text-rose-300";
+  if (score >= 70)
+    return "border-primary/30 bg-primary/15 text-primary";
+  if (score >= 50)
+    return "border-teal-600/30 bg-teal-600/10 text-teal-700 dark:border-teal-400/30 dark:bg-teal-400/15 dark:text-teal-300";
+  if (score >= 35)
+    return "border-amber-600/30 bg-amber-500/10 text-amber-800 dark:border-amber-400/30 dark:bg-amber-400/15 dark:text-amber-300";
+  return "border-rose-600/30 bg-rose-500/10 text-rose-700 dark:border-rose-400/30 dark:bg-rose-400/15 dark:text-rose-300";
 }
 
 export function MatchScoreBadge({
@@ -33,9 +36,9 @@ export function scoreColor(score: number): string {
 }
 
 export function scoreFill(score: number): string {
-  // Emerald ramp 0–100 for choropleth
+  // Nature-green ramp 0–100 for choropleth (hue ~166 matches primary)
   const t = Math.max(0, Math.min(100, score)) / 100;
-  const lightness = 28 + t * 32;
-  const chroma = 0.08 + t * 0.12;
-  return `oklch(${lightness}% ${chroma} 160)`;
+  const lightness = 32 + t * 28;
+  const chroma = 0.07 + t * 0.1;
+  return `oklch(${lightness}% ${chroma} 166)`;
 }

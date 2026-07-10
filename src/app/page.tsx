@@ -35,11 +35,11 @@ const features = [
 export default function Home() {
   return (
     <main className="flex flex-col">
-      <section className="from-emerald-950 via-background to-background relative overflow-hidden bg-gradient-to-b px-4 py-20 sm:px-6 sm:py-28">
+      <section className="from-primary/10 via-background to-background relative overflow-hidden bg-gradient-to-b px-4 py-20 sm:px-6 sm:py-28">
         <div className="mx-auto flex w-full max-w-3xl flex-col items-center gap-8 text-center">
           <Badge
             variant="secondary"
-            className="border-emerald-500/20 bg-emerald-500/10 text-emerald-200"
+            className="border-primary/20 bg-primary/10 text-primary"
           >
             <MapPin className="size-3" />
             Aotearoa New Zealand
@@ -55,11 +55,7 @@ export default function Home() {
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Button
-              render={<Link href="/places" />}
-              className="bg-emerald-600 text-white hover:bg-emerald-500"
-              size="lg"
-            >
+            <Button render={<Link href="/places" />} size="lg">
               Explore places
               <ArrowRight data-icon="inline-end" />
             </Button>
@@ -80,9 +76,9 @@ export default function Home() {
 
       <section className="mx-auto grid w-full max-w-5xl gap-4 px-4 py-12 sm:grid-cols-3 sm:px-6">
         {features.map((feature) => (
-          <Card key={feature.title} className="border-emerald-500/10">
+          <Card key={feature.title} className="border-primary/10">
             <CardHeader>
-              <div className="bg-emerald-500/10 text-emerald-400 mb-2 flex size-9 items-center justify-center rounded-lg">
+              <div className="bg-primary/10 text-primary mb-2 flex size-9 items-center justify-center rounded-lg">
                 <feature.icon className="size-4" />
               </div>
               <CardTitle className="text-base">{feature.title}</CardTitle>
@@ -93,7 +89,7 @@ export default function Home() {
       </section>
 
       <section className="border-border/60 border-t px-4 py-12 sm:px-6">
-        <Card className="mx-auto max-w-3xl border-emerald-500/15 bg-emerald-950/20">
+        <Card className="border-primary/15 bg-primary/5 mx-auto max-w-3xl">
           <CardHeader>
             <CardTitle>Try a preset in under a minute</CardTitle>
             <CardDescription>
@@ -102,10 +98,7 @@ export default function Home() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <Button
-              render={<Link href="/places?preset=laid-back" />}
-              className="bg-emerald-600 text-white hover:bg-emerald-500"
-            >
+            <Button render={<Link href="/places?preset=laid-back" />}>
               Open explorer
               <ArrowRight data-icon="inline-end" />
             </Button>

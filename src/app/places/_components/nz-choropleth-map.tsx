@@ -10,6 +10,7 @@ import {
 import type { Feature, FeatureCollection } from "geojson";
 import type { Layer, LeafletMouseEvent, PathOptions } from "leaflet";
 import { useRouter } from "next/navigation";
+import { useTheme } from "next-themes";
 
 import type { ScoredTerritory } from "~/lib/places/types";
 import { scoreFill } from "./match-score-badge";
@@ -26,7 +27,6 @@ type Props = {
 function FitBounds({ boundaries }: { boundaries: FeatureCollection }) {
   const map = useMap();
   useEffect(() => {
-    // NZ mainland approximate bounds
     map.fitBounds(
       [
         [-47.5, 166.0],
@@ -45,6 +45,9 @@ export function NzChoroplethMap({
   queryString,
 }: Props) {
   const router = useRouter();
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
+
   const scoreBySlug = useMemo(() => {
     const map = new Map<string, ScoredTerritory>();
     for (const t of territories) map.set(t.slug, t);
@@ -60,7 +63,13 @@ export function NzChoroplethMap({
       fillColor: scoreFill(score),
       weight: isHighlighted ? 2.5 : 1,
       opacity: 1,
-      color: isHighlighted ? "#a7f3d0" : "#064e3b",
+      color: isHighlighted
+        ? isDark
+          ? "#6ee7b7"
+          : "#047857"
+        : isDark
+          ? "#134e4a"
+          : "#99f6e4",
       fillOpacity: isHighlighted ? 0.9 : 0.75,
     };
   };
@@ -96,22 +105,27 @@ export function NzChoroplethMap({
     });
   };
 
+  const tileUrl = isDark
+    ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+    : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
+
   return (
     <div className="border-border relative h-[360px] w-full overflow-hidden rounded-xl border sm:h-[420px] lg:h-full lg:min-h-[480px]">
       <MapContainer
         center={[-41.2, 174.5]}
         zoom={5}
         scrollWheelZoom={false}
-        className="bg-emerald-950/40 z-0 h-full w-full"
+        className="bg-muted z-0 h-full w-full"
         attributionControl
       >
         <TileLayer
+          key={isDark ? "dark" : "light"}
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+          url={tileUrl}
         />
         <FitBounds boundaries={boundaries} />
         <GeoJSON
-          key={territories.map((t) => `${t.slug}:${t.matchScore}`).join("|")}
+          key={`${isDark ? "dark" : "light"}|${territories.map((t) => `${t.slug}:${t.matchScore}`).join("|")}`}
           data={boundaries}
           style={styleFeature}
           onEachFeature={onEachFeature}

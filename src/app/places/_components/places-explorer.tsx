@@ -168,7 +168,7 @@ export function PlacesExplorer({
       </div>
 
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
-        <Card className="h-fit border-emerald-500/10">
+        <Card className="border-primary/10 h-fit">
           <CardHeader className="pb-3">
             <CardTitle className="text-base">Your priorities</CardTitle>
             <CardDescription>
@@ -182,7 +182,7 @@ export function PlacesExplorer({
               Data as of {metadata.lastUpdated}.{" "}
               <Link
                 href="/places/methodology"
-                className="text-emerald-400 underline-offset-2 hover:underline"
+                className="text-primary underline-offset-2 hover:underline"
               >
                 How scores work
               </Link>

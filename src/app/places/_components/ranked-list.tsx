@@ -62,7 +62,7 @@ export function RankedList({
               <TableCell>
                 <Link
                   href={`/places/${t.slug}${qs}`}
-                  className="hover:text-emerald-300 font-medium"
+                  className="hover:text-primary font-medium"
                 >
                   {t.name}
                 </Link>

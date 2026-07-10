@@ -25,8 +25,8 @@ export function PresetPicker({
             className={cn(
               "rounded-full border px-3 py-1.5 text-sm transition-colors",
               active
-                ? "border-emerald-500/50 bg-emerald-500/15 text-emerald-200"
-                : "border-border bg-card text-muted-foreground hover:border-emerald-500/30 hover:text-foreground",
+                ? "border-primary/50 bg-primary/15 text-primary"
+                : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
             )}
           >
             {preset.label}
