@@ -103,6 +103,8 @@ function validate(territories: Territory[]) {
     "priceYoY",
     "medianIncome",
     "populationDensity",
+    "populationGrowthYoY",
+    "jobsGrowthYoY",
   ] as const;
 
   for (const t of territories) {

@@ -12,9 +12,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 72000,
-      "populationDensity": 650
+      "populationDensity": 650,
+      "populationGrowthYoY": 0.01,
+      "jobsGrowthYoY": 0.011
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "auckland",
@@ -29,7 +33,9 @@
       "rentYoY": 0.03,
       "priceYoY": -0.02,
       "medianIncome": 104000,
-      "populationDensity": 1400
+      "populationDensity": 1400,
+      "populationGrowthYoY": 0.012,
+      "jobsGrowthYoY": 0.015
     }
   },
   {
@@ -45,9 +51,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.01,
       "medianIncome": 88000,
-      "populationDensity": 1500
+      "populationDensity": 1500,
+      "populationGrowthYoY": 0.018,
+      "jobsGrowthYoY": 0.02
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "tauranga",
@@ -62,9 +72,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.03,
       "medianIncome": 86000,
-      "populationDensity": 1100
+      "populationDensity": 1100,
+      "populationGrowthYoY": 0.022,
+      "jobsGrowthYoY": 0.018
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "rotorua",
@@ -79,9 +93,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.03,
       "medianIncome": 74000,
-      "populationDensity": 800
+      "populationDensity": 800,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "napier",
@@ -96,9 +114,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.02,
       "medianIncome": 80000,
-      "populationDensity": 700
+      "populationDensity": 700,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "hastings",
@@ -109,13 +131,17 @@
     "metrics": {
       "medianRentWeek": 470,
       "medianHousePrice": 640000,
-      "medianMultiple": 6.0,
+      "medianMultiple": 6,
       "rentYoY": 0.04,
       "priceYoY": 0.02,
       "medianIncome": 78000,
-      "populationDensity": 600
+      "populationDensity": 600,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "new-plymouth",
@@ -130,9 +156,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.02,
       "medianIncome": 85000,
-      "populationDensity": 550
+      "populationDensity": 550,
+      "populationGrowthYoY": 0.007,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "palmerston-north",
@@ -147,9 +177,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.02,
       "medianIncome": 82000,
-      "populationDensity": 900
+      "populationDensity": 900,
+      "populationGrowthYoY": 0.009,
+      "jobsGrowthYoY": 0.012
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "wellington",
@@ -164,9 +198,13 @@
       "rentYoY": 0.02,
       "priceYoY": -0.04,
       "medianIncome": 112000,
-      "populationDensity": 1900
+      "populationDensity": 1900,
+      "populationGrowthYoY": 0.005,
+      "jobsGrowthYoY": 0.008
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "lower-hutt",
@@ -181,9 +219,13 @@
       "rentYoY": 0.02,
       "priceYoY": -0.03,
       "medianIncome": 100000,
-      "populationDensity": 1200
+      "populationDensity": 1200,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "porirua",
@@ -198,9 +240,13 @@
       "rentYoY": 0.03,
       "priceYoY": -0.01,
       "medianIncome": 95000,
-      "populationDensity": 800
+      "populationDensity": 800,
+      "populationGrowthYoY": 0.01,
+      "jobsGrowthYoY": 0.011
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "nelson",
@@ -215,9 +261,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 79000,
-      "populationDensity": 600
+      "populationDensity": 600,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.008
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "christchurch",
@@ -232,9 +282,13 @@
       "rentYoY": 0.05,
       "priceYoY": 0.02,
       "medianIncome": 92000,
-      "populationDensity": 650
+      "populationDensity": 650,
+      "populationGrowthYoY": 0.015,
+      "jobsGrowthYoY": 0.016
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "timaru",
@@ -249,9 +303,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.02,
       "medianIncome": 76000,
-      "populationDensity": 400
+      "populationDensity": 400,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.005
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "dunedin",
@@ -266,9 +324,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 78000,
-      "populationDensity": 400
+      "populationDensity": 400,
+      "populationGrowthYoY": 0.004,
+      "jobsGrowthYoY": 0.006
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "palmerston",
@@ -279,13 +341,17 @@
     "metrics": {
       "medianRentWeek": 320,
       "medianHousePrice": 380000,
-      "medianMultiple": 4.0,
+      "medianMultiple": 4,
       "rentYoY": 0.02,
       "priceYoY": 0.03,
       "medianIncome": 68000,
-      "populationDensity": 80
+      "populationDensity": 80,
+      "populationGrowthYoY": -0.002,
+      "jobsGrowthYoY": 0.002
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "queenstown",
@@ -300,9 +366,13 @@
       "rentYoY": 0.07,
       "priceYoY": 0.06,
       "medianIncome": 92000,
-      "populationDensity": 120
+      "populationDensity": 120,
+      "populationGrowthYoY": 0.025,
+      "jobsGrowthYoY": 0.03
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "wanaka",
@@ -317,9 +387,13 @@
       "rentYoY": 0.05,
       "priceYoY": 0.04,
       "medianIncome": 88000,
-      "populationDensity": 90
+      "populationDensity": 90,
+      "populationGrowthYoY": 0.028,
+      "jobsGrowthYoY": 0.022
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "invercargill",
@@ -334,11 +408,14 @@
       "rentYoY": 0.05,
       "priceYoY": 0.04,
       "medianIncome": 76000,
-      "populationDensity": 450
+      "populationDensity": 450,
+      "populationGrowthYoY": 0.003,
+      "jobsGrowthYoY": 0.007
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
-
   {
     "slug": "auckland-region",
     "name": "Auckland",
@@ -351,7 +428,9 @@
       "rentYoY": 0.03,
       "priceYoY": -0.02,
       "medianIncome": 104000,
-      "populationDensity": 380
+      "populationDensity": 380,
+      "populationGrowthYoY": 0.012,
+      "jobsGrowthYoY": 0.015
     }
   },
   {
@@ -366,9 +445,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 72000,
-      "populationDensity": 70
+      "populationDensity": 70,
+      "populationGrowthYoY": 0.01,
+      "jobsGrowthYoY": 0.011
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "hamilton-city",
@@ -382,9 +465,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.01,
       "medianIncome": 88000,
-      "populationDensity": 1500
+      "populationDensity": 1500,
+      "populationGrowthYoY": 0.018,
+      "jobsGrowthYoY": 0.02
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "tauranga-city",
@@ -398,9 +485,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.03,
       "medianIncome": 86000,
-      "populationDensity": 1100
+      "populationDensity": 1100,
+      "populationGrowthYoY": 0.022,
+      "jobsGrowthYoY": 0.018
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "rotorua-district",
@@ -414,9 +505,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.03,
       "medianIncome": 74000,
-      "populationDensity": 90
+      "populationDensity": 90,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "napier-city",
@@ -430,9 +525,13 @@
       "rentYoY": 0.04,
       "priceYoY": 0.02,
       "medianIncome": 80000,
-      "populationDensity": 700
+      "populationDensity": 700,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "hastings-district",
@@ -442,13 +541,17 @@
     "metrics": {
       "medianRentWeek": 470,
       "medianHousePrice": 640000,
-      "medianMultiple": 6.0,
+      "medianMultiple": 6,
       "rentYoY": 0.04,
       "priceYoY": 0.02,
       "medianIncome": 78000,
-      "populationDensity": 60
+      "populationDensity": 60,
+      "populationGrowthYoY": 0.008,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "new-plymouth-district",
@@ -462,9 +565,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.02,
       "medianIncome": 85000,
-      "populationDensity": 80
+      "populationDensity": 80,
+      "populationGrowthYoY": 0.007,
+      "jobsGrowthYoY": 0.01
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "palmerston-north-city",
@@ -478,9 +585,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.02,
       "medianIncome": 82000,
-      "populationDensity": 900
+      "populationDensity": 900,
+      "populationGrowthYoY": 0.009,
+      "jobsGrowthYoY": 0.012
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "wellington-city",
@@ -494,9 +605,13 @@
       "rentYoY": 0.02,
       "priceYoY": -0.04,
       "medianIncome": 112000,
-      "populationDensity": 1900
+      "populationDensity": 1900,
+      "populationGrowthYoY": 0.005,
+      "jobsGrowthYoY": 0.008
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "lower-hutt-city",
@@ -510,9 +625,13 @@
       "rentYoY": 0.02,
       "priceYoY": -0.03,
       "medianIncome": 100000,
-      "populationDensity": 1200
+      "populationDensity": 1200,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.009
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "christchurch-city",
@@ -526,9 +645,13 @@
       "rentYoY": 0.05,
       "priceYoY": 0.02,
       "medianIncome": 92000,
-      "populationDensity": 650
+      "populationDensity": 650,
+      "populationGrowthYoY": 0.015,
+      "jobsGrowthYoY": 0.016
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "dunedin-city",
@@ -542,9 +665,13 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 78000,
-      "populationDensity": 400
+      "populationDensity": 400,
+      "populationGrowthYoY": 0.004,
+      "jobsGrowthYoY": 0.006
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "waitaki-district",
@@ -558,9 +685,13 @@
       "rentYoY": 0.02,
       "priceYoY": 0.03,
       "medianIncome": 70000,
-      "populationDensity": 8
+      "populationDensity": 8,
+      "populationGrowthYoY": -0.002,
+      "jobsGrowthYoY": 0.002
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "queenstown-lakes-district",
@@ -574,9 +705,13 @@
       "rentYoY": 0.06,
       "priceYoY": 0.05,
       "medianIncome": 90000,
-      "populationDensity": 15
+      "populationDensity": 15,
+      "populationGrowthYoY": 0.025,
+      "jobsGrowthYoY": 0.03
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "invercargill-city",
@@ -590,9 +725,13 @@
       "rentYoY": 0.05,
       "priceYoY": 0.04,
       "medianIncome": 76000,
-      "populationDensity": 450
+      "populationDensity": 450,
+      "populationGrowthYoY": 0.003,
+      "jobsGrowthYoY": 0.007
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   },
   {
     "slug": "nelson-city",
@@ -606,8 +745,12 @@
       "rentYoY": 0.03,
       "priceYoY": 0.01,
       "medianIncome": 79000,
-      "populationDensity": 600
+      "populationDensity": 600,
+      "populationGrowthYoY": 0.006,
+      "jobsGrowthYoY": 0.008
     },
-    "proxies": ["career"]
+    "proxies": [
+      "career"
+    ]
   }
 ]

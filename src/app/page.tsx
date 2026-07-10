@@ -93,8 +93,8 @@ export default function Home() {
           <CardHeader>
             <CardTitle>Try a preset in under a minute</CardTitle>
             <CardDescription>
-              Laid-back & affordable, Career & social, or Investor — then tweak
-              the sliders.
+              Laid-back, career, family, first home, property investor, growing
+              town, and more — then tweak the sliders.
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -18,6 +18,7 @@ import {
 import {
   DEFAULT_WEIGHTS,
   getPresetWeights,
+  matchPresetId,
   normalizeWeights,
 } from "~/lib/places/presets";
 import { parseWeights, scoreTerritories, serializeWeights } from "~/lib/places/scoring";
@@ -28,7 +29,7 @@ import type {
   Territory,
   Weights,
 } from "~/lib/places/types";
-import { PLACE_KINDS } from "~/lib/places/types";
+import { PLACE_KINDS, PRESET_IDS } from "~/lib/places/types";
 import { PlaceScopeToggle } from "./place-scope-toggle";
 import { PresetPicker } from "./preset-picker";
 import { PrioritySliders } from "./priority-sliders";
@@ -46,17 +47,6 @@ const NzChoroplethMap = dynamic(
     ),
   },
 );
-
-const PRESET_IDS = ["laid-back", "career", "investor", "custom"] as const;
-
-function weightsEqual(a: Weights, b: Weights): boolean {
-  return (
-    Math.abs(a.affordability - b.affordability) < 0.02 &&
-    Math.abs(a.growth - b.growth) < 0.02 &&
-    Math.abs(a.career - b.career) < 0.02 &&
-    Math.abs(a.lifestyle - b.lifestyle) < 0.02
-  );
-}
 
 function resolveInitialWeights(
   preset: PresetId,
@@ -92,6 +82,7 @@ export function PlacesExplorer({
     resolveInitialWeights(params.preset, params.weights),
   );
   const [highlightedSlug, setHighlightedSlug] = useState<string | null>(null);
+  const [focusedSlug, setFocusedSlug] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const [, startTransition] = useTransition();
 
@@ -122,16 +113,15 @@ export function PlacesExplorer({
   }, [scope, params.preset, weights]);
 
   const syncUrl = useCallback(
-    (preset: PresetId, nextWeights: Weights, view: PlaceKind = scope) => {
+    (preset: PresetId, nextWeights: Weights) => {
       startTransition(() => {
         void setParams({
           preset,
           weights: serializeWeights(nextWeights),
-          view,
         });
       });
     },
-    [setParams, scope],
+    [setParams],
   );
 
   const handleScope = (kind: PlaceKind) => {
@@ -154,11 +144,7 @@ export function PlacesExplorer({
   const handleWeights = (next: Weights) => {
     const normalised = normalizeWeights(next);
     setWeights(normalised);
-    const matching = (["laid-back", "career", "investor"] as const).find((id) =>
-      weightsEqual(normalised, getPresetWeights(id)),
-    );
-    const preset: PresetId = matching ?? "custom";
-    syncUrl(preset, normalised);
+    syncUrl(matchPresetId(normalised), normalised);
   };
 
   const copyShareLink = async () => {

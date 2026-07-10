@@ -1,14 +1,17 @@
 import { averageScores, invertedPercentile, percentileRank } from "./normalize";
 import { normalizeWeights } from "./presets";
-import type {
-  Dimension,
-  DimensionScores,
-  ScoredTerritory,
-  Territory,
-  Weights,
+import {
+  DIMENSIONS,
+  type Dimension,
+  type DimensionScores,
+  type ScoredTerritory,
+  type Territory,
+  type Weights,
 } from "./types";
 
-function computeDimensionScores(territories: Territory[]): Map<string, DimensionScores> {
+function computeDimensionScores(
+  territories: Territory[],
+): Map<string, DimensionScores> {
   const rents = territories.map((t) => t.metrics.medianRentWeek);
   const multiples = territories.map((t) => t.metrics.medianMultiple);
   const prices = territories.map((t) => t.metrics.medianHousePrice);
@@ -16,6 +19,8 @@ function computeDimensionScores(territories: Territory[]): Map<string, Dimension
   const priceYoY = territories.map((t) => t.metrics.priceYoY);
   const incomes = territories.map((t) => t.metrics.medianIncome);
   const densities = territories.map((t) => t.metrics.populationDensity);
+  const popGrowth = territories.map((t) => t.metrics.populationGrowthYoY);
+  const jobsGrowth = territories.map((t) => t.metrics.jobsGrowthYoY);
 
   const result = new Map<string, DimensionScores>();
 
@@ -26,16 +31,24 @@ function computeDimensionScores(territories: Territory[]): Map<string, Dimension
       invertedPercentile(m.medianMultiple, multiples),
       invertedPercentile(m.medianHousePrice, prices),
     ]);
-    const growth = averageScores([
+    const housingGrowth = averageScores([
       percentileRank(m.rentYoY, rentYoY, true),
       percentileRank(m.priceYoY, priceYoY, true),
     ]);
+    const jobGrowth = percentileRank(m.jobsGrowthYoY, jobsGrowth, true);
+    const populationGrowth = percentileRank(
+      m.populationGrowthYoY,
+      popGrowth,
+      true,
+    );
     const career = percentileRank(m.medianIncome, incomes, true);
     const lifestyle = invertedPercentile(m.populationDensity, densities);
 
     result.set(territory.slug, {
       affordability,
-      growth,
+      housingGrowth,
+      jobGrowth,
+      populationGrowth,
       career,
       lifestyle,
     });
@@ -49,11 +62,10 @@ export function computeMatchScore(
   weights: Weights,
 ): number {
   const w = normalizeWeights(weights);
-  const score =
-    w.affordability * dimensionScores.affordability +
-    w.growth * dimensionScores.growth +
-    w.career * dimensionScores.career +
-    w.lifestyle * dimensionScores.lifestyle;
+  let score = 0;
+  for (const d of DIMENSIONS) {
+    score += w[d] * dimensionScores[d];
+  }
   return Math.round(score);
 }
 
@@ -73,27 +85,47 @@ export function scoreTerritories(
   return scored.sort((a, b) => b.matchScore - a.matchScore);
 }
 
-const DIMENSIONS: Dimension[] = [
-  "affordability",
-  "growth",
-  "career",
-  "lifestyle",
-];
-
 export function serializeWeights(weights: Weights): string {
-  return DIMENSIONS.map((d) => Math.round(weights[d] * 100)).join(",");
+  const w = normalizeWeights(weights);
+  return DIMENSIONS.map((d) => Math.round(w[d] * 100)).join(",");
 }
 
 export function parseWeights(raw: string | null | undefined): Weights | null {
   if (!raw) return null;
   const parts = raw.split(",").map(Number);
-  if (parts.length !== 4 || parts.some((n) => Number.isNaN(n))) return null;
-  const total = parts.reduce((a, b) => a + b, 0);
-  if (total === 0) return null;
-  return normalizeWeights({
-    affordability: parts[0]! / total,
-    growth: parts[1]! / total,
-    career: parts[2]! / total,
-    lifestyle: parts[3]! / total,
-  });
+  if (parts.some((n) => Number.isNaN(n))) return null;
+
+  // New format: 6 dimensions
+  if (parts.length === DIMENSIONS.length) {
+    const total = parts.reduce((a, b) => a + b, 0);
+    if (total === 0) return null;
+    const weights = {} as Weights;
+    DIMENSIONS.forEach((d, i) => {
+      weights[d] = parts[i]! / total;
+    });
+    return normalizeWeights(weights);
+  }
+
+  // Legacy 4-dim: affordability, growth, career, lifestyle
+  // Map old "growth" into housingGrowth primarily.
+  if (parts.length === 4) {
+    const total = parts.reduce((a, b) => a + b, 0);
+    if (total === 0) return null;
+    return normalizeWeights({
+      affordability: parts[0]! / total,
+      housingGrowth: parts[1]! / total,
+      jobGrowth: (parts[1]! / total) * 0.25,
+      populationGrowth: (parts[1]! / total) * 0.25,
+      career: parts[2]! / total,
+      lifestyle: parts[3]! / total,
+    });
+  }
+
+  return null;
 }
+
+export function emptyWeights(): Weights {
+  return Object.fromEntries(DIMENSIONS.map((d) => [d, 0])) as Weights;
+}
+
+export type { Dimension };

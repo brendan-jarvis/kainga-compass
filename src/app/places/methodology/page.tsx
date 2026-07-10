@@ -9,7 +9,8 @@ import {
   CardTitle,
 } from "~/components/ui/card";
 import { getPlacesMetadata } from "~/lib/places/get-territories";
-import { DIMENSION_LABELS } from "~/lib/places/presets";
+import { DIMENSION_HINTS, DIMENSION_LABELS } from "~/lib/places/presets";
+import { DIMENSIONS } from "~/lib/places/types";
 
 export const metadata: Metadata = {
   title: "Methodology | Kāinga Compass",
@@ -48,37 +49,21 @@ export default function MethodologyPage() {
 weights are normalised so Σ weight = 1`}
           </pre>
           <ul className="text-muted-foreground list-disc space-y-2 pl-5">
-            <li>
-              <strong className="text-foreground">
-                {DIMENSION_LABELS.affordability}
-              </strong>{" "}
-              — lower median rent, house price, and median multiple score
-              higher (inverted percentiles, averaged).
-            </li>
-            <li>
-              <strong className="text-foreground">
-                {DIMENSION_LABELS.growth}
-              </strong>{" "}
-              — higher year-on-year rent and price change score higher
-              (averaged). Investors weight this heavily; lifestyle movers often
-              do not.
-            </li>
-            <li>
-              <strong className="text-foreground">
-                {DIMENSION_LABELS.career}
-              </strong>{" "}
-              — higher median income scores higher. For most TAs this is a{" "}
-              <em>regional proxy</em> and is labelled in the UI.
-            </li>
-            <li>
-              <strong className="text-foreground">
-                {DIMENSION_LABELS.lifestyle}
-              </strong>{" "}
-              — lower population density scores higher in the MVP model
-              (proxy for space / lower intensity). This is a deliberate
-              simplification, not a full amenity index.
-            </li>
+            {DIMENSIONS.map((d) => (
+              <li key={d}>
+                <strong className="text-foreground">{DIMENSION_LABELS[d]}</strong>{" "}
+                — {DIMENSION_HINTS[d]}
+              </li>
+            ))}
           </ul>
+          <p className="text-muted-foreground">
+            “Growth” is no longer a single slider:{" "}
+            <strong className="text-foreground">housing growth</strong> (price &
+            rent momentum), <strong className="text-foreground">job growth</strong>,
+            and{" "}
+            <strong className="text-foreground">population growth</strong> are
+            separate so investor vs expanding-town intent is unambiguous.
+          </p>
         </CardContent>
       </Card>
 

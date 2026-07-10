@@ -1,6 +1,8 @@
 export const DIMENSIONS = [
   "affordability",
-  "growth",
+  "housingGrowth",
+  "jobGrowth",
+  "populationGrowth",
   "career",
   "lifestyle",
 ] as const;
@@ -12,7 +14,19 @@ export type PlaceKind = "city" | "region";
 
 export const PLACE_KINDS = ["city", "region"] as const;
 
-export type PresetId = "laid-back" | "career" | "investor" | "custom";
+export const PRESET_IDS = [
+  "laid-back",
+  "career",
+  "family",
+  "first-home",
+  "property-investor",
+  "growing-town",
+  "remote",
+  "retiree",
+  "custom",
+] as const;
+
+export type PresetId = (typeof PRESET_IDS)[number];
 
 export type Weights = Record<Dimension, number>;
 
@@ -24,6 +38,10 @@ export type TerritoryMetrics = {
   priceYoY: number;
   medianIncome: number;
   populationDensity: number;
+  /** Approximate annual population change (0.02 = +2%). */
+  populationGrowthYoY: number;
+  /** Approximate annual filled-jobs / employment change. */
+  jobsGrowthYoY: number;
 };
 
 export type Territory = {
