@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import type { Feature, FeatureCollection } from "geojson";
 
+import type { AgeGroupId } from "~/lib/places/age-groups";
 import { scoreTerritories } from "~/lib/places/scoring";
 import type { Territory, Weights } from "~/lib/places/types";
 import { RankedList } from "./ranked-list";
@@ -24,6 +25,7 @@ export function NestedPlacesPanel({
   childrenPlaces,
   allBoundaries,
   weights,
+  ageGroup = "all",
   queryString,
   title,
   description,
@@ -31,6 +33,7 @@ export function NestedPlacesPanel({
   childrenPlaces: Territory[];
   allBoundaries: FeatureCollection;
   weights: Weights;
+  ageGroup?: AgeGroupId;
   queryString: string;
   title: string;
   description: string;
@@ -39,8 +42,8 @@ export function NestedPlacesPanel({
   const [focusedSlug, setFocusedSlug] = useState<string | null>(null);
 
   const scored = useMemo(
-    () => scoreTerritories(childrenPlaces, weights),
-    [childrenPlaces, weights],
+    () => scoreTerritories(childrenPlaces, weights, ageGroup),
+    [childrenPlaces, weights, ageGroup],
   );
 
   const childBoundaries = useMemo(() => {

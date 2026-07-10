@@ -33,7 +33,7 @@ const COLUMN_HELP = {
   match:
     "Personalised Match Score (0–100) from your priority weights across affordability, growth, earnings, and lifestyle. Higher is a better fit for you — not an official ranking of the best places to live.",
   salary:
-    "Mean (average) annual earnings for filled jobs in this area — a LEED-style average salary indicator. Mean is often higher than the median because high earners pull the average up.",
+    "Mean (average) annual earnings for filled jobs. When you pick an age group above, this uses that band’s earnings so rankings fit your stage. Mean is often higher than the median.",
   rent: "Median weekly rent from tenancy bond data (or fixture estimates). Lower usually means more affordable housing costs.",
   price:
     "Median house sale price for the area. Used with income to gauge how expensive ownership is relative to local pay.",
@@ -189,7 +189,12 @@ export function RankedList({
                     <MatchScoreBadge score={t.matchScore} />
                   </TableCell>
                   <TableCell className="text-right tabular-nums">
-                    {formatSalary(t.metrics.meanEarningsAnnual)}
+                    {formatSalary(t.relevantMeanEarnings)}
+                    {t.earningsAgeLabel && (
+                      <div className="text-muted-foreground text-xs font-normal">
+                        {t.earningsAgeLabel.replace(" years", "")}
+                      </div>
+                    )}
                   </TableCell>
                   <TableCell className="text-right tabular-nums">
                     {formatRent(t.metrics.medianRentWeek)}

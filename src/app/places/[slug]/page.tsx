@@ -29,6 +29,12 @@ import {
   getTerritoriesByKind,
   getTerritoryBySlug,
 } from "~/lib/places/get-territories";
+import {
+  AGE_GROUP_IDS,
+  getAgeGroup,
+  getRelevantEarnings,
+  type AgeGroupId,
+} from "~/lib/places/age-groups";
 import { DIMENSION_LABELS, DEFAULT_WEIGHTS } from "~/lib/places/presets";
 import { parseWeights, scoreTerritories } from "~/lib/places/scoring";
 import { DIMENSIONS, type Dimension, type PlaceKind } from "~/lib/places/types";
@@ -38,8 +44,20 @@ import { NestedPlacesPanel } from "../_components/nested-places-panel";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ weights?: string; preset?: string; view?: string }>;
+  searchParams: Promise<{
+    weights?: string;
+    preset?: string;
+    view?: string;
+    age?: string;
+  }>;
 };
+
+function parseAgeParam(raw: string | undefined): AgeGroupId {
+  if (raw && (AGE_GROUP_IDS as readonly string[]).includes(raw)) {
+    return raw as AgeGroupId;
+  }
+  return "all";
+}
 
 export function generateStaticParams() {
   return getTerritories().map((t) => ({ slug: t.slug }));
@@ -115,17 +133,20 @@ export default async function TerritoryDetailPage({
   if (!territory) notFound();
 
   const weights = parseWeights(sp.weights) ?? DEFAULT_WEIGHTS;
+  const ageGroup = parseAgeParam(sp.age);
+  const ageDef = getAgeGroup(ageGroup);
   const parent = getParentPlace(territory);
   const peers =
     territory.kind === "suburb" && parent
       ? getChildPlaces(parent)
       : getTerritoriesByKind(territory.kind);
-  const scored = scoreTerritories(peers, weights);
+  const scored = scoreTerritories(peers, weights, ageGroup);
   const ranked = scored.find((t) => t.slug === slug)!;
   const rank = scored.findIndex((t) => t.slug === slug) + 1;
   const metadata = getPlacesMetadata();
   const children = getChildPlaces(territory);
   const boundaries = boundariesData as unknown as FeatureCollection;
+  const ageEarnings = getRelevantEarnings(territory, ageGroup);
 
   const qs = new URLSearchParams();
   // Explorer only uses city|region; suburbs open with city view context
@@ -135,6 +156,7 @@ export default async function TerritoryDetailPage({
   );
   if (sp.preset) qs.set("preset", sp.preset);
   if (sp.weights) qs.set("weights", sp.weights);
+  if (ageGroup !== "all") qs.set("age", ageGroup);
   const backQs = `?${qs.toString()}`;
   const childQs = qs.toString();
 
@@ -177,6 +199,7 @@ export default async function TerritoryDetailPage({
             : ""}{" "}
           · Rank #{rank} of {scored.length} {peerLabel(territory.kind)} for your
           current weights
+          {ageGroup !== "all" ? ` · ${ageDef.label} earnings` : ""}
         </p>
       </div>
 
@@ -217,14 +240,17 @@ export default async function TerritoryDetailPage({
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardDescription>Average salary (mean earnings)</CardDescription>
+            <CardDescription>
+              {ageGroup === "all"
+                ? "Average salary (mean earnings)"
+                : `Mean earnings · ${ageDef.label}`}
+            </CardDescription>
             <CardTitle className="text-2xl tabular-nums">
-              {formatSalary(territory.metrics.meanEarningsAnnual)}
+              {formatSalary(ageEarnings.meanAnnual)}
             </CardTitle>
           </CardHeader>
           <CardContent className="text-muted-foreground text-sm">
-            Median earnings{" "}
-            {formatSalary(territory.metrics.medianEarningsAnnual)}
+            Median {formatSalary(ageEarnings.medianAnnual)}
             {proxySet.has("career") ? " · regional proxy" : ""}
           </CardContent>
         </Card>
@@ -235,6 +261,7 @@ export default async function TerritoryDetailPage({
           childrenPlaces={children}
           allBoundaries={boundaries}
           weights={weights}
+          ageGroup={ageGroup}
           queryString={childQs}
           title={
             territory.kind === "region"
@@ -243,8 +270,8 @@ export default async function TerritoryDetailPage({
           }
           description={
             territory.kind === "region"
-              ? "Settlements inside this territorial authority — map and ranking use the same weights as the explorer."
-              : "Stats NZ Statistical Area 3 units (designed to approximate suburbs in urban areas; coarser than SA2 street-blocks). Metrics are parent-city fixtures with local variation until finer series are wired."
+              ? "Settlements inside this territorial authority — map and ranking use the same weights and age filter as the explorer."
+              : "Stats NZ Statistical Area 3 units (designed to approximate suburbs in urban areas). Metrics are parent-city fixtures with local variation until finer series are wired."
           }
         />
       )}
@@ -284,17 +311,34 @@ export default async function TerritoryDetailPage({
                   </tr>
                 </thead>
                 <tbody>
-                  {territory.metrics.earningsByAge.map((band) => (
-                    <tr key={band.label} className="border-b last:border-0">
-                      <td className="py-2 pr-3">{band.label}</td>
-                      <td className="py-2 pr-3 text-right tabular-nums">
-                        {formatSalary(band.medianAnnual)}
-                      </td>
-                      <td className="py-2 text-right tabular-nums">
-                        {formatSalary(band.meanAnnual)}
-                      </td>
-                    </tr>
-                  ))}
+                  {territory.metrics.earningsByAge.map((band) => {
+                    const isActive =
+                      ageGroup !== "all" && ageDef.dataLabel === band.label;
+                    return (
+                      <tr
+                        key={band.label}
+                        className={cn(
+                          "border-b last:border-0",
+                          isActive && "bg-primary/10 font-medium",
+                        )}
+                      >
+                        <td className="py-2 pr-3">
+                          {band.label}
+                          {isActive && (
+                            <span className="text-primary ml-2 text-xs">
+                              your age
+                            </span>
+                          )}
+                        </td>
+                        <td className="py-2 pr-3 text-right tabular-nums">
+                          {formatSalary(band.medianAnnual)}
+                        </td>
+                        <td className="py-2 text-right tabular-nums">
+                          {formatSalary(band.meanAnnual)}
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>

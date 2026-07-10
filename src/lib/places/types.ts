@@ -82,6 +82,11 @@ export type DimensionScores = Record<Dimension, number>;
 export type ScoredTerritory = Territory & {
   dimensionScores: DimensionScores;
   matchScore: number;
+  /** Earnings used for ranking/display after age filter is applied. */
+  relevantMeanEarnings: number;
+  relevantMedianEarnings: number;
+  /** Null when ranking on overall (all ages) earnings. */
+  earningsAgeLabel: string | null;
 };
 
 export type PlacesMetadata = {

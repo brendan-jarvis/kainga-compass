@@ -12,6 +12,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "~/components/ui/tooltip";
+import { AGE_GROUP_IDS, type AgeGroupId } from "~/lib/places/age-groups";
 import {
   DEFAULT_WEIGHTS,
   getPresetWeights,
@@ -26,6 +27,7 @@ import type {
   Weights,
 } from "~/lib/places/types";
 import { PLACE_KINDS, PRESET_IDS } from "~/lib/places/types";
+import { AgeGroupPicker } from "./age-group-picker";
 import {
   PlaceScopeToggle,
   type ExplorerScope,
@@ -71,11 +73,13 @@ export function PlacesExplorer({
       preset: parseAsStringLiteral(PRESET_IDS).withDefault("laid-back"),
       weights: parseAsString,
       view: parseAsStringLiteral(PLACE_KINDS).withDefault("city"),
+      age: parseAsStringLiteral(AGE_GROUP_IDS).withDefault("all"),
     },
     { history: "replace", shallow: true },
   );
 
   const scope: ExplorerScope = params.view;
+  const ageGroup: AgeGroupId = params.age;
 
   const [weights, setWeights] = useState<Weights>(() =>
     resolveInitialWeights(params.preset, params.weights),
@@ -99,8 +103,8 @@ export function PlacesExplorer({
   }, [boundaries, scopedTerritories]);
 
   const scored = useMemo(
-    () => scoreTerritories(scopedTerritories, weights),
-    [scopedTerritories, weights],
+    () => scoreTerritories(scopedTerritories, weights, ageGroup),
+    [scopedTerritories, weights, ageGroup],
   );
 
   const queryString = useMemo(() => {
@@ -108,8 +112,9 @@ export function PlacesExplorer({
     p.set("view", scope);
     p.set("preset", params.preset);
     p.set("weights", serializeWeights(weights));
+    if (ageGroup !== "all") p.set("age", ageGroup);
     return p.toString();
-  }, [scope, params.preset, weights]);
+  }, [scope, params.preset, weights, ageGroup]);
 
   const syncUrl = useCallback(
     (preset: PresetId, nextWeights: Weights) => {
@@ -154,6 +159,14 @@ export function PlacesExplorer({
     const normalised = normalizeWeights(next);
     setWeights(normalised);
     syncUrl(matchPresetId(normalised), normalised);
+  };
+
+  const handleAge = (id: AgeGroupId) => {
+    setHighlightedSlug(null);
+    setFocusedSlug(null);
+    startTransition(() => {
+      void setParams({ age: id });
+    });
   };
 
   const copyShareLink = async () => {
@@ -204,6 +217,7 @@ export function PlacesExplorer({
               compact
             />
           </div>
+          <AgeGroupPicker value={ageGroup} onChange={handleAge} />
           <PrioritySliders
             weights={weights}
             onChange={handleWeights}

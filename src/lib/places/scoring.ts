@@ -1,3 +1,4 @@
+import { getRelevantEarnings, type AgeGroupId } from "./age-groups";
 import { averageScores, invertedPercentile, percentileRank } from "./normalize";
 import { normalizeWeights } from "./presets";
 import {
@@ -11,13 +12,16 @@ import {
 
 function computeDimensionScores(
   territories: Territory[],
+  ageGroup: AgeGroupId = "all",
 ): Map<string, DimensionScores> {
   const rents = territories.map((t) => t.metrics.medianRentWeek);
   const multiples = territories.map((t) => t.metrics.medianMultiple);
   const prices = territories.map((t) => t.metrics.medianHousePrice);
   const rentYoY = territories.map((t) => t.metrics.rentYoY);
   const priceYoY = territories.map((t) => t.metrics.priceYoY);
-  const earnings = territories.map((t) => t.metrics.medianEarningsAnnual);
+  const earnings = territories.map(
+    (t) => getRelevantEarnings(t, ageGroup).medianAnnual,
+  );
   const densities = territories.map((t) => t.metrics.populationDensity);
   const popGrowth = territories.map((t) => t.metrics.populationGrowthYoY);
   const jobsGrowth = territories.map((t) => t.metrics.jobsGrowthYoY);
@@ -26,6 +30,7 @@ function computeDimensionScores(
 
   for (const territory of territories) {
     const m = territory.metrics;
+    const ageEarnings = getRelevantEarnings(territory, ageGroup);
     const affordability = averageScores([
       invertedPercentile(m.medianRentWeek, rents),
       invertedPercentile(m.medianMultiple, multiples),
@@ -41,8 +46,8 @@ function computeDimensionScores(
       popGrowth,
       true,
     );
-    // Career/earnings dimension: median filled-job earnings (LEED-style)
-    const career = percentileRank(m.medianEarningsAnnual, earnings, true);
+    // Career dimension: median earnings for selected age band (or overall)
+    const career = percentileRank(ageEarnings.medianAnnual, earnings, true);
     const lifestyle = invertedPercentile(m.populationDensity, densities);
 
     result.set(territory.slug, {
@@ -73,14 +78,19 @@ export function computeMatchScore(
 export function scoreTerritories(
   territories: Territory[],
   weights: Weights,
+  ageGroup: AgeGroupId = "all",
 ): ScoredTerritory[] {
-  const dimensionScoreMap = computeDimensionScores(territories);
+  const dimensionScoreMap = computeDimensionScores(territories, ageGroup);
   const scored = territories.map((territory) => {
     const dimensionScores = dimensionScoreMap.get(territory.slug)!;
+    const earnings = getRelevantEarnings(territory, ageGroup);
     return {
       ...territory,
       dimensionScores,
       matchScore: computeMatchScore(dimensionScores, weights),
+      relevantMeanEarnings: earnings.meanAnnual,
+      relevantMedianEarnings: earnings.medianAnnual,
+      earningsAgeLabel: earnings.bandLabel,
     };
   });
   return scored.sort((a, b) => b.matchScore - a.matchScore);
@@ -96,7 +106,6 @@ export function parseWeights(raw: string | null | undefined): Weights | null {
   const parts = raw.split(",").map(Number);
   if (parts.some((n) => Number.isNaN(n))) return null;
 
-  // New format: 6 dimensions
   if (parts.length === DIMENSIONS.length) {
     const total = parts.reduce((a, b) => a + b, 0);
     if (total === 0) return null;
@@ -107,8 +116,6 @@ export function parseWeights(raw: string | null | undefined): Weights | null {
     return normalizeWeights(weights);
   }
 
-  // Legacy 4-dim: affordability, growth, career, lifestyle
-  // Map old "growth" into housingGrowth primarily.
   if (parts.length === 4) {
     const total = parts.reduce((a, b) => a + b, 0);
     if (total === 0) return null;
