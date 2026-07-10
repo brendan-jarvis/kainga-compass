@@ -45,7 +45,7 @@ export function PlaceScopeToggle({
               className={cn(
                 "rounded-md px-3 py-1.5 text-sm font-medium whitespace-nowrap transition-colors",
                 active
-                  ? "bg-background text-foreground shadow-sm"
+                  ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground",
               )}
               title={opt.description}

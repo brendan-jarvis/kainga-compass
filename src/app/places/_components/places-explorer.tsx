@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useCallback, useMemo, useState, useTransition } from "react";
 import { useQueryStates, parseAsString, parseAsStringLiteral } from "nuqs";
 import type { Feature, FeatureCollection } from "geojson";
@@ -39,7 +38,7 @@ const NzChoroplethMap = dynamic(
   {
     ssr: false,
     loading: () => (
-      <div className="border-border bg-muted/30 flex h-[min(72vh,640px)] w-full max-w-[400px] items-center justify-center rounded-xl border">
+      <div className="border-border bg-muted/30 flex h-[min(78vh,800px)] w-full items-center justify-center rounded-xl border">
         <p className="text-muted-foreground text-sm">Loading map…</p>
       </div>
     ),
@@ -209,27 +208,21 @@ export function PlacesExplorer({
             compact
           />
           <p className="text-muted-foreground text-xs">
-            Sliders total 100% · data as of {metadata.lastUpdated} ·{" "}
-            <Link
-              href="/places/methodology"
-              className="text-primary underline-offset-2 hover:underline"
-            >
-              Methodology
-            </Link>
+            Sliders total 100% · data as of {metadata.lastUpdated}
           </p>
         </div>
       </section>
 
-      {/* Map (portrait) + ranked list */}
-      <div className="grid items-start gap-5 lg:grid-cols-[minmax(280px,400px)_minmax(0,1fr)]">
-        <div id="places-map" className="lg:sticky lg:top-16">
+      {/* Map + ranked list 50:50 — NZ needs vertical room in a wide half-panel */}
+      <div className="grid items-start gap-5 lg:grid-cols-2">
+        <div id="places-map" className="min-w-0 lg:sticky lg:top-16">
           <NzChoroplethMap
             territories={scored}
             boundaries={scopedBoundaries}
             highlightedSlug={highlightedSlug}
             focusedSlug={focusedSlug}
             queryString={queryString}
-            className="mx-auto max-w-[400px] lg:mx-0 lg:max-w-none"
+            className="h-[min(78vh,800px)] w-full max-w-none"
           />
         </div>
 

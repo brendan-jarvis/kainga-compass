@@ -252,8 +252,8 @@ export function NzChoroplethMap({
   return (
     <div
       className={cn(
-        // Tall portrait map — NZ is north–south, not a wide landscape panel
-        "border-border relative h-[min(72vh,640px)] w-full overflow-hidden rounded-xl border sm:h-[min(75vh,720px)]",
+        // Tall enough for NZ north–south; width comes from the 50:50 layout column
+        "border-border relative h-[min(78vh,800px)] w-full overflow-hidden rounded-xl border",
         className,
       )}
     >

@@ -5,7 +5,6 @@ import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -88,23 +87,6 @@ export default function Home() {
         ))}
       </section>
 
-      <section className="border-border/60 border-t px-4 py-12 sm:px-6">
-        <Card className="border-primary/15 bg-primary/5 mx-auto max-w-3xl">
-          <CardHeader>
-            <CardTitle>Try a preset in under a minute</CardTitle>
-            <CardDescription>
-              Laid-back, career, family, first home, property investor, growing
-              town, and more — then tweak the sliders.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button render={<Link href="/places?preset=laid-back" />}>
-              Open explorer
-              <ArrowRight data-icon="inline-end" />
-            </Button>
-          </CardContent>
-        </Card>
-      </section>
     </main>
   );
 }
