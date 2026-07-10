@@ -1,7 +1,7 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Roboto } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
@@ -17,17 +17,19 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-geist-sans",
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
 });
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={geist.variable} suppressHydrationWarning>
-      <body className="min-h-screen">
+    <html lang="en" className={roboto.variable} suppressHydrationWarning>
+      <body className="min-h-screen font-sans">
         <ThemeProvider>
           <NuqsAdapter>
             <TRPCReactProvider>

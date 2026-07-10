@@ -23,7 +23,7 @@ export function PresetPicker({
             onClick={() => onChange(preset.id)}
             title={preset.description}
             className={cn(
-              "rounded-full border px-3 py-1.5 text-sm transition-colors",
+              "rounded-full border px-3 py-1.5 text-base transition-colors",
               active
                 ? "border-primary/50 bg-primary/15 text-primary"
                 : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",

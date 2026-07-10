@@ -139,10 +139,10 @@ export function PlacesExplorer({
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-6 sm:px-6 lg:py-8">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div className="space-y-1">
-          <h1 className="text-2xl font-bold tracking-tight sm:text-3xl">
+          <h1 className="text-3xl font-bold tracking-normal sm:text-4xl">
             Explore places
           </h1>
-          <p className="text-muted-foreground max-w-2xl text-sm sm:text-base">
+          <p className="text-muted-foreground max-w-2xl text-base">
             Set what matters to you — match scores update live across{" "}
             {metadata.cityCount} territorial authorities.
           </p>
@@ -170,7 +170,7 @@ export function PlacesExplorer({
       <div className="grid gap-6 lg:grid-cols-[320px_1fr]">
         <Card className="border-primary/10 h-fit">
           <CardHeader className="pb-3">
-            <CardTitle className="text-base">Your priorities</CardTitle>
+            <CardTitle className="text-lg">Your priorities</CardTitle>
             <CardDescription>
               Pick a life-stage preset or drag the sliders.
             </CardDescription>
@@ -178,7 +178,7 @@ export function PlacesExplorer({
           <CardContent className="space-y-6">
             <PresetPicker value={params.preset} onChange={handlePreset} />
             <PrioritySliders weights={weights} onChange={handleWeights} />
-            <p className="text-muted-foreground text-xs">
+            <p className="text-muted-foreground text-sm">
               Data as of {metadata.lastUpdated}.{" "}
               <Link
                 href="/places/methodology"
@@ -198,7 +198,9 @@ export function PlacesExplorer({
             queryString={queryString}
           />
           <div>
-            <h2 className="mb-3 text-lg font-semibold">Ranked matches</h2>
+            <h2 className="mb-3 text-xl font-semibold tracking-normal">
+              Ranked matches
+            </h2>
             <RankedList
               territories={scored}
               queryString={queryString}

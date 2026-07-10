@@ -45,10 +45,10 @@ export default function Home() {
             Aotearoa New Zealand
           </Badge>
           <div className="space-y-4">
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
+            <h1 className="text-4xl font-bold tracking-normal sm:text-5xl">
               Build your own map of Aotearoa
             </h1>
-            <p className="text-muted-foreground mx-auto max-w-2xl text-lg">
+            <p className="text-muted-foreground mx-auto max-w-2xl text-lg sm:text-xl">
               Kāinga Compass ranks cities and districts by what matters to you —
               not a one-size national league table. Three people, three
               different NZs.
@@ -81,7 +81,7 @@ export default function Home() {
               <div className="bg-primary/10 text-primary mb-2 flex size-9 items-center justify-center rounded-lg">
                 <feature.icon className="size-4" />
               </div>
-              <CardTitle className="text-base">{feature.title}</CardTitle>
+              <CardTitle className="text-lg">{feature.title}</CardTitle>
               <CardDescription>{feature.description}</CardDescription>
             </CardHeader>
           </Card>

@@ -63,7 +63,7 @@ function DimensionBar({
 }) {
   return (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between text-sm">
+      <div className="flex items-center justify-between text-base">
         <span className="flex items-center gap-2">
           {label}
           {isProxy && (
@@ -76,9 +76,9 @@ function DimensionBar({
           {Math.round(score)}
         </span>
       </div>
-      <div className="bg-muted h-2 overflow-hidden rounded-full">
+      <div className="bg-muted h-2.5 overflow-hidden rounded-full">
         <div
-          className="bg-primary/80 h-full rounded-full transition-all"
+          className="h-full rounded-full bg-orange-500 transition-all dark:bg-orange-400"
           style={{ width: `${Math.max(4, Math.min(100, score))}%` }}
         />
       </div>

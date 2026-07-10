@@ -31,7 +31,7 @@ export function RankedList({
 
   return (
     <div className="border-border overflow-hidden rounded-xl border">
-      <Table>
+      <Table className="text-base">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
             <TableHead className="w-10">#</TableHead>

@@ -5,7 +5,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+  --font-sans: var(--font-roboto), "Roboto", ui-sans-serif, system-ui, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
@@ -125,10 +125,13 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
   html {
     @apply font-sans;
+    /* Slightly larger root so body copy reads less cramped than default 16px */
+    font-size: 17px;
+  }
+  body {
+    @apply bg-background text-foreground text-base leading-relaxed antialiased;
+    letter-spacing: 0.01em;
   }
 }

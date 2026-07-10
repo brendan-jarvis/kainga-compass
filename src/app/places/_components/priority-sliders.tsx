@@ -21,7 +21,7 @@ export function PrioritySliders({
         const pct = Math.round(weights[dimension] * 100);
         return (
           <div key={dimension} className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
+            <div className="flex items-center justify-between text-base">
               <label
                 htmlFor={`weight-${dimension}`}
                 className="text-foreground font-medium"
@@ -44,7 +44,7 @@ export function PrioritySliders({
           </div>
         );
       })}
-      <p className="text-muted-foreground text-xs">
+      <p className="text-muted-foreground text-sm">
         Weights are normalised so they always sum to 100% when scoring.
       </p>
     </div>
