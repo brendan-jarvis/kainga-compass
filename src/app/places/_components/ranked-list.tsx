@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { HelpCircle } from "lucide-react";
 
 import {
   Table,
@@ -11,6 +12,11 @@ import {
   TableRow,
 } from "~/components/ui/table";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "~/components/ui/tooltip";
+import {
   formatCurrency,
   formatMultiple,
   formatRent,
@@ -19,6 +25,49 @@ import {
 import type { ScoredTerritory } from "~/lib/places/types";
 import { cn } from "~/lib/utils";
 import { MatchScoreBadge } from "./match-score-badge";
+
+const COLUMN_HELP = {
+  rank: "Position in the list for your current priority weights — #1 is the best match among the places shown.",
+  place:
+    "City, town, or district name. Click the name for a full detail page; click the row to focus it on the map.",
+  match:
+    "Personalised Match Score (0–100) from your priority weights across affordability, growth, earnings, and lifestyle. Higher is a better fit for you — not an official ranking of the best places to live.",
+  salary:
+    "Mean (average) annual earnings for filled jobs in this area — a LEED-style average salary indicator. Mean is often higher than the median because high earners pull the average up.",
+  rent: "Median weekly rent from tenancy bond data (or fixture estimates). Lower usually means more affordable housing costs.",
+  price:
+    "Median house sale price for the area. Used with income to gauge how expensive ownership is relative to local pay.",
+  multiple:
+    "Median house price ÷ median household income. A common affordability rule of thumb: lower multiples are generally more affordable for buyers.",
+} as const;
+
+function HeaderTip({
+  label,
+  tip,
+  align = "left",
+}: {
+  label: string;
+  tip: string;
+  align?: "left" | "right";
+}) {
+  return (
+    <Tooltip>
+      <TooltipTrigger
+        className={cn(
+          "text-muted-foreground hover:text-foreground inline-flex cursor-help items-center gap-1 border-0 bg-transparent p-0 text-inherit font-medium",
+          align === "right" && "ml-auto",
+        )}
+      >
+        <span>{label}</span>
+        <HelpCircle className="size-3.5 shrink-0 opacity-60" aria-hidden />
+        <span className="sr-only"> — more info</span>
+      </TooltipTrigger>
+      <TooltipContent side="top" className="max-w-xs text-left leading-snug">
+        {tip}
+      </TooltipContent>
+    </Tooltip>
+  );
+}
 
 export function RankedList({
   territories,
@@ -41,20 +90,44 @@ export function RankedList({
       <Table className="text-base">
         <TableHeader>
           <TableRow className="hover:bg-transparent">
-            <TableHead className="w-10">#</TableHead>
-            <TableHead>Place</TableHead>
-            <TableHead className="text-right">Match</TableHead>
+            <TableHead className="w-10">
+              <HeaderTip label="#" tip={COLUMN_HELP.rank} />
+            </TableHead>
+            <TableHead>
+              <HeaderTip label="Place" tip={COLUMN_HELP.place} />
+            </TableHead>
+            <TableHead className="text-right">
+              <div className="flex justify-end">
+                <HeaderTip label="Match" tip={COLUMN_HELP.match} align="right" />
+              </div>
+            </TableHead>
             <TableHead className="text-right hidden sm:table-cell">
-              Avg salary
+              <div className="flex justify-end">
+                <HeaderTip
+                  label="Avg salary"
+                  tip={COLUMN_HELP.salary}
+                  align="right"
+                />
+              </div>
             </TableHead>
             <TableHead className="text-right hidden md:table-cell">
-              Rent
+              <div className="flex justify-end">
+                <HeaderTip label="Rent" tip={COLUMN_HELP.rent} align="right" />
+              </div>
             </TableHead>
             <TableHead className="text-right hidden lg:table-cell">
-              Price
+              <div className="flex justify-end">
+                <HeaderTip label="Price" tip={COLUMN_HELP.price} align="right" />
+              </div>
             </TableHead>
             <TableHead className="text-right hidden xl:table-cell">
-              Multiple
+              <div className="flex justify-end">
+                <HeaderTip
+                  label="Multiple"
+                  tip={COLUMN_HELP.multiple}
+                  align="right"
+                />
+              </div>
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -112,8 +185,8 @@ export function RankedList({
         </TableBody>
       </Table>
       <p className="text-muted-foreground border-t px-3 py-2 text-sm">
-        Avg salary is mean annual earnings for filled jobs · click a row to
-        focus the map · place name opens the detail page
+        Hover column headers for definitions · click a row to focus the map ·
+        place name opens the detail page
       </p>
     </div>
   );

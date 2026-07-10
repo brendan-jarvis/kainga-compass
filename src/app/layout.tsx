@@ -8,6 +8,7 @@ import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 import { SiteHeader } from "~/components/site-header";
 import { ThemeProvider } from "~/components/theme-provider";
+import { TooltipProvider } from "~/components/ui/tooltip";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
@@ -31,12 +32,14 @@ export default function RootLayout({
     <html lang="en" className={roboto.variable} suppressHydrationWarning>
       <body className="min-h-screen font-sans">
         <ThemeProvider>
-          <NuqsAdapter>
-            <TRPCReactProvider>
-              <SiteHeader />
-              {children}
-            </TRPCReactProvider>
-          </NuqsAdapter>
+          <TooltipProvider delay={200}>
+            <NuqsAdapter>
+              <TRPCReactProvider>
+                <SiteHeader />
+                {children}
+              </TRPCReactProvider>
+            </NuqsAdapter>
+          </TooltipProvider>
           <Analytics />
           <SpeedInsights />
         </ThemeProvider>
