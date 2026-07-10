@@ -20,14 +20,16 @@ import {
 } from "~/lib/places/presets";
 import { parseWeights, scoreTerritories, serializeWeights } from "~/lib/places/scoring";
 import type {
-  PlaceKind,
   PlacesMetadata,
   PresetId,
   Territory,
   Weights,
 } from "~/lib/places/types";
 import { PLACE_KINDS, PRESET_IDS } from "~/lib/places/types";
-import { PlaceScopeToggle } from "./place-scope-toggle";
+import {
+  PlaceScopeToggle,
+  type ExplorerScope,
+} from "./place-scope-toggle";
 import { PresetPicker } from "./preset-picker";
 import { PrioritySliders } from "./priority-sliders";
 import { RankedList } from "./ranked-list";
@@ -73,7 +75,7 @@ export function PlacesExplorer({
     { history: "replace", shallow: true },
   );
 
-  const scope: PlaceKind = params.view;
+  const scope: ExplorerScope = params.view;
 
   const [weights, setWeights] = useState<Weights>(() =>
     resolveInitialWeights(params.preset, params.weights),
@@ -121,7 +123,7 @@ export function PlacesExplorer({
     [setParams],
   );
 
-  const handleScope = (kind: PlaceKind) => {
+  const handleScope = (kind: ExplorerScope) => {
     setHighlightedSlug(null);
     setFocusedSlug(null);
     startTransition(() => {

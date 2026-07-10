@@ -1,9 +1,10 @@
 "use client";
 
 import { cn } from "~/lib/utils";
-import type { PlaceKind } from "~/lib/places/types";
 
-const OPTIONS: { id: PlaceKind; label: string; description: string }[] = [
+export type ExplorerScope = "city" | "region";
+
+const OPTIONS: { id: ExplorerScope; label: string; description: string }[] = [
   {
     id: "city",
     label: "Cities & towns",
@@ -21,8 +22,8 @@ export function PlaceScopeToggle({
   onChange,
   compact = false,
 }: {
-  value: PlaceKind;
-  onChange: (kind: PlaceKind) => void;
+  value: ExplorerScope;
+  onChange: (kind: ExplorerScope) => void;
   compact?: boolean;
 }) {
   return (

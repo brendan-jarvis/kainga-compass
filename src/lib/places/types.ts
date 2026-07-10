@@ -9,8 +9,12 @@ export const DIMENSIONS = [
 
 export type Dimension = (typeof DIMENSIONS)[number];
 
-/** City/town settlement vs council district (TA) aggregate. */
-export type PlaceKind = "city" | "region";
+/**
+ * - city: Urban Rural settlement (town/city)
+ * - region: Territorial authority (district / city council area)
+ * - suburb: Statistical Area 2 (neighbourhood-scale) under a city
+ */
+export type PlaceKind = "city" | "region" | "suburb";
 
 export const PLACE_KINDS = ["city", "region"] as const;
 
@@ -61,12 +65,14 @@ export type TerritoryMetrics = {
 export type Territory = {
   slug: string;
   name: string;
-  /** Settlement (city/town) or territorial authority district. */
+  /** Settlement (city/town), territorial authority district, or suburb (SA2). */
   kind: PlaceKind;
   /** Regional council area (e.g. Otago, Wellington). */
   region: string;
-  /** Parent TA name when kind is city (for cross-links / context). */
+  /** Parent TA name when kind is city/suburb (for cross-links / context). */
   district?: string;
+  /** Parent place slug: district for cities, city for suburbs. */
+  parentSlug?: string;
   metrics: TerritoryMetrics;
   proxies?: Dimension[];
 };
@@ -83,6 +89,7 @@ export type PlacesMetadata = {
   sources: string[];
   cityCount: number;
   regionCount: number;
+  suburbCount?: number;
   notes?: string;
   /** Features matched to Stats NZ official polygons. */
   boundaryOfficial?: number;

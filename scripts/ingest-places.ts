@@ -295,7 +295,7 @@ function validate(territories: Territory[]) {
     if (!t.slug || !t.name || !t.kind || !t.region) {
       throw new Error(`Territory missing fields: ${JSON.stringify(t)}`);
     }
-    if (t.kind !== "city" && t.kind !== "region") {
+    if (t.kind !== "city" && t.kind !== "region" && t.kind !== "suburb") {
       throw new Error(`${t.slug}: invalid kind ${t.kind}`);
     }
     for (const key of required) {

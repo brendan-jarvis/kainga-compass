@@ -18,7 +18,8 @@
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "ingest:places": "bun run scripts/ingest-places.ts"
+    "ingest:places": "bun run scripts/ingest-places.ts",
+    "ingest:suburbs": "bun run scripts/ingest-suburbs.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.7.2",

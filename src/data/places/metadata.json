@@ -15,5 +15,6 @@
   "regionCount": 17,
   "boundaryOfficial": 37,
   "boundaryFallback": 0,
-  "notes": "Cities & towns use Stats NZ Urban Rural 2023 polygons. Districts use Territorial Authority 2023 polygons. Geometry is generalised (Douglas–Peucker) for web size. Metrics for multi-settlement TAs remain curated approximations until SA2/Market Rent pipelines are wired."
+  "notes": "Cities & towns use Stats NZ Urban Rural 2023 polygons. Districts use Territorial Authority 2023 polygons. Geometry is generalised (Douglas–Peucker) for web size. Metrics for multi-settlement TAs remain curated approximations until SA2/Market Rent pipelines are wired. Suburbs are SA2 units spatially linked to each Urban Rural city polygon; metrics are parent-city fixtures with local variation until finer housing series are wired.",
+  "suburbCount": 610
 }
