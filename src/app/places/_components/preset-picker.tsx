@@ -24,7 +24,14 @@ export function PresetPicker({
           </p>
         </div>
       )}
-      <div className="flex flex-wrap items-center gap-2">
+      {compact && (
+        <p className="text-foreground text-sm font-medium">Presets</p>
+      )}
+      <div
+        role="group"
+        aria-label="Life-stage presets"
+        className="flex flex-wrap gap-1.5"
+      >
         {PRESETS.map((preset) => {
           const active = value === preset.id;
           return (
@@ -34,10 +41,10 @@ export function PresetPicker({
               onClick={() => onChange(preset.id)}
               title={preset.description}
               className={cn(
-                "rounded-full border px-3 py-1 text-sm transition-colors",
+                "rounded-full border px-2.5 py-1 text-sm font-medium transition-colors",
                 active
-                  ? "border-primary/50 bg-primary/15 text-primary"
-                  : "border-border bg-card text-muted-foreground hover:border-primary/30 hover:text-foreground",
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border bg-card text-muted-foreground hover:border-primary/40 hover:text-foreground",
               )}
             >
               {preset.label}
@@ -45,7 +52,10 @@ export function PresetPicker({
           );
         })}
         {value === "custom" && (
-          <Badge variant="secondary" className="self-center">
+          <Badge
+            variant="secondary"
+            className="self-center rounded-full px-2.5 py-1 text-sm font-medium"
+          >
             Custom
           </Badge>
         )}
