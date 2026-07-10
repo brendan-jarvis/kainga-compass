@@ -317,25 +317,6 @@ export function NzChoroplethMap({
           onEachFeature={onEachFeature}
         />
       </MapContainer>
-
-      <div className="bg-background/90 border-border absolute bottom-3 left-3 z-[1000] max-w-[200px] rounded-lg border px-3 py-2 text-xs shadow-sm backdrop-blur-sm">
-        <p className="text-foreground mb-1.5 font-medium">Match heatmap</p>
-        <div
-          className="mb-1 h-2.5 w-full rounded-full"
-          style={{
-            background:
-              "linear-gradient(90deg, rgba(234,88,12,0.9), rgba(16,185,129,0.9))",
-          }}
-        />
-        <div className="text-muted-foreground flex justify-between">
-          <span>Weaker</span>
-          <span>Stronger</span>
-        </div>
-        <p className="text-muted-foreground mt-1.5 leading-snug">
-          Orange → emerald by rank. Outline = top match
-          {focusedSlug ? " or focused place" : ""}.
-        </p>
-      </div>
     </div>
   );
 }

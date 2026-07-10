@@ -207,8 +207,8 @@ export function RankedList({
         </Table>
       </div>
       <p className="text-muted-foreground border-t px-3 py-2 text-sm">
-        Swipe sideways for more columns · tap a row to focus the map · place
-        name opens the detail page
+        Map: orange = weaker match, emerald = stronger · swipe sideways for more
+        columns · tap a row to focus the map
       </p>
     </div>
   );
