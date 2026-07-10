@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Compass } from "lucide-react";
 
 import { buttonVariants } from "~/components/ui/button";
 import { ThemeToggle } from "~/components/theme-toggle";
@@ -7,25 +7,36 @@ import { cn } from "~/lib/utils";
 
 export function SiteHeader() {
   return (
-    <header className="border-border/60 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
-      <div className="mx-auto flex h-14 w-full max-w-7xl items-center justify-between gap-4 px-4 sm:px-6">
+    <header className="border-border/50 bg-background/85 sticky top-0 z-50 border-b backdrop-blur-md">
+      <div className="mx-auto flex h-14 w-full max-w-[1600px] items-center justify-between gap-3 px-4 sm:px-6">
         <Link
           href="/"
-          className="text-foreground flex items-center gap-2 text-base font-medium tracking-normal"
+          className="group text-foreground flex min-w-0 items-center gap-2.5"
         >
-          <span className="bg-primary/15 text-primary flex size-8 items-center justify-center rounded-lg">
-            <Compass className="size-4" />
+          <Image
+            src="/favicon.svg"
+            alt=""
+            width={32}
+            height={32}
+            className="size-8 shrink-0 rounded-lg shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-[1.04] dark:ring-white/10"
+            priority
+          />
+          <span className="flex min-w-0 flex-col leading-none">
+            <span className="truncate text-[0.95rem] font-semibold tracking-tight sm:text-base">
+              Kāinga Compass
+            </span>
+            <span className="text-muted-foreground hidden text-[0.7rem] font-normal tracking-wide sm:block">
+              Find your place in Aotearoa
+            </span>
           </span>
-          <span className="hidden sm:inline">Kāinga Compass</span>
-          <span className="sm:hidden">Kāinga</span>
         </Link>
 
-        <nav className="flex items-center gap-1 sm:gap-2">
+        <nav className="flex shrink-0 items-center gap-0.5 sm:gap-1">
           <Link
             href="/places/methodology"
             className={cn(
               buttonVariants({ variant: "ghost", size: "sm" }),
-              "text-muted-foreground hover:text-foreground text-[0.95rem]",
+              "text-muted-foreground hover:text-foreground hidden text-sm sm:inline-flex",
             )}
           >
             Methodology
@@ -35,7 +46,7 @@ export function SiteHeader() {
             href="/places"
             className={cn(
               buttonVariants({ size: "sm" }),
-              "text-[0.95rem]",
+              "bg-primary text-primary-foreground hover:bg-primary/90 ml-1 font-medium",
             )}
           >
             Explore
