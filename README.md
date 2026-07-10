@@ -10,7 +10,7 @@ Built with the [T3 Stack](https://create.t3.gg/): Next.js, NextAuth.js, tRPC, Dr
 - **Auth**: [NextAuth.js v5](https://next-auth.js.org/) (Auth.js)
 - **API**: [tRPC](https://trpc.io/)
 - **Database**: [Supabase](https://supabase.com/) (Postgres) + [Drizzle ORM](https://orm.drizzle.team/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
+- **UI**: [shadcn/ui](https://ui.shadcn.com/) (Base Nova)
 - **Hosting**: [Vercel](https://vercel.com/)
 - **Runtime**: [Bun](https://bun.sh/)
 
@@ -44,9 +44,10 @@ Fill in `.env`:
 
 | Variable | Description |
 |----------|-------------|
-| `DATABASE_URL` | Supabase Postgres URL (pooler for app runtime) |
-| `DIRECT_URL` | Supabase direct URL (for Drizzle migrations) |
-| `AUTH_SECRET` | Generate with `bunx auth secret` |
+| `POSTGRES_URL` | Auto-set by Vercel Supabase integration (pooler) |
+| `POSTGRES_URL_NON_POOLING` | Auto-set — used for `db:push` via `DIRECT_URL` fallback |
+| `DATABASE_URL` | Optional override; otherwise resolved from `POSTGRES_*` |
+| `AUTH_SECRET` | Generate with `bunx auth secret` — **required on Vercel** |
 | `AUTH_URL` | `http://localhost:3000` locally; your Vercel URL in production |
 | `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET` | [GitHub OAuth app](https://github.com/settings/developers) |
 

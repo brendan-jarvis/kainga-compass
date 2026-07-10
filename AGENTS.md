@@ -12,7 +12,7 @@ NZ place-matching explorer: users set priorities (affordability, career, growth,
 - **Bun** (package manager + runtime)
 - **T3 Stack**: tRPC, NextAuth.js v5, Drizzle ORM
 - **Supabase** Postgres (not Supabase Auth — use NextAuth)
-- **Tailwind CSS v4**
+- **Tailwind CSS v4** + **shadcn/ui** (components in `src/components/ui/`)
 - **Vercel** hosting
 
 ## Commands

@@ -2,6 +2,7 @@ import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
 import GitHub from "next-auth/providers/github";
 
+import { env } from "~/env";
 import { db } from "~/server/db";
 import {
   accounts,
@@ -18,8 +19,18 @@ declare module "next-auth" {
   }
 }
 
+const githubConfigured = Boolean(env.AUTH_GITHUB_ID && env.AUTH_GITHUB_SECRET);
+
 export const authConfig = {
-  providers: [GitHub],
+  trustHost: true,
+  providers: githubConfigured
+    ? [
+        GitHub({
+          clientId: env.AUTH_GITHUB_ID,
+          clientSecret: env.AUTH_GITHUB_SECRET,
+        }),
+      ]
+    : [],
   adapter: DrizzleAdapter(db, {
     usersTable: users,
     accountsTable: accounts,
@@ -36,3 +47,5 @@ export const authConfig = {
     }),
   },
 } satisfies NextAuthConfig;
+
+export const isAuthEnabled = githubConfigured;
