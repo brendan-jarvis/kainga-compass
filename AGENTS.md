@@ -10,8 +10,8 @@ NZ place-matching explorer: users set priorities (affordability, career, growth,
 
 - **Next.js 15** (App Router, React 19)
 - **Bun** (package manager + runtime)
-- **T3 Stack**: tRPC, NextAuth.js v5, Drizzle ORM
-- **Supabase** Postgres (not Supabase Auth — use NextAuth)
+- **T3 Stack**: tRPC, Auth.js (`next-auth` v5), Drizzle ORM
+- **Supabase** Postgres (not Supabase Auth — use Auth.js)
 - **Tailwind CSS v4** + **shadcn/ui** (components in `src/components/ui/`)
 - **Vercel** hosting
 
@@ -19,7 +19,7 @@ NZ place-matching explorer: users set priorities (affordability, career, growth,
 
 ```bash
 bun install
-cp .env.example .env   # Fill Supabase + GitHub OAuth + AUTH_SECRET
+cp .env.example .env   # Fill Supabase + AUTH_SECRET (+ OAuth when configured)
 bun run db:push        # Uses DIRECT_URL when set
 SKIP_ENV_VALIDATION=1 bun run dev
 bun run lint
@@ -43,8 +43,13 @@ bun run build
 - Education Counts (school outcomes)
 - Stats NZ GeoJSON (TA boundaries)
 
+## Auth (planned)
+
+- Migrate/review Auth.js App Router setup (see README roadmap).
+- Target providers: Apple, Google, Facebook — not GitHub.
+- Callback pattern: `/api/auth/callback/{provider}`
+
 ## Gotchas
 
 - `DIRECT_URL` required for reliable `db:push` against Supabase.
 - `AUTH_URL` must match deployment domain in production.
-- GitHub OAuth callback: `/api/auth/callback/github`.
