@@ -29,16 +29,8 @@ export function MatchScoreBadge({
 }
 
 export function scoreColor(score: number): string {
-  if (score >= 70) return "#34d399";
-  if (score >= 50) return "#2dd4bf";
-  if (score >= 35) return "#fbbf24";
-  return "#fb7185";
-}
-
-export function scoreFill(score: number): string {
-  // Nature-green ramp 0–100 for choropleth (hue ~166 matches primary)
-  const t = Math.max(0, Math.min(100, score)) / 100;
-  const lightness = 32 + t * 28;
-  const chroma = 0.07 + t * 0.1;
-  return `oklch(${lightness}% ${chroma} 166)`;
+  if (score >= 70) return "#ea580c";
+  if (score >= 50) return "#f59e0b";
+  if (score >= 35) return "#a3a3a3";
+  return "#d4d4d4";
 }
