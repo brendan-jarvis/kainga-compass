@@ -132,7 +132,7 @@ export const DIMENSION_HINTS: Record<Dimension, string> = {
   housingGrowth: "Year-on-year rent and house price increases (market momentum).",
   jobGrowth: "Employment / filled-jobs growth in the local market.",
   populationGrowth: "How fast the resident population is expanding.",
-  career: "Median household / regional income level.",
+  career: "Median annual earnings for filled jobs (LEED-style).",
   lifestyle: "Lower density as a simple space / pace proxy.",
 };
 

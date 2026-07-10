@@ -30,13 +30,27 @@ export type PresetId = (typeof PRESET_IDS)[number];
 
 export type Weights = Record<Dimension, number>;
 
+/** Age-band earnings — LEED-style proxy for experience (Stats NZ publishes age, not years of service). */
+export type EarningsAgeBand = {
+  label: string;
+  medianAnnual: number;
+  meanAnnual: number;
+};
+
 export type TerritoryMetrics = {
   medianRentWeek: number;
   medianHousePrice: number;
   medianMultiple: number;
   rentYoY: number;
   priceYoY: number;
+  /** Household income estimate (used with house-price multiple). */
   medianIncome: number;
+  /** LEED-style median annual earnings for filled jobs. */
+  medianEarningsAnnual: number;
+  /** LEED-style mean annual earnings for filled jobs (average salary). */
+  meanEarningsAnnual: number;
+  /** Earnings by age group — best public proxy for career stage / experience. */
+  earningsByAge: EarningsAgeBand[];
   populationDensity: number;
   /** Approximate annual population change (0.02 = +2%). */
   populationGrowthYoY: number;

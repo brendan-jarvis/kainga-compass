@@ -17,7 +17,7 @@ function computeDimensionScores(
   const prices = territories.map((t) => t.metrics.medianHousePrice);
   const rentYoY = territories.map((t) => t.metrics.rentYoY);
   const priceYoY = territories.map((t) => t.metrics.priceYoY);
-  const incomes = territories.map((t) => t.metrics.medianIncome);
+  const earnings = territories.map((t) => t.metrics.medianEarningsAnnual);
   const densities = territories.map((t) => t.metrics.populationDensity);
   const popGrowth = territories.map((t) => t.metrics.populationGrowthYoY);
   const jobsGrowth = territories.map((t) => t.metrics.jobsGrowthYoY);
@@ -41,7 +41,8 @@ function computeDimensionScores(
       popGrowth,
       true,
     );
-    const career = percentileRank(m.medianIncome, incomes, true);
+    // Career/earnings dimension: median filled-job earnings (LEED-style)
+    const career = percentileRank(m.medianEarningsAnnual, earnings, true);
     const lifestyle = invertedPercentile(m.populationDensity, densities);
 
     result.set(territory.slug, {

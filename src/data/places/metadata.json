@@ -6,6 +6,8 @@
     "HUD Local Housing Statistics — median sale price & multiple by TA",
     "Stats NZ Urban Rural Areas 2023 (FeatureServer) — city/town outlines",
     "Stats NZ Territorial Authority 2023 (FeatureServer) — district outlines",
+    "Stats NZ LEED / BED — mean & median filled-job earnings (fixtures until live ingest)",
+    "Stats NZ LEED age-group earnings — career-stage proxy (not years of experience)",
     "Stats NZ subnational population estimates (urban rural) — density proxies",
     "Indicative settlement metric splits where TA data alone would mask local markets"
   ],

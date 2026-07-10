@@ -14,7 +14,36 @@
       "medianIncome": 72000,
       "populationDensity": 650,
       "populationGrowthYoY": 0.01,
-      "jobsGrowthYoY": 0.011
+      "jobsGrowthYoY": 0.011,
+      "medianEarningsAnnual": 52000,
+      "meanEarningsAnnual": 58000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28500,
+          "meanAnnual": 32000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 51000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -35,7 +64,36 @@
       "medianIncome": 104000,
       "populationDensity": 1400,
       "populationGrowthYoY": 0.012,
-      "jobsGrowthYoY": 0.015
+      "jobsGrowthYoY": 0.015,
+      "medianEarningsAnnual": 75000,
+      "meanEarningsAnnual": 84000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79000,
+          "meanAnnual": 88000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84000,
+          "meanAnnual": 94000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        }
+      ]
     }
   },
   {
@@ -53,7 +111,36 @@
       "medianIncome": 88000,
       "populationDensity": 1500,
       "populationGrowthYoY": 0.018,
-      "jobsGrowthYoY": 0.02
+      "jobsGrowthYoY": 0.02,
+      "medianEarningsAnnual": 63000,
+      "meanEarningsAnnual": 71000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34500,
+          "meanAnnual": 39000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 70500,
+          "meanAnnual": 79500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 71000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -74,7 +161,36 @@
       "medianIncome": 86000,
       "populationDensity": 1100,
       "populationGrowthYoY": 0.022,
-      "jobsGrowthYoY": 0.018
+      "jobsGrowthYoY": 0.018,
+      "medianEarningsAnnual": 62000,
+      "meanEarningsAnnual": 69000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34000,
+          "meanAnnual": 38000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 60500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 72500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -95,7 +211,36 @@
       "medianIncome": 74000,
       "populationDensity": 800,
       "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 53000,
+      "meanEarningsAnnual": 59000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29000,
+          "meanAnnual": 32500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46500,
+          "meanAnnual": 52000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 59500,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 53000,
+          "meanAnnual": 59000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -116,7 +261,36 @@
       "medianIncome": 80000,
       "populationDensity": 700,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 58000,
+      "meanEarningsAnnual": 65000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51000,
+          "meanAnnual": 57000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -137,7 +311,36 @@
       "medianIncome": 78000,
       "populationDensity": 600,
       "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -158,7 +361,36 @@
       "medianIncome": 85000,
       "populationDensity": 550,
       "populationGrowthYoY": 0.007,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 61000,
+      "meanEarningsAnnual": 68000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 33500,
+          "meanAnnual": 37500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 53500,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -179,7 +411,36 @@
       "medianIncome": 82000,
       "populationDensity": 900,
       "populationGrowthYoY": 0.009,
-      "jobsGrowthYoY": 0.012
+      "jobsGrowthYoY": 0.012,
+      "medianEarningsAnnual": 59000,
+      "meanEarningsAnnual": 66000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32500,
+          "meanAnnual": 36500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -200,7 +461,36 @@
       "medianIncome": 112000,
       "populationDensity": 1900,
       "populationGrowthYoY": 0.005,
-      "jobsGrowthYoY": 0.008
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 81000,
+      "meanEarningsAnnual": 91000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 44500,
+          "meanAnnual": 50000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 85000,
+          "meanAnnual": 95500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 90500,
+          "meanAnnual": 102000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 81000,
+          "meanAnnual": 91000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -221,7 +511,36 @@
       "medianIncome": 100000,
       "populationDensity": 1200,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 81000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 85000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 81000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -242,7 +561,36 @@
       "medianIncome": 95000,
       "populationDensity": 800,
       "populationGrowthYoY": 0.01,
-      "jobsGrowthYoY": 0.011
+      "jobsGrowthYoY": 0.011,
+      "medianEarningsAnnual": 68000,
+      "meanEarningsAnnual": 76000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 37500,
+          "meanAnnual": 42000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 76000,
+          "meanAnnual": 85000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 68000,
+          "meanAnnual": 76000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -263,7 +611,36 @@
       "medianIncome": 79000,
       "populationDensity": 600,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.008
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -284,7 +661,36 @@
       "medianIncome": 92000,
       "populationDensity": 650,
       "populationGrowthYoY": 0.015,
-      "jobsGrowthYoY": 0.016
+      "jobsGrowthYoY": 0.016,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -305,7 +711,36 @@
       "medianIncome": 76000,
       "populationDensity": 400,
       "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.005
+      "jobsGrowthYoY": 0.005,
+      "medianEarningsAnnual": 55000,
+      "meanEarningsAnnual": 62000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 30500,
+          "meanAnnual": 34000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 48500,
+          "meanAnnual": 54500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -326,7 +761,36 @@
       "medianIncome": 78000,
       "populationDensity": 400,
       "populationGrowthYoY": 0.004,
-      "jobsGrowthYoY": 0.006
+      "jobsGrowthYoY": 0.006,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -347,7 +811,36 @@
       "medianIncome": 68000,
       "populationDensity": 80,
       "populationGrowthYoY": -0.002,
-      "jobsGrowthYoY": 0.002
+      "jobsGrowthYoY": 0.002,
+      "medianEarningsAnnual": 49000,
+      "meanEarningsAnnual": 55000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 27000,
+          "meanAnnual": 30500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 43000,
+          "meanAnnual": 48500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 51500,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 61500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 49000,
+          "meanAnnual": 55000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -368,7 +861,36 @@
       "medianIncome": 92000,
       "populationDensity": 120,
       "populationGrowthYoY": 0.025,
-      "jobsGrowthYoY": 0.03
+      "jobsGrowthYoY": 0.03,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -389,7 +911,36 @@
       "medianIncome": 88000,
       "populationDensity": 90,
       "populationGrowthYoY": 0.028,
-      "jobsGrowthYoY": 0.022
+      "jobsGrowthYoY": 0.022,
+      "medianEarningsAnnual": 63000,
+      "meanEarningsAnnual": 71000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34500,
+          "meanAnnual": 39000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 70500,
+          "meanAnnual": 79500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 71000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -410,7 +961,36 @@
       "medianIncome": 76000,
       "populationDensity": 450,
       "populationGrowthYoY": 0.003,
-      "jobsGrowthYoY": 0.007
+      "jobsGrowthYoY": 0.007,
+      "medianEarningsAnnual": 55000,
+      "meanEarningsAnnual": 62000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 30500,
+          "meanAnnual": 34000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 48500,
+          "meanAnnual": 54500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -430,7 +1010,36 @@
       "medianIncome": 104000,
       "populationDensity": 380,
       "populationGrowthYoY": 0.012,
-      "jobsGrowthYoY": 0.015
+      "jobsGrowthYoY": 0.015,
+      "medianEarningsAnnual": 75000,
+      "meanEarningsAnnual": 84000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 41500,
+          "meanAnnual": 46000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 79000,
+          "meanAnnual": 88000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 84000,
+          "meanAnnual": 94000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 75000,
+          "meanAnnual": 84000
+        }
+      ]
     }
   },
   {
@@ -447,7 +1056,36 @@
       "medianIncome": 72000,
       "populationDensity": 70,
       "populationGrowthYoY": 0.01,
-      "jobsGrowthYoY": 0.011
+      "jobsGrowthYoY": 0.011,
+      "medianEarningsAnnual": 52000,
+      "meanEarningsAnnual": 58000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 28500,
+          "meanAnnual": 32000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46000,
+          "meanAnnual": 51000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 61000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -467,7 +1105,36 @@
       "medianIncome": 88000,
       "populationDensity": 1500,
       "populationGrowthYoY": 0.018,
-      "jobsGrowthYoY": 0.02
+      "jobsGrowthYoY": 0.02,
+      "medianEarningsAnnual": 63000,
+      "meanEarningsAnnual": 71000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34500,
+          "meanAnnual": 39000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 70500,
+          "meanAnnual": 79500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 63000,
+          "meanAnnual": 71000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -487,7 +1154,36 @@
       "medianIncome": 86000,
       "populationDensity": 1100,
       "populationGrowthYoY": 0.022,
-      "jobsGrowthYoY": 0.018
+      "jobsGrowthYoY": 0.018,
+      "medianEarningsAnnual": 62000,
+      "meanEarningsAnnual": 69000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 34000,
+          "meanAnnual": 38000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 54500,
+          "meanAnnual": 60500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 72500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -507,7 +1203,36 @@
       "medianIncome": 74000,
       "populationDensity": 90,
       "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 53000,
+      "meanEarningsAnnual": 59000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 29000,
+          "meanAnnual": 32500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 46500,
+          "meanAnnual": 52000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 55500,
+          "meanAnnual": 62000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 59500,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 53000,
+          "meanAnnual": 59000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -527,7 +1252,36 @@
       "medianIncome": 80000,
       "populationDensity": 700,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 58000,
+      "meanEarningsAnnual": 65000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32000,
+          "meanAnnual": 36000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 51000,
+          "meanAnnual": 57000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -547,7 +1301,36 @@
       "medianIncome": 78000,
       "populationDensity": 60,
       "populationGrowthYoY": 0.008,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -567,7 +1350,36 @@
       "medianIncome": 85000,
       "populationDensity": 80,
       "populationGrowthYoY": 0.007,
-      "jobsGrowthYoY": 0.01
+      "jobsGrowthYoY": 0.01,
+      "medianEarningsAnnual": 61000,
+      "meanEarningsAnnual": 68000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 33500,
+          "meanAnnual": 37500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 53500,
+          "meanAnnual": 60000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 61000,
+          "meanAnnual": 68000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -587,7 +1399,36 @@
       "medianIncome": 82000,
       "populationDensity": 900,
       "populationGrowthYoY": 0.009,
-      "jobsGrowthYoY": 0.012
+      "jobsGrowthYoY": 0.012,
+      "medianEarningsAnnual": 59000,
+      "meanEarningsAnnual": 66000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 32500,
+          "meanAnnual": 36500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 52000,
+          "meanAnnual": 58000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 62000,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -607,7 +1448,36 @@
       "medianIncome": 112000,
       "populationDensity": 1900,
       "populationGrowthYoY": 0.005,
-      "jobsGrowthYoY": 0.008
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 81000,
+      "meanEarningsAnnual": 91000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 44500,
+          "meanAnnual": 50000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 71500,
+          "meanAnnual": 80000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 85000,
+          "meanAnnual": 95500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 90500,
+          "meanAnnual": 102000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 81000,
+          "meanAnnual": 91000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -627,7 +1497,36 @@
       "medianIncome": 100000,
       "populationDensity": 1200,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.009
+      "jobsGrowthYoY": 0.009,
+      "medianEarningsAnnual": 72000,
+      "meanEarningsAnnual": 81000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 39500,
+          "meanAnnual": 44500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 63500,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 75500,
+          "meanAnnual": 85000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 80500,
+          "meanAnnual": 90500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 72000,
+          "meanAnnual": 81000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -647,7 +1546,36 @@
       "medianIncome": 92000,
       "populationDensity": 650,
       "populationGrowthYoY": 0.015,
-      "jobsGrowthYoY": 0.016
+      "jobsGrowthYoY": 0.016,
+      "medianEarningsAnnual": 66000,
+      "meanEarningsAnnual": 74000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36500,
+          "meanAnnual": 40500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 69500,
+          "meanAnnual": 77500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 74000,
+          "meanAnnual": 83000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 66000,
+          "meanAnnual": 74000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -667,7 +1595,36 @@
       "medianIncome": 78000,
       "populationDensity": 400,
       "populationGrowthYoY": 0.004,
-      "jobsGrowthYoY": 0.006
+      "jobsGrowthYoY": 0.006,
+      "medianEarningsAnnual": 56000,
+      "meanEarningsAnnual": 63000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31000,
+          "meanAnnual": 34500
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 49500,
+          "meanAnnual": 55500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 59000,
+          "meanAnnual": 66000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 62500,
+          "meanAnnual": 70500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 63000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -687,7 +1644,36 @@
       "medianIncome": 70000,
       "populationDensity": 8,
       "populationGrowthYoY": -0.002,
-      "jobsGrowthYoY": 0.002
+      "jobsGrowthYoY": 0.002,
+      "medianEarningsAnnual": 50000,
+      "meanEarningsAnnual": 56000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 27500,
+          "meanAnnual": 31000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 44000,
+          "meanAnnual": 49500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 52500,
+          "meanAnnual": 59000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 56000,
+          "meanAnnual": 62500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -707,7 +1693,36 @@
       "medianIncome": 90000,
       "populationDensity": 15,
       "populationGrowthYoY": 0.025,
-      "jobsGrowthYoY": 0.03
+      "jobsGrowthYoY": 0.03,
+      "medianEarningsAnnual": 65000,
+      "meanEarningsAnnual": 73000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 36000,
+          "meanAnnual": 40000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 68500,
+          "meanAnnual": 76500
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 73000,
+          "meanAnnual": 82000
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 65000,
+          "meanAnnual": 73000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -727,7 +1742,36 @@
       "medianIncome": 76000,
       "populationDensity": 450,
       "populationGrowthYoY": 0.003,
-      "jobsGrowthYoY": 0.007
+      "jobsGrowthYoY": 0.007,
+      "medianEarningsAnnual": 55000,
+      "meanEarningsAnnual": 62000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 30500,
+          "meanAnnual": 34000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 48500,
+          "meanAnnual": 54500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 58000,
+          "meanAnnual": 65000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 61500,
+          "meanAnnual": 69500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 55000,
+          "meanAnnual": 62000
+        }
+      ]
     },
     "proxies": [
       "career"
@@ -747,7 +1791,36 @@
       "medianIncome": 79000,
       "populationDensity": 600,
       "populationGrowthYoY": 0.006,
-      "jobsGrowthYoY": 0.008
+      "jobsGrowthYoY": 0.008,
+      "medianEarningsAnnual": 57000,
+      "meanEarningsAnnual": 64000,
+      "earningsByAge": [
+        {
+          "label": "15–24 years",
+          "medianAnnual": 31500,
+          "meanAnnual": 35000
+        },
+        {
+          "label": "25–34 years",
+          "medianAnnual": 50000,
+          "meanAnnual": 56500
+        },
+        {
+          "label": "35–44 years",
+          "medianAnnual": 60000,
+          "meanAnnual": 67000
+        },
+        {
+          "label": "45–54 years",
+          "medianAnnual": 64000,
+          "meanAnnual": 71500
+        },
+        {
+          "label": "55–64 years",
+          "medianAnnual": 57000,
+          "meanAnnual": 64000
+        }
+      ]
     },
     "proxies": [
       "career"

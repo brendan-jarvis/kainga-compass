@@ -14,6 +14,7 @@ import {
   formatCurrency,
   formatMultiple,
   formatRent,
+  formatSalary,
 } from "~/lib/places/format";
 import type { ScoredTerritory } from "~/lib/places/types";
 import { cn } from "~/lib/utils";
@@ -44,12 +45,15 @@ export function RankedList({
             <TableHead>Place</TableHead>
             <TableHead className="text-right">Match</TableHead>
             <TableHead className="text-right hidden sm:table-cell">
-              Rent
+              Avg salary
             </TableHead>
             <TableHead className="text-right hidden md:table-cell">
-              Price
+              Rent
             </TableHead>
             <TableHead className="text-right hidden lg:table-cell">
+              Price
+            </TableHead>
+            <TableHead className="text-right hidden xl:table-cell">
               Multiple
             </TableHead>
           </TableRow>
@@ -91,12 +95,15 @@ export function RankedList({
                   <MatchScoreBadge score={t.matchScore} />
                 </TableCell>
                 <TableCell className="text-right tabular-nums hidden sm:table-cell">
-                  {formatRent(t.metrics.medianRentWeek)}
+                  {formatSalary(t.metrics.meanEarningsAnnual)}
                 </TableCell>
                 <TableCell className="text-right tabular-nums hidden md:table-cell">
-                  {formatCurrency(t.metrics.medianHousePrice)}
+                  {formatRent(t.metrics.medianRentWeek)}
                 </TableCell>
                 <TableCell className="text-right tabular-nums hidden lg:table-cell">
+                  {formatCurrency(t.metrics.medianHousePrice)}
+                </TableCell>
+                <TableCell className="text-right tabular-nums hidden xl:table-cell">
                   {formatMultiple(t.metrics.medianMultiple)}
                 </TableCell>
               </TableRow>
@@ -105,7 +112,8 @@ export function RankedList({
         </TableBody>
       </Table>
       <p className="text-muted-foreground border-t px-3 py-2 text-sm">
-        Click a row to focus the map · click the place name for the detail page
+        Avg salary is mean annual earnings for filled jobs · click a row to
+        focus the map · place name opens the detail page
       </p>
     </div>
   );

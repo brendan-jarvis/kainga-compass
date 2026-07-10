@@ -8,6 +8,15 @@ export function formatCurrency(n: number): string {
   return `$${Math.round(n)}`;
 }
 
+/** Full salary-style amount, e.g. $78,500 */
+export function formatSalary(n: number): string {
+  return new Intl.NumberFormat("en-NZ", {
+    style: "currency",
+    currency: "NZD",
+    maximumFractionDigits: 0,
+  }).format(Math.round(n));
+}
+
 export function formatRent(n: number): string {
   return `$${Math.round(n)}/wk`;
 }

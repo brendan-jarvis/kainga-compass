@@ -17,6 +17,7 @@ import {
   formatMultiple,
   formatPercent,
   formatRent,
+  formatSalary,
 } from "~/lib/places/format";
 import {
   getPlacesMetadata,
@@ -151,7 +152,7 @@ export default async function TerritoryDetailPage({
               {formatRent(territory.metrics.medianRentWeek)}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-xs">
+          <CardContent className="text-muted-foreground text-sm">
             YoY {formatPercent(territory.metrics.rentYoY)}
           </CardContent>
         </Card>
@@ -162,7 +163,7 @@ export default async function TerritoryDetailPage({
               {formatCurrency(territory.metrics.medianHousePrice)}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-xs">
+          <CardContent className="text-muted-foreground text-sm">
             YoY {formatPercent(territory.metrics.priceYoY)}
           </CardContent>
         </Card>
@@ -173,24 +174,82 @@ export default async function TerritoryDetailPage({
               {formatMultiple(territory.metrics.medianMultiple)}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-xs">
-            House price ÷ household income
+          <CardContent className="text-muted-foreground text-sm">
+            House price ÷ household income (
+            {formatSalary(territory.metrics.medianIncome)})
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="pb-2">
-            <CardDescription>Median income</CardDescription>
+            <CardDescription>Average salary (mean earnings)</CardDescription>
             <CardTitle className="text-2xl tabular-nums">
-              {formatCurrency(territory.metrics.medianIncome)}
+              {formatSalary(territory.metrics.meanEarningsAnnual)}
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-muted-foreground text-xs">
-            {proxySet.has("career")
-              ? "Regional proxy — see methodology"
-              : "Household income estimate"}
+          <CardContent className="text-muted-foreground text-sm">
+            Median earnings{" "}
+            {formatSalary(territory.metrics.medianEarningsAnnual)}
+            {proxySet.has("career") ? " · regional proxy" : ""}
           </CardContent>
         </Card>
       </div>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-base">Earnings detail</CardTitle>
+          <CardDescription>
+            Mean and median annual earnings for filled jobs (LEED-style). Stats
+            NZ does not publish “years of experience” by place — age bands are
+            the best public proxy for career stage.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div className="grid gap-3 sm:grid-cols-2">
+            <div className="bg-muted/40 rounded-lg border p-3">
+              <p className="text-muted-foreground text-sm">Mean (average)</p>
+              <p className="text-xl font-semibold tabular-nums">
+                {formatSalary(territory.metrics.meanEarningsAnnual)}
+              </p>
+            </div>
+            <div className="bg-muted/40 rounded-lg border p-3">
+              <p className="text-muted-foreground text-sm">Median</p>
+              <p className="text-xl font-semibold tabular-nums">
+                {formatSalary(territory.metrics.medianEarningsAnnual)}
+              </p>
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b text-muted-foreground">
+                  <th className="py-2 pr-3 font-medium">Age group</th>
+                  <th className="py-2 pr-3 text-right font-medium">Median</th>
+                  <th className="py-2 text-right font-medium">Mean</th>
+                </tr>
+              </thead>
+              <tbody>
+                {territory.metrics.earningsByAge.map((band) => (
+                  <tr key={band.label} className="border-b last:border-0">
+                    <td className="py-2 pr-3">{band.label}</td>
+                    <td className="py-2 pr-3 text-right tabular-nums">
+                      {formatSalary(band.medianAnnual)}
+                    </td>
+                    <td className="py-2 text-right tabular-nums">
+                      {formatSalary(band.meanAnnual)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-muted-foreground text-sm">
+            Household income used for the price multiple:{" "}
+            {formatSalary(territory.metrics.medianIncome)}. Age-band figures are
+            fixture estimates shaped like LEED age breakdowns — replace with live
+            Stats NZ series when ingest is wired.
+          </p>
+        </CardContent>
+      </Card>
 
       <Card>
         <CardHeader>

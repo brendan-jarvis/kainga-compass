@@ -287,6 +287,8 @@ function validate(territories: Territory[]) {
     "populationDensity",
     "populationGrowthYoY",
     "jobsGrowthYoY",
+    "medianEarningsAnnual",
+    "meanEarningsAnnual",
   ] as const;
 
   for (const t of territories) {
@@ -300,6 +302,12 @@ function validate(territories: Territory[]) {
       if (typeof t.metrics[key] !== "number" || Number.isNaN(t.metrics[key])) {
         throw new Error(`${t.slug}: invalid metric ${key}`);
       }
+    }
+    if (
+      !Array.isArray(t.metrics.earningsByAge) ||
+      t.metrics.earningsByAge.length === 0
+    ) {
+      throw new Error(`${t.slug}: missing earningsByAge bands`);
     }
   }
 
@@ -430,6 +438,8 @@ async function main() {
       "HUD Local Housing Statistics — median sale price & multiple by TA",
       "Stats NZ Urban Rural Areas 2023 (FeatureServer) — city/town outlines",
       "Stats NZ Territorial Authority 2023 (FeatureServer) — district outlines",
+      "Stats NZ LEED / BED — mean & median filled-job earnings (fixtures until live ingest)",
+      "Stats NZ LEED age-group earnings — career-stage proxy (not years of experience)",
       "Stats NZ subnational population estimates (urban rural) — density proxies",
       "Indicative settlement metric splits where TA data alone would mask local markets",
     ],
