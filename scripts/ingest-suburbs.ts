@@ -1,16 +1,13 @@
 /**
- * Fetch Stats NZ SA2 2023 polygons as "suburbs" under each city/town,
- * invent fixture metrics from the parent city, and merge into places + boundaries.
+ * Fetch Stats NZ Statistical Area 3 (SA3) 2023 polygons as suburbs under each city.
  *
- * Usage: bun run scripts/ingest-suburbs.ts
- *        bun run scripts/ingest-suburbs.ts -- --force
+ * SA3 is designed to approximate suburbs in major/medium urban areas.
+ * SA2 is too fine in CBDs (e.g. "Queen Street", "Shortland Street") — not usable as suburbs.
  *
- * Spatial source:
- *   Statistical Area 2 2023 FeatureServer (Stats NZ)
- *   SA2s intersecting each city's Urban Rural 2023 polygon bbox
+ * Usage: bun run ingest:suburbs
+ * Prerequisite: scripts/cache/ur2023.geojson (from bun run ingest:places)
  */
 
-import { mkdir } from "node:fs/promises";
 import path from "node:path";
 
 import placesSeed from "../src/data/places/places.json";
@@ -32,8 +29,8 @@ const OUT_DIR = path.join(import.meta.dir, "../src/data/places");
 const CACHE_DIR = path.join(import.meta.dir, "cache");
 const UR_CACHE = path.join(CACHE_DIR, "ur2023.geojson");
 
-const SA2_QUERY =
-  "https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/services/Statistical_Area_2_2023/FeatureServer/0/query";
+const SA3_QUERY =
+  "https://services2.arcgis.com/vKb0s8tBIA3bdocZ/arcgis/rest/services/Statistical_Area_3_2023/FeatureServer/0/query";
 
 const CITY_TO_UR_NAME: Record<string, string> = {
   whangarei: "Whangarei",
@@ -58,29 +55,97 @@ const CITY_TO_UR_NAME: Record<string, string> = {
   invercargill: "Invercargill",
 };
 
-/** Cap suburbs per city so Auckland stays usable. */
-const MAX_SUBURBS_PER_CITY = 36;
+/** Cap per city so large metros stay usable. */
+const MAX_SUBURBS_PER_CITY = 48;
 
-function isUsableSa2Name(name: string): boolean {
+/** Drop huge rural SA3s that only clip the urban bbox (km²). */
+const MAX_SUBURB_AREA_KM2 = 45;
+
+function isUsableSa3Name(name: string): boolean {
   const n = name.toLowerCase();
   if (n.startsWith("inland water")) return false;
   if (n.startsWith("oceanic")) return false;
   if (n.startsWith("inlet")) return false;
-  if (n.startsWith("inlets")) return false;
   if (n.includes(" harbour")) return false;
-  if (n.startsWith("bay of ")) return false;
+  // Rural SA3 naming patterns we don't want as "suburbs"
+  if (n.endsWith(" rural")) return false;
+  if (n.includes(" rural ")) return false;
   return true;
 }
 
+function pointInRing(lng: number, lat: number, ring: number[][]): boolean {
+  // Ray casting
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    const xi = ring[i]![0]!;
+    const yi = ring[i]![1]!;
+    const xj = ring[j]![0]!;
+    const yj = ring[j]![1]!;
+    const intersect =
+      yi > lat !== yj > lat &&
+      lng < ((xj - xi) * (lat - yi)) / (yj - yi + 0.0) + xi;
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+function featureCentroid(geometry: GeoFeature["geometry"]): [number, number] {
+  let sx = 0;
+  let sy = 0;
+  let n = 0;
+  const visit = (c: unknown): void => {
+    if (!Array.isArray(c)) return;
+    if (typeof c[0] === "number") {
+      sx += c[0] as number;
+      sy += c[1] as number;
+      n += 1;
+      return;
+    }
+    for (const child of c) visit(child);
+  };
+  visit(geometry.coordinates);
+  return n ? [sx / n, sy / n] : [0, 0];
+}
+
+function pointInFeature(
+  lng: number,
+  lat: number,
+  geometry: GeoFeature["geometry"],
+): boolean {
+  if (geometry.type === "Polygon") {
+    const rings = geometry.coordinates as number[][][];
+    if (!rings[0] || !pointInRing(lng, lat, rings[0])) return false;
+    // holes
+    for (let i = 1; i < rings.length; i++) {
+      if (pointInRing(lng, lat, rings[i]!)) return false;
+    }
+    return true;
+  }
+  const polys = geometry.coordinates as number[][][][];
+  for (const poly of polys) {
+    if (!poly[0]) continue;
+    if (!pointInRing(lng, lat, poly[0])) continue;
+    let inHole = false;
+    for (let i = 1; i < poly.length; i++) {
+      if (pointInRing(lng, lat, poly[i]!)) {
+        inHole = true;
+        break;
+      }
+    }
+    if (!inHole) return true;
+  }
+  return false;
+}
+
 function scaleMetrics(base: TerritoryMetrics, key: string): TerritoryMetrics {
-  // ±12% deterministic jitter so suburbs differ but stay near parent city.
   const j = (hash01(key) - 0.5) * 0.24;
   const j2 = (hash01(key + ":b") - 0.5) * 0.2;
   const rent = Math.round(base.medianRentWeek * (1 + j));
-  const price = Math.round(base.medianHousePrice * (1 + j * 1.1) / 1000) * 1000;
-  const income = Math.round(base.medianIncome * (1 + j2) / 1000) * 1000;
-  const medEarn = Math.round(base.medianEarningsAnnual * (1 + j2) / 500) * 500;
-  const meanEarn = Math.round(base.meanEarningsAnnual * (1 + j2 * 1.05) / 500) * 500;
+  const price = Math.round((base.medianHousePrice * (1 + j * 1.1)) / 1000) * 1000;
+  const income = Math.round((base.medianIncome * (1 + j2)) / 1000) * 1000;
+  const medEarn = Math.round((base.medianEarningsAnnual * (1 + j2)) / 500) * 500;
+  const meanEarn =
+    Math.round((base.meanEarningsAnnual * (1 + j2 * 1.05)) / 500) * 500;
   const multiple = Math.round((price / Math.max(income, 1)) * 10) / 10;
 
   const earningsByAge: EarningsAgeBand[] = base.earningsByAge.map((band) => ({
@@ -108,7 +173,7 @@ function scaleMetrics(base: TerritoryMetrics, key: string): TerritoryMetrics {
   };
 }
 
-async function querySa2InBbox(bbox: {
+async function querySa3InBbox(bbox: {
   xmin: number;
   ymin: number;
   xmax: number;
@@ -130,33 +195,30 @@ async function querySa2InBbox(bbox: {
 
   for (;;) {
     const url =
-      `${SA2_QUERY}?where=1%3D1` +
+      `${SA3_QUERY}?where=1%3D1` +
       `&geometry=${geometry}` +
       `&geometryType=esriGeometryEnvelope&inSR=4326` +
       `&spatialRel=esriSpatialRelIntersects` +
-      `&outFields=SA22023_V1_00,SA22023_V1_00_NAME,SA22023_V1_00_NAME_ASCII,LAND_AREA_SQ_KM` +
+      `&outFields=SA32023_V1_00,SA32023_V1_00_NAME,SA32023_V1_00_NAME_ASCII,LAND_AREA_SQ_KM` +
       `&returnGeometry=true&outSR=4326&f=geojson` +
       `&resultRecordCount=${pageSize}&resultOffset=${offset}`;
 
     const res = await fetch(url);
     if (!res.ok) {
-      throw new Error(`SA2 query failed: ${res.status} ${res.statusText}`);
+      throw new Error(`SA3 query failed: ${res.status} ${res.statusText}`);
     }
     const fc = (await res.json()) as FeatureCollection;
     const batch = fc.features ?? [];
     features.push(...batch);
     if (batch.length < pageSize) break;
     offset += pageSize;
-    if (offset > 800) break; // safety
+    if (offset > 600) break;
   }
 
   return features;
 }
 
 async function main() {
-  await mkdir(OUT_DIR, { recursive: true });
-  await mkdir(CACHE_DIR, { recursive: true });
-
   if (!(await Bun.file(UR_CACHE).exists())) {
     console.error(
       "Missing UR cache. Run: bun run ingest:places  (downloads Urban Rural first)",
@@ -174,7 +236,6 @@ async function main() {
   }
 
   const basePlaces = placesSeed as Territory[];
-  // Drop any previous suburbs so re-runs stay clean
   const parents = basePlaces.filter((p) => p.kind !== "suburb");
   const cities = parents.filter((p) => p.kind === "city");
 
@@ -195,48 +256,55 @@ async function main() {
     }
 
     const bbox = featureBBox(urFeat.geometry);
-    // Slight pad so edge suburbs are included
-    const pad = 0.02;
-    const sa2s = await querySa2InBbox({
+    const pad = 0.01;
+    const sa3s = await querySa3InBbox({
       xmin: bbox.xmin - pad,
       ymin: bbox.ymin - pad,
       xmax: bbox.xmax + pad,
       ymax: bbox.ymax + pad,
     });
 
-    const candidates = sa2s
+    const candidates = sa3s
       .map((f) => {
         const name = String(
-          f.properties.SA22023_V1_00_NAME_ASCII ??
-            f.properties.SA22023_V1_00_NAME ??
+          f.properties.SA32023_V1_00_NAME_ASCII ??
+            f.properties.SA32023_V1_00_NAME ??
             "",
         );
         const area = Number(f.properties.LAND_AREA_SQ_KM ?? 0);
-        return { f, name, area };
+        const [clng, clat] = featureCentroid(f.geometry);
+        const inside = pointInFeature(clng, clat, urFeat.geometry);
+        return { f, name, area, inside };
       })
-      .filter((c) => c.name && isUsableSa2Name(c.name))
-      // Prefer denser/smaller SA2s as "suburbs"
-      .sort((a, b) => a.area - b.area)
+      .filter(
+        (c) =>
+          c.name &&
+          isUsableSa3Name(c.name) &&
+          c.inside &&
+          c.area > 0.15 &&
+          c.area <= MAX_SUBURB_AREA_KM2,
+      )
+      // Prefer typical suburb sizes, then name
+      .sort((a, b) => a.name.localeCompare(b.name))
       .slice(0, MAX_SUBURBS_PER_CITY);
 
-    console.log(`  ${city.slug}: ${candidates.length} SA2 suburbs`);
+    console.log(`  ${city.slug}: ${candidates.length} SA3 suburbs`);
 
     for (const { f, name } of candidates) {
       let slug = `${city.slug}--${slugify(name)}`;
       if (usedSlugs.has(slug)) {
-        slug = `${slug}-${String(f.properties.SA22023_V1_00 ?? "")}`;
+        slug = `${slug}-${String(f.properties.SA32023_V1_00 ?? "")}`;
       }
       usedSlugs.add(slug);
 
-      const metrics = scaleMetrics(city.metrics, slug);
       suburbs.push({
         slug,
-        name,
+        name: name.replace(/ \(Auckland\)$/i, "").replace(/ \(.*?\)\s*$/, ""),
         kind: "suburb",
         region: city.region,
         district: city.district,
         parentSlug: city.slug,
-        metrics,
+        metrics: scaleMetrics(city.metrics, slug),
         proxies: city.proxies ? [...city.proxies] : ["career"],
       });
 
@@ -246,39 +314,22 @@ async function main() {
           slug,
           name,
           kind: "suburb",
-          source: "stats-nz-sa2-2023",
+          source: "stats-nz-sa3-2023",
           parentSlug: city.slug,
           officialName: name,
         },
-        geometry: simplifyGeometry(f.geometry, 0.0025),
+        geometry: simplifyGeometry(f.geometry, 0.002),
       });
     }
 
-    // Be polite to the API
-    await new Promise((r) => setTimeout(r, 150));
+    await new Promise((r) => setTimeout(r, 120));
   }
 
-  // Ensure parentSlug on cities pointing at district region slug where possible
-  const districtByName = new Map(
-    parents
-      .filter((p) => p.kind === "region")
-      .map((p) => [p.name, p.slug] as const),
-  );
-  const citiesUpdated = parents.map((p) => {
-    if (p.kind !== "city" || !p.district) return p;
-    const parentSlug = districtByName.get(p.district);
-    return parentSlug ? { ...p, parentSlug } : p;
-  });
+  const allPlaces = [...parents, ...suburbs];
 
-  const allPlaces = [...citiesUpdated, ...suburbs];
-
-  // Merge boundaries: keep non-suburb features from existing file if present
-  let existingBoundaries: FeatureCollection = { type: "FeatureCollection", features: [] };
   const boundsPath = path.join(OUT_DIR, "boundaries.json");
-  if (await Bun.file(boundsPath).exists()) {
-    existingBoundaries = (await Bun.file(boundsPath).json()) as FeatureCollection;
-  }
-  const kept = existingBoundaries.features.filter(
+  const existingBounds = (await Bun.file(boundsPath).json()) as FeatureCollection;
+  const kept = existingBounds.features.filter(
     (f) => f.properties?.kind !== "suburb",
   );
   const boundaries: FeatureCollection = {
@@ -291,15 +342,16 @@ async function main() {
   meta.suburbCount = suburbs.length;
   meta.lastUpdated = new Date().toISOString().slice(0, 10);
   const sources = Array.isArray(meta.sources) ? [...meta.sources] : [];
-  if (!sources.some((s) => String(s).includes("SA2"))) {
-    sources.push(
-      "Stats NZ Statistical Area 2 2023 (FeatureServer) — suburb/neighbourhood outlines under cities",
-    );
-  }
-  meta.sources = sources;
+  // Replace SA2 suburb source note with SA3
+  const filtered = sources.filter(
+    (s) => !String(s).includes("SA2") && !String(s).includes("suburb"),
+  );
+  filtered.push(
+    "Stats NZ Statistical Area 3 2023 (FeatureServer) — suburb-scale units under cities (SA3 approximates suburbs; SA2 is too fine in CBDs)",
+  );
+  meta.sources = filtered;
   meta.notes =
-    String(meta.notes ?? "") +
-    " Suburbs are SA2 units spatially linked to each Urban Rural city polygon; metrics are parent-city fixtures with local variation until finer housing series are wired.";
+    "Districts: all 67 Stats NZ TA 2023. Cities: selected Urban Rural 2023 settlements. Suburbs: SA3 2023 units whose centroid falls inside each city urban area (not SA2 street-block units). Metrics for many places remain fixtures until HUD/MBIE live ingest.";
 
   await Bun.write(
     path.join(OUT_DIR, "places.json"),
@@ -309,10 +361,10 @@ async function main() {
   await Bun.write(metadataPath, JSON.stringify(meta, null, 2) + "\n");
 
   console.log(
-    `✓ ingest-suburbs — ${suburbs.length} suburbs under ${cities.length} cities → places + boundaries`,
+    `✓ ingest-suburbs — ${suburbs.length} SA3 suburbs under ${cities.length} cities`,
   );
   console.log(
-    `  boundaries total features: ${boundaries.features.length} (${(Bun.file(boundsPath).size / 1024).toFixed(0)} KB)`,
+    `  boundaries: ${boundaries.features.length} features, ${(Bun.file(boundsPath).size / 1024).toFixed(0)} KB`,
   );
 }
 

@@ -123,15 +123,16 @@ weights are normalised so Σ weight = 1`}
               Suburbs on city detail pages
             </p>
             <p>
-              Neighbourhood-scale polygons from{" "}
+              Suburb-scale polygons from{" "}
               <strong className="text-foreground">
-                Stats NZ Statistical Area 2 (SA2) 2023
+                Stats NZ Statistical Area 3 (SA3) 2023
               </strong>
-              , spatially linked to each city’s urban-area footprint (
-              {meta.suburbCount ?? "—"} suburbs). Layer via Stats NZ
-              FeatureServer{" "}
-              <code className="text-foreground">Statistical_Area_2_2023</code>.
-              Refresh with{" "}
+              . SA3 is designed to approximate suburbs in major and medium urban
+              areas. We previously tried SA2, but in dense CBDs SA2 often
+              fragments into street-block units (e.g. Queen Street, Shortland
+              Street) rather than named suburbs. Each suburb’s centroid must fall
+              inside the parent city’s Urban Rural 2023 outline (
+              {meta.suburbCount ?? "—"} suburbs). Refresh with{" "}
               <code className="text-foreground">bun run ingest:suburbs</code>.
             </p>
           </div>

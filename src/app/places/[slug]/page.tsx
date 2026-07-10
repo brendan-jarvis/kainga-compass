@@ -62,7 +62,7 @@ export async function generateMetadata({
 function kindLabel(kind: PlaceKind): string {
   if (kind === "city") return "City / town";
   if (kind === "region") return "District (territorial authority)";
-  return "Suburb (SA2)";
+  return "Suburb (SA3)";
 }
 
 function peerLabel(kind: PlaceKind): string {
@@ -244,7 +244,7 @@ export default async function TerritoryDetailPage({
           description={
             territory.kind === "region"
               ? "Settlements inside this territorial authority — map and ranking use the same weights as the explorer."
-              : "Stats NZ Statistical Area 2 units (neighbourhood scale) inside this urban area. Metrics are parent-city fixtures with local variation until finer series are wired."
+              : "Stats NZ Statistical Area 3 units (designed to approximate suburbs in urban areas; coarser than SA2 street-blocks). Metrics are parent-city fixtures with local variation until finer series are wired."
           }
         />
       )}
