@@ -1,22 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
-import {
-  MapContainer,
-  TileLayer,
-  GeoJSON,
-  useMap,
-} from "react-leaflet";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ChoroplethCanvas } from "@nivo/geo";
 import type { Feature, FeatureCollection } from "geojson";
-import type { Layer, LeafletMouseEvent, PathOptions } from "leaflet";
-import L from "leaflet";
+import { geoMercator } from "d3-geo";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 
 import type { ScoredTerritory } from "~/lib/places/types";
 import { cn } from "~/lib/utils";
-
-import "leaflet/dist/leaflet.css";
 
 type Props = {
   territories: ScoredTerritory[];
@@ -29,16 +21,16 @@ type Props = {
   className?: string;
 };
 
-/** Mainland NZ — slightly tighter than full EEZ so fitBounds zooms in. */
-const NZ_BOUNDS: L.LatLngBoundsExpression = [
-  [-47.4, 166.2],
-  [-34.2, 178.8],
-];
+type ChoroplethDatum = {
+  id: string;
+  value: number;
+  name: string;
+  rank: number;
+};
 
 /**
- * Chatham Islands sit near lng −176 (west of the antimeridian). Including them
- * with mainland +166…+179 makes Leaflet fitBounds span the whole globe.
- * Keep them drawn; just omit from default multi-feature framing.
+ * Chatham Islands sit near lng −176. Including them with mainland +166…+179
+ * makes fitExtent span the whole globe. Keep them drawn; omit from framing.
  */
 function isMainlandNzFeature(feature: Feature): boolean {
   let saw = false;
@@ -55,136 +47,94 @@ function isMainlandNzFeature(feature: Feature): boolean {
     }
     for (const child of c) visit(child);
   };
-  visit(feature.geometry && "coordinates" in feature.geometry
-    ? feature.geometry.coordinates
-    : null);
+  visit(
+    feature.geometry && "coordinates" in feature.geometry
+      ? feature.geometry.coordinates
+      : null,
+  );
   if (!saw) return false;
-  // Mainland / Stewart Island / nearby: positive longitudes around NZ
   return xmin > 160 && xmax < 180;
 }
 
-const STROKE_DEFAULT = "rgba(100, 100, 100, 0.4)";
-const STROKE_HOVER = "rgba(60, 60, 60, 0.7)";
-const STROKE_TOP = "#059669"; // emerald — top match
-const STROKE_FOCUS = "#047857";
+function fitProjectionParams(
+  features: Feature[],
+  width: number,
+  height: number,
+  pad = 16,
+): { scale: number; translation: [number, number]; rotation: [number, number, number] } {
+  const mainland = features.filter(isMainlandNzFeature);
+  const toFit = mainland.length > 0 ? mainland : features;
+  const collection: FeatureCollection = {
+    type: "FeatureCollection",
+    features: toFit,
+  };
 
-/**
- * Green (stronger match) → red (weaker), aligned with match-score badge tones.
- * t: 0 = worst rank, 1 = best rank
- */
-function rankHeatFill(rank: number, total: number, isDark: boolean): string {
-  if (total <= 0) {
-    return isDark ? "rgba(244,63,94,0.2)" : "rgba(244,63,94,0.18)";
-  }
-  const t = total === 1 ? 1 : 1 - (rank - 1) / (total - 1);
-  // rose-500 #f43f5e → emerald-500 #10b981
-  const r = Math.round(244 + t * (16 - 244));
-  const g = Math.round(63 + t * (185 - 63));
-  const b = Math.round(94 + t * (129 - 94));
-  const a = isDark ? 0.28 + t * 0.5 : 0.32 + t * 0.48;
-  return `rgba(${r},${g},${b},${a.toFixed(3)})`;
+  const projection = geoMercator();
+  projection.fitExtent(
+    [
+      [pad, pad],
+      [Math.max(pad + 1, width - pad), Math.max(pad + 1, height - pad)],
+    ],
+    collection,
+  );
+
+  const scale = projection.scale();
+  const [tx, ty] = projection.translate();
+  const [rx, ry, rz] = projection.rotate();
+
+  return {
+    scale,
+    translation: [tx / width, ty / height],
+    rotation: [rx, ry, rz],
+  };
 }
 
-function FitScopeBounds({
-  boundaries,
-  focusedSlug,
-}: {
-  boundaries: FeatureCollection;
-  focusedSlug?: string | null;
-}) {
-  const map = useMap();
-  const lastScopeKey = useRef<string>("");
+/** Nivo bound features include geo id + our datum; types omit id. */
+type BoundMapFeature = {
+  id?: string | number;
+  label?: string | number;
+  formattedValue?: string | number;
+  color?: string;
+  value?: number;
+  data?: ChoroplethDatum;
+  properties?: { name?: string; slug?: string };
+};
 
-  useEffect(() => {
-    const key = boundaries.features
-      .map((f) => f.properties?.slug as string)
-      .filter(Boolean)
-      .sort()
-      .join("|");
-    if (key === lastScopeKey.current) return;
-    lastScopeKey.current = key;
-    if (focusedSlug) return;
-
-    const fit = () => {
-      if (boundaries.features.length === 0) {
-        map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
-        return;
-      }
-      try {
-        // Prefer mainland-only features so Chatham Islands don't explode the bbox
-        const mainland = boundaries.features.filter(isMainlandNzFeature);
-        const toFit: FeatureCollection = {
-          type: "FeatureCollection",
-          features: mainland.length > 0 ? mainland : boundaries.features,
-        };
-        const layer = L.geoJSON(toFit);
-        const bounds = layer.getBounds();
-        if (!bounds.isValid() || bounds.getEast() - bounds.getWest() > 40) {
-          map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
-          return;
-        }
-        map.fitBounds(bounds.pad(0.04), {
-          padding: [16, 16],
-          maxZoom: 7,
-          animate: true,
-        });
-      } catch {
-        map.fitBounds(NZ_BOUNDS, { padding: [12, 12], maxZoom: 6 });
-      }
-    };
-
-    // Allow container size to settle (tall layout) before fitting.
-    requestAnimationFrame(() => {
-      map.invalidateSize();
-      fit();
-    });
-  }, [map, boundaries, focusedSlug]);
-
-  // Refit when container is resized (layout breakpoints).
-  useEffect(() => {
-    const el = map.getContainer();
-    if (typeof ResizeObserver === "undefined") return;
-    const ro = new ResizeObserver(() => {
-      map.invalidateSize({ animate: false });
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, [map]);
-
-  return null;
+function asBoundFeature(feature: unknown): BoundMapFeature {
+  return feature as BoundMapFeature;
 }
 
-function FocusPlace({
-  boundaries,
-  focusedSlug,
-}: {
-  boundaries: FeatureCollection;
-  focusedSlug?: string | null;
-}) {
-  const map = useMap();
+function featureId(feature: unknown): string {
+  const f = asBoundFeature(feature);
+  return String(f.data?.id ?? f.id ?? f.properties?.slug ?? "");
+}
 
-  useEffect(() => {
-    if (!focusedSlug) return;
-    const feature = boundaries.features.find(
-      (f) => f.properties?.slug === focusedSlug,
-    );
-    if (!feature) return;
-    try {
-      const layer = L.geoJSON(feature);
-      const bounds = layer.getBounds();
-      if (!bounds.isValid()) return;
-      map.fitBounds(bounds.pad(0.35), {
-        padding: [36, 36],
-        maxZoom: 11,
-        animate: true,
-        duration: 0.55,
-      });
-    } catch {
-      // ignore invalid geometry
-    }
-  }, [map, boundaries, focusedSlug]);
+function MatchTooltip({ feature }: { feature: BoundMapFeature }) {
+  if (feature.value === undefined && !feature.data) return null;
+  const name =
+    feature.data?.name ??
+    feature.properties?.name ??
+    (typeof feature.label === "string" || typeof feature.label === "number"
+      ? String(feature.label)
+      : "Place");
+  const rank = feature.data?.rank;
+  const score = feature.formattedValue ?? feature.value ?? "—";
 
-  return null;
+  return (
+    <div className="bg-popover text-popover-foreground border-border rounded-md border px-2.5 py-1.5 text-sm shadow-md">
+      <div className="flex items-center gap-2 font-medium">
+        <span
+          className="inline-block size-2.5 shrink-0 rounded-sm"
+          style={{ background: feature.color ?? "#999" }}
+        />
+        {name}
+      </div>
+      <div className="text-muted-foreground mt-0.5 text-xs">
+        {rank != null ? `Rank #${rank} · ` : ""}
+        Match {score}
+      </div>
+    </div>
+  );
 }
 
 export function NzChoroplethMap({
@@ -199,127 +149,186 @@ export function NzChoroplethMap({
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === "dark";
 
-  const total = territories.length;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [size, setSize] = useState({ width: 0, height: 0 });
 
-  const bySlug = useMemo(() => {
-    const map = new Map<
-      string,
-      { territory: ScoredTerritory; rank: number }
-    >();
-    territories.forEach((t, i) => {
-      map.set(t.slug, { territory: t, rank: i + 1 });
-    });
-    return map;
-  }, [territories]);
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+    const measure = () => {
+      const rect = el.getBoundingClientRect();
+      setSize({
+        width: Math.max(0, Math.floor(rect.width)),
+        height: Math.max(0, Math.floor(rect.height)),
+      });
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
-  const topSlug = territories[0]?.slug ?? null;
+  const features = useMemo(
+    () =>
+      boundaries.features.map((f) => ({
+        ...f,
+        id: String(f.properties?.slug ?? f.id ?? ""),
+      })),
+    [boundaries],
+  );
 
-  const styleFeature = (feature?: Feature): PathOptions => {
-    const slug = feature?.properties?.slug as string | undefined;
-    const entry = slug ? bySlug.get(slug) : undefined;
-    const rank = entry?.rank ?? total;
-    const isFocused = Boolean(slug && slug === focusedSlug);
-    const isHovered = Boolean(slug && slug === highlightedSlug && !isFocused);
-    const isTop = Boolean(slug && slug === topSlug);
+  const data: ChoroplethDatum[] = useMemo(
+    () =>
+      territories.map((t, i) => ({
+        id: t.slug,
+        value: t.matchScore,
+        name: t.name,
+        rank: i + 1,
+      })),
+    [territories],
+  );
 
-    let color = STROKE_DEFAULT;
-    let weight = 1;
+  const domain = useMemo((): [number, number] => {
+    if (data.length === 0) return [0, 100];
+    let min = Infinity;
+    let max = -Infinity;
+    for (const d of data) {
+      min = Math.min(min, d.value);
+      max = Math.max(max, d.value);
+    }
+    if (!Number.isFinite(min) || !Number.isFinite(max)) return [0, 100];
+    if (min === max) {
+      const pad = min === 0 ? 1 : Math.abs(min) * 0.05;
+      return [min - pad, max + pad];
+    }
+    return [min, max];
+  }, [data]);
 
-    if (isFocused) {
-      color = STROKE_FOCUS;
-      weight = 3;
-    } else if (isHovered) {
-      color = STROKE_HOVER;
-      weight = 2;
-    } else if (isTop) {
-      color = STROKE_TOP;
-      weight = 2.5;
+  const projection = useMemo(() => {
+    if (size.width < 32 || size.height < 32 || features.length === 0) {
+      return {
+        scale: 100,
+        translation: [0.5, 0.5] as [number, number],
+        rotation: [0, 0, 0] as [number, number, number],
+      };
     }
 
-    return {
-      fillColor: rankHeatFill(rank, total, isDark),
-      fillOpacity: 1,
-      weight,
-      opacity: 1,
-      color,
-    };
-  };
+    let fitFeatures: Feature[] = features;
+    if (focusedSlug) {
+      const focused = features.filter((f) => f.id === focusedSlug);
+      if (focused.length > 0) fitFeatures = focused;
+    }
 
-  const onEachFeature = (feature: Feature, layer: Layer) => {
-    const slug = feature.properties?.slug as string | undefined;
-    const name = (feature.properties?.name as string | undefined) ?? slug;
-    const entry = slug ? bySlug.get(slug) : undefined;
-    const score = entry?.territory.matchScore ?? "—";
-    const rank = entry?.rank ?? "—";
-    const isTop = slug === topSlug;
+    try {
+      return fitProjectionParams(fitFeatures, size.width, size.height, 20);
+    } catch {
+      return {
+        scale: 1000,
+        translation: [0.5, 0.5] as [number, number],
+        rotation: [0, 0, 0] as [number, number, number],
+      };
+    }
+  }, [features, focusedSlug, size.height, size.width]);
 
-    layer.bindTooltip(
-      `<strong>${name}</strong><br/>` +
-        `Rank #${rank}${isTop ? " · top match" : ""}<br/>` +
-        `Match score: ${score}`,
-      { sticky: true },
-    );
+  const bySlug = useMemo(() => {
+    const map = new Map<string, ChoroplethDatum>();
+    for (const d of data) map.set(d.id, d);
+    return map;
+  }, [data]);
 
-    layer.on({
-      click: (e: LeafletMouseEvent) => {
-        e.originalEvent.preventDefault();
-        if (!slug) return;
-        const qs = queryString ? `?${queryString}` : "";
-        router.push(`/places/${slug}${qs}`);
-      },
-      mouseover: (e: LeafletMouseEvent) => {
-        const target = e.target as { setStyle: (s: PathOptions) => void };
-        target.setStyle({ weight: 2.5, color: STROKE_HOVER });
-        const path = e.target as L.Path;
-        if (typeof path.bringToFront === "function") path.bringToFront();
-      },
-      mouseout: (e: LeafletMouseEvent) => {
-        const target = e.target as { setStyle: (s: PathOptions) => void };
-        target.setStyle(styleFeature(feature));
-      },
-    });
-  };
-
-  const tileUrl = isDark
-    ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-    : "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png";
-
-  const geoKey = [
-    isDark ? "dark" : "light",
-    focusedSlug ?? "",
-    highlightedSlug ?? "",
-    territories.map((t) => `${t.slug}:${t.matchScore}`).join("|"),
-  ].join(";");
+  const unknownColor = isDark ? "#3f3f46" : "#e4e4e7";
+  const defaultBorder = isDark ? "rgba(255,255,255,0.22)" : "rgba(0,0,0,0.18)";
+  const accentBorder = isDark ? "#fafafa" : "#171717";
+  const focusBorder = isDark ? "#a7f3d0" : "#047857";
 
   return (
     <div
+      ref={containerRef}
       className={cn(
-        // Tall enough for NZ north–south; width comes from the 50:50 layout column
-        "border-border relative h-[min(78vh,800px)] w-full overflow-hidden rounded-xl border",
+        "border-border bg-card relative h-[min(78vh,800px)] w-full overflow-hidden rounded-xl border",
         className,
       )}
     >
-      <MapContainer
-        center={[-41.2, 174.5]}
-        zoom={5}
-        scrollWheelZoom={true}
-        className="bg-muted z-0 h-full w-full"
-        attributionControl
-      >
-        <TileLayer
-          key={isDark ? "dark" : "light"}
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url={tileUrl}
+      {size.width > 0 && size.height > 0 && features.length > 0 ? (
+        <ChoroplethCanvas
+          width={size.width}
+          height={size.height}
+          features={features}
+          data={data}
+          match="id"
+          label={(feature) => {
+            const f = asBoundFeature(feature);
+            return (
+              f.properties?.name ??
+              f.data?.name ??
+              String(f.id ?? f.properties?.slug ?? "Place")
+            );
+          }}
+          value="value"
+          valueFormat=".0f"
+          domain={domain}
+          // Nivo choropleth default sequential scheme
+          colors="PuBuGn"
+          unknownColor={unknownColor}
+          projectionType="mercator"
+          projectionScale={projection.scale}
+          projectionTranslation={projection.translation}
+          projectionRotation={projection.rotation}
+          borderWidth={(feature) => {
+            const id = featureId(feature);
+            if (id && id === focusedSlug) return 2.5;
+            if (id && id === highlightedSlug) return 2;
+            return 0.6;
+          }}
+          // nivo types incorrectly type borderColor accessor as number
+          borderColor={
+            ((feature: unknown) => {
+              const id = featureId(feature);
+              if (id && id === focusedSlug) return focusBorder;
+              if (id && id === highlightedSlug) return accentBorder;
+              return defaultBorder;
+            }) as unknown as string
+          }
+          isInteractive
+          onClick={(feature) => {
+            const id = featureId(feature);
+            if (!id || !bySlug.has(id)) return;
+            const qs = queryString ? `?${queryString}` : "";
+            router.push(`/places/${id}${qs}`);
+          }}
+          tooltip={({ feature }) => {
+            const f = asBoundFeature(feature);
+            const id = featureId(f);
+            const datum = bySlug.get(id);
+            return (
+              <MatchTooltip
+                feature={{
+                  ...f,
+                  data: datum ?? f.data,
+                  label: datum?.name ?? String(f.label ?? ""),
+                }}
+              />
+            );
+          }}
+          theme={{
+            background: "transparent",
+            text: {
+              fill: isDark ? "#e4e4e7" : "#27272a",
+            },
+            tooltip: {
+              container: {
+                background: "transparent",
+                boxShadow: "none",
+                padding: 0,
+              },
+            },
+          }}
         />
-        <FitScopeBounds boundaries={boundaries} focusedSlug={focusedSlug} />
-        <FocusPlace boundaries={boundaries} focusedSlug={focusedSlug} />
-        <GeoJSON
-          key={geoKey}
-          data={boundaries}
-          style={styleFeature}
-          onEachFeature={onEachFeature}
-        />
-      </MapContainer>
+      ) : (
+        <div className="text-muted-foreground flex h-full w-full items-center justify-center text-sm">
+          {features.length === 0 ? "No map features for this view." : "Loading map…"}
+        </div>
+      )}
     </div>
   );
 }
