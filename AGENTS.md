@@ -34,6 +34,8 @@ bun run build
 - DB: server-only via Drizzle. Use Supabase pooler URL at runtime, direct URL for migrations.
 - Env validation in `src/env.js` — use `SKIP_ENV_VALIDATION=1` for builds without secrets.
 - Table prefix: `kainga-compass_*` (see `drizzle.config.ts`).
+- Always call `.enableRLS()` on new tables in `src/server/db/schema.ts`. No policies = default-deny for PostgREST; app access is via the Postgres connection string, not the anon key.
+- After `db:push` on Supabase, re-run `supabase/security-rls.sql` if security advisor flags public grants.
 
 ## Data Sources (planned)
 
@@ -53,3 +55,4 @@ bun run build
 
 - `DIRECT_URL` required for reliable `db:push` against Supabase.
 - `AUTH_URL` must match deployment domain in production.
+- Supabase grants `anon`/`authenticated` full access to new `public` tables by default. Without RLS, anyone with the project URL can read/write Auth.js tables (emails, OAuth tokens, sessions). Keep RLS on; do not expose tables via the Supabase client unless policies are intentional.

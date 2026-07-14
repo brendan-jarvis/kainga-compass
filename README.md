@@ -84,6 +84,11 @@ Dimensions (0–100 percentiles within the active peer set):
 - [ ] Saved profiles / shortlists (needs sign-in)
 - [ ] Monthly data refresh
 
+### Infrastructure
+
+- [x] Supabase RLS enabled (server-only Drizzle access; no client-facing table policies)
+- After `db:push`, re-run `supabase/security-rls.sql` if security advisor flags public grants
+
 ---
 
 ## License

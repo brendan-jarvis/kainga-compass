@@ -31,11 +31,19 @@ export const authConfig = {
         }),
       ]
     : [],
+  // enableRLS() returns Omit<table, "enableRLS">; Auth adapter table types still
+  // require the enableRLS method on the type, so cast through a common shape.
   adapter: DrizzleAdapter(db, {
-    usersTable: users,
-    accountsTable: accounts,
-    sessionsTable: sessions,
-    verificationTokensTable: verificationTokens,
+    usersTable: users as typeof users & { enableRLS: () => typeof users },
+    accountsTable: accounts as typeof accounts & {
+      enableRLS: () => typeof accounts;
+    },
+    sessionsTable: sessions as typeof sessions & {
+      enableRLS: () => typeof sessions;
+    },
+    verificationTokensTable: verificationTokens as typeof verificationTokens & {
+      enableRLS: () => typeof verificationTokens;
+    },
   }),
   callbacks: {
     session: ({ session, user }) => ({

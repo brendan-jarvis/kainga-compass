@@ -10,6 +10,12 @@ import { type AdapterAccount } from "next-auth/adapters";
  */
 export const createTable = pgTableCreator((name) => `kainga-compass_${name}`);
 
+/**
+ * RLS is enabled with no policies (default-deny via PostgREST).
+ * This app only accesses Postgres server-side through Drizzle using the
+ * database connection string — not the Supabase anon/authenticated API.
+ * Without RLS, Supabase exposes public tables to anyone with the project URL.
+ */
 export const posts = createTable(
   "post",
   (d) => ({
@@ -29,7 +35,7 @@ export const posts = createTable(
     index("created_by_idx").on(t.createdById),
     index("name_idx").on(t.name),
   ],
-);
+).enableRLS();
 
 export const users = createTable("user", (d) => ({
   id: d
@@ -46,7 +52,7 @@ export const users = createTable("user", (d) => ({
     })
     .$defaultFn(() => /* @__PURE__ */ new Date()),
   image: d.varchar({ length: 255 }),
-}));
+})).enableRLS();
 
 export const usersRelations = relations(users, ({ many }) => ({
   accounts: many(accounts),
@@ -74,7 +80,7 @@ export const accounts = createTable(
     primaryKey({ columns: [t.provider, t.providerAccountId] }),
     index("account_user_id_idx").on(t.userId),
   ],
-);
+).enableRLS();
 
 export const accountsRelations = relations(accounts, ({ one }) => ({
   user: one(users, { fields: [accounts.userId], references: [users.id] }),
@@ -91,7 +97,7 @@ export const sessions = createTable(
     expires: d.timestamp({ mode: "date", withTimezone: true }).notNull(),
   }),
   (t) => [index("t_user_id_idx").on(t.userId)],
-);
+).enableRLS();
 
 export const sessionsRelations = relations(sessions, ({ one }) => ({
   user: one(users, { fields: [sessions.userId], references: [users.id] }),
@@ -105,4 +111,4 @@ export const verificationTokens = createTable(
     expires: d.timestamp({ mode: "date", withTimezone: true }).notNull(),
   }),
   (t) => [primaryKey({ columns: [t.identifier, t.token] })],
-);
+).enableRLS();
